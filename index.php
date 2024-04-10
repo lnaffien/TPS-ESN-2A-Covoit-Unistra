@@ -11,20 +11,29 @@ if (ENVIRONMENT == 'development') {
 session_start();
 
 // On charge les contrôleurs et les modèles
-require_once('src/controllers/login.php');
+require_once('src/View-Model/Login_ViewModel.php');
+require_once('src/View-Model/Register_ViewModel.php');
+/*
 require_once('src/controllers/logout.php');
 require_once('src/controllers/homepage.php');
 require_once('src/controllers/register.php');
 require_once('src/controllers/profil.php');
 require_once('src/controllers/modifProfil.php');
-require_once('src/controllers/admin.php');
+require_once('src/controllers/admin.php');*/
 
 try {
     if (isset($_POST['action'])){
         switch ($_POST['action']) {
-            case 'login': // Login page
-                (new Login_Ctrl())->execute();
+            // Login page
+            case 'login':
+                (new Login_ViewModel())->execute();
                 break;
+            // Register page
+            case 'register':
+                (new Register_ViewModel())->execute();
+                break;
+
+                /*
             case 'homepage_connection': // Homepage - Première connexion
                 (new Homepage_Ctrl())->execute_first();
                 break;
@@ -37,9 +46,7 @@ try {
             case 'logout': // Déconnexion
                 (new Logout_Ctrl())->execute();
                 break;
-            case 'register': // Inscription
-                (new Register_Ctrl())->execute();
-                break;
+
             case 'register_new': // Création d'un nouveau compte
                 (new Register_Ctrl())->newUser();
                 break;
@@ -55,6 +62,7 @@ try {
             case 'delete_users': // Suppression d'un utilisateur
                 (new Admin_ctrl())->delete_users();
                 break;
+                */
             default:
                 // Page d'erreur 404
                 http_response_code(404);
@@ -65,7 +73,8 @@ try {
     else
     {
         // Page d'accueil
-        (new Login_Ctrl())->execute();
+        (new Login_ViewModel())->execute();
+        //(new Login_Ctrl())->execute();
     }
 } catch (Exception $e) {
     echo $e;

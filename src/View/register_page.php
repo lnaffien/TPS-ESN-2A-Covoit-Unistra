@@ -1,34 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
-    <title> Page d'inscription </title>
-</head>
+
 <body class="body4">
-
-    <header class="header">
-
-        <div class="flex justify-between align-center">
-
-            <img src="images/register.png" class="register-logo">
-
-            <div>
-                <h1 class="logo-unistra1"> COVOIT' </h1>
-                <h1 class="logo-unistra2"> UNISTRA </h1>
-            </div>
-
-            <form action="index.php" method="POST">
-                <input type="hidden" name="action" value="login">
-                <input class="input-registerpage" type="submit" value="Page d'accueil" >
-            </form>
-
-        </div>
-
-    </header>
 
     <main>
         
