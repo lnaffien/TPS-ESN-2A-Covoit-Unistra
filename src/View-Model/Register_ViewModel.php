@@ -38,6 +38,7 @@ class Register_ViewModel
     public static function check_register_data()
     {
         // Get data from the form
+        // TODO : utiliser trim() pour supprimer les espaces avant et après ?
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);

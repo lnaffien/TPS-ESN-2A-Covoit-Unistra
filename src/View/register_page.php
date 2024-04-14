@@ -7,7 +7,7 @@
         
         <div class="flex">
 
-            <form id="form" action="" method="POST" onsubmit="return validatePasswords()">
+            <form id="form" action="" method="POST">
 
                 <input type="hidden" name="action_register_submit" value="register_submit">
                 <h1>Bienvenue sur la page d'inscription</h1><br>
@@ -24,9 +24,6 @@
         </div>
         
     </main>    
-
-    <!-- Verifie que les deux mots de passe sont identiques (coté client) -->
-    <script src="../js/validatePasswords.js"></script>
 
 </body>
 </html>
