@@ -1,11 +1,10 @@
 <?php
-namespace Application\Models\Homepage;
 
 // Définition de la classe Utilisateur
 class User
 {
     // Propriétés (variables) de l'utilisateur
-    private $_id;
+    private $_idUser;
     private $_nom;
     private $_prenom;
     private $_email;
@@ -20,9 +19,9 @@ class User
      *              - telephone
      *              - nagenda
      */
-    public function __construct($id, $nom, $prenom, $email, $telephone, $nagenda, $friends)
+    public function __construct($idUser, $nom, $prenom, $email, $telephone, $nagenda, $friends)
     {
-        $this->_id = $id;
+        $this->_idUser = $idUser;
         $this->_nom = $nom;
         $this->_prenom = $prenom;
         $this->_email = $email;
@@ -35,9 +34,9 @@ class User
     {
         switch($property)
         {
-            case 'id':
+            case 'idUser':
             {
-                return $this->_id;
+                return $this->_idUser;
                 break;
             }
             case 'nom':
@@ -72,7 +71,7 @@ class User
             }
             default:
             {
-                throw new Exception('User : __get : Invalid Property {$property}');
+                throw new Exception("User : __get : Invalid Property {$property}");
             }                          
         } 
 
@@ -124,9 +123,9 @@ class User
     {
         switch($property)
         {
-            case 'id':
+            case 'idUser':
             {
-                return $this->_id - $value;
+                return $this->_idUser - $value; // TODO : 0 = faux
                 break;
             } 
             case 'nom':
@@ -151,7 +150,7 @@ class User
             }
             case 'nagenda':
             {
-                return $this->_nagenda - $value;
+                return $this->_nagenda - $value; // TODO : 0 = faux
                 break;
             }          
             case 'friends':
