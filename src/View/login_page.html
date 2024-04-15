@@ -2,43 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="../css/styleguide.css" />
-    <link rel="stylesheet" href="../css/connexion.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="css/connexion.css" />
   </head>
   <body>
-    <div class="page-connection">
-      <div class="div">
-        <div class="connection">
-          <div class="overlap">
-            <div class="e-mail">
-              <div class="overlap-group">
-                <div class="rectangle"></div>
-                <img class="line" src="img/line-5.svg" />
-                <div class="text-wrapper">E-mail</div>
-                <img class="email-icon" src="../images/email.svg" />
-              </div>
-            </div>
-            <div class="password">
-              <div class="overlap-2">
-                <div class="text-wrapper-2">Mot de passe</div>
-                <img class="password-icon" src="../images/password.svg" />
-              </div>
-            </div>
-            <div class="inscription-button">
-              <div class="overlap-3">
-                <div class="rectangle-2"></div>
-                <div class="text-wrapper-3">Inscription</div>
-              </div>
-            </div>
-            <div class="connexion-button">
-              <div class="div-wrapper"><div class="text-wrapper-4">Connexion</div></div>
-            </div>
-            <p class="p">Bienvenue sur Covoit’ Unistra !</p>
-          </div>
-        </div>
-        <div class="header-not-logged"><div class="text-wrapper-5">COVOIT’ UNISTRA</div></div>
+    <div class="PageConnection" style="width: 1440px; height: 1024px; position: relative; background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), linear-gradient(180deg, rgba(17.36, 126.23, 113.63, 0.78) 0%, rgba(31.91, 118.09, 108.12, 0.78) 0%, rgba(0.15, 121.04, 107.06, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%)">
+      <div class="Connection" style="width: 901px; height: 685px; left: 303px; top: 219px; position: absolute">
+        <div class="Background" style="width: 901px; height: 685px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.60); border: 6px #BDBDBD solid"></div>
+        
+        <form id="form" action='' method="POST">
+          <input type="hidden" name="action_login_submit" value="login_submit">
+          <input type="email" name='email' placeholder="E-mail" class="EmailInput" required>
+          <div class="Line"></div>
+          <img class="EmailIcon" src="images/email.svg">
+          <input type="password" name="mdp" placeholder="Mot de passe" class="MotDePasseInput" required>
+          <div class="Line"></div>
+          <img class="PasswordIcon" src="images/password.svg">
+          <input type="submit" value="Connexion" class="ConnexionButton">
+        </form>
+
+        <form  id="btnRegister" action="index.php" method="POST">
+          <input type="hidden" name="action" value="register">
+          <button type="submit" class="InscriptionButton" style="width: 205px; height: 72.40px; left: 355px; top: 550px; position: absolute; background: #009688; border-radius: 10px; border: 3px #00796B solid; text-align: center; color: white; font-size: 32px; font-family: Jaldi; font-weight: 400">Inscription</button>
+        </form>
+
+        <h1 class="BienvenueSurCovoitUnistra" style="width: 499.49px; height: 83.45px; left: 201px; top: 39px; position: absolute; text-align: center; color: black; font-size: 38px; font-family: Jaldi; font-weight: 400; word-wrap: break-word">Bienvenue sur Covoit’ Unistra !</h1>
       </div>
+
+
+
     </div>
   </body>
 </html>
