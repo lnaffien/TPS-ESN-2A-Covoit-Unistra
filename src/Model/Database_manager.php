@@ -1,5 +1,7 @@
 <?php
-require('src/Model/User.php');
+
+require_once('src/Model/User.php');
+
 /**
  * TODO Auto-generated comment.
  */
@@ -75,7 +77,7 @@ class Database_manager
 	}
 
 	// TODO
-	protected static function add_user($user, $password) : bool
+	public static function add_user($user, $password) : bool
 	{	
 		// TODO : vérifier que les 2 mdp sont similaires
 
@@ -108,6 +110,7 @@ class Database_manager
 							$current_date ));
 		} catch (Exception $e)
 		{
+			// TODO : Gestion des erreurs
 			print_r("Error while adding new user into data table : $e");
 			$stmt->rollback();
 		}

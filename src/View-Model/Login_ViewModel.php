@@ -1,5 +1,10 @@
 <?php
 
+// TODO : Vérifier le format des informations côté client
+/*
+ * js = client, php = serveur
+ */
+
 if(isset($_POST['action_login_submit']))
 {
     if(Login_ViewModel::check_login())

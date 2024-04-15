@@ -8,11 +8,15 @@ if (ENVIRONMENT == 'development') {
     ini_set('display_errors', '1');
 }
 
+require_once('src/Model/User.php');
 session_start();
 
 // On charge les contrôleurs et les modèles
+require_once('src/View-Model/Test_ViewModel.php');
+
 require_once('src/View-Model/Login_ViewModel.php');
 require_once('src/View-Model/Register_ViewModel.php');
+require_once('src/View-Model/Home_ViewModel.php');
 /*
 require_once('src/controllers/logout.php');
 require_once('src/controllers/homepage.php');
@@ -24,23 +28,22 @@ require_once('src/controllers/admin.php');*/
 try {
     if (isset($_POST['action'])){
         switch ($_POST['action']) {
+            // Test page
+            case 'test':
+                (new Test_ViewModel())->execute();
+                break;
             // Login page
             case 'login':
-                (new Login_ViewModel())->execute();
+                Login_ViewModel::execute();
                 break;
             // Register page
             case 'register':
                 (new Register_ViewModel())->execute();
                 break;
-
-                /*
-            case 'homepage_connection': // Homepage - Première connexion
-                (new Homepage_Ctrl())->execute_first();
-                break;
             case 'homepage': // Homepage
-                (new Homepage_Ctrl())->execute();
+                Home_ViewModel::execute();
                 break;
-            case 'homepage_filters': // Homepage - Rafraîchissement Homepage avec filtres
+           /* case 'homepage_filters': // Homepage - Rafraîchissement Homepage avec filtres
                 (new Homepage_Ctrl())->valideFilters($_POST['date'], $_POST['BarreR']);
                 break;
             case 'logout': // Déconnexion
@@ -73,7 +76,8 @@ try {
     else
     {
         // Page d'accueil
-        (new Login_ViewModel())->execute();
+        //(new Test_ViewModel())->execute();
+        Login_ViewModel::execute();
         //(new Login_Ctrl())->execute();
     }
 } catch (Exception $e) {
