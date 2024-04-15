@@ -2,6 +2,7 @@
 
 use Sabre\VObject;
 require_once 'src/libs/composer/vendor/autoload.php';
+require_once 'src/Model/Agenda_day.php';
 
 /**
  * TODO Auto-generated comment.
@@ -57,27 +58,28 @@ class Agenda_manager
 			
             if (!isset($calendarArray[$date]))
 			{
-                $calendarArray[$date] = array('start' => $startDate, 'end' => $endDate);
+				$calendarArray[$date] = new Agenda_day($date, $startDate, $endDate);
+                //$calendarArray[$date] = array('start' => $startDate, 'end' => $endDate);
             }
 			else
 			{
-                if ($startDate < $calendarArray[$date]['start'])
+                if ($startDate < $calendarArray[$date]->__get_start_time())
 				{
-                    $calendarArray[$date]['start'] = $startDate;
+                    $calendarArray[$date]->__set_start_time($startDate);
                 }
-                if ($endDate > $calendarArray[$date]['end'])
+                if ($endDate > $calendarArray[$date]->__get_end_time())
 				{
-                    $calendarArray[$date]['end'] = $endDate;
+					$calendarArray[$date]->__set_end_time($endDate);
                 }
             }
         }
-
+/*
         $result = array();
         foreach ($calendarArray as $date => $times)
 		{
             $result[] = array('heureDebut' => $times['start'], 'heureFin' => $times['end']);
-        }
-        return $result;
+        }*/
+        return $calendarArray;
 	}
 
 	/**
@@ -90,13 +92,17 @@ class Agenda_manager
 		// Calculates end date
 		$end_date = clone $start_date;
 		$end_date->modify("+{$number_of_days} days");
-		
+
+		// Format start and end dates
+		$end_date = $end_date->format('Y-m-d');
+		$start_date = $start_date->format('Y-m-d');
+
 		// filter data according to its date
 		foreach($agenda_array as $event)
 		{
 			// TODO : handle different timezones
-			if( $event['heureDebut']->format('Y-m-d') >= $start_date->format('Y-m-d')
-					&& $event['heureDebut']->format('Y-m-d') < $end_date->format('Y-m-d'))
+			if( $event->__get_date() >= $start_date
+					&& $event->__get_date() < $end_date )
 			{
 				$agenda_filtered[] = $event;
 			}
