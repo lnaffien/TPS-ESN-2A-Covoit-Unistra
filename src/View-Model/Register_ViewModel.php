@@ -31,8 +31,8 @@ class Register_ViewModel
     // TODO
     public static function execute()
     {
-        include('src/View/header_anonymous.php');
-        require_once('src/View/register_page.php');
+        include('src/View/header_anonymous.html');
+        require_once('src/View/register_page.html');
     }
 
     public static function check_register_data()
