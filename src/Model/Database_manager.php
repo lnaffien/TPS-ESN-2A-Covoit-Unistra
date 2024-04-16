@@ -76,29 +76,17 @@ class Database_manager
 		return ($query_result_size != 0) ? true : false;
 	}
 
-	/*private static function add_data_format_properties($properties)
+	private static function properties_values_to_string($properties)
 	{
-		$query_start_string = "(";
-		$query_end_string = "VALUES(";
+		return implode(", ", $properties);
+	}
+
+	private static function properties_keys_to_string($properties)
+	{
+		$properties_string = "";
 		$keys = array_keys($properties);
-
-		foreach($keys as $key)
-		{
-			$query_start_string += "$key, ";
-			$query_end_string += "$properties[$key], ";
-		}
-
-		// Remove excess characters 
-		$query_start_string = rtrim($query_start_string, ",");
-		$query_end_string = rtrim($query_start_string, ",");
-
-		// Add missing characters
-		$query_start_string += ") ";
-		$query_end_string += ")";
-
-		// Merge start and end string queries
-		return $query_start_string + $query_end_string;
-	}*/
+		return implode(", ", $keys);
+	}
 
 	/*public static function add_data($table, $properties, $filter)
 	{
