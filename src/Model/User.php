@@ -119,7 +119,7 @@ class User
 
     }
 
-    public function __compare_to($property, $value)
+    public function compare_to($property, $value)
     {
         switch($property)
         {
@@ -164,6 +164,54 @@ class User
                 throw new Exception('User : __set : Invalid Property {$property}');
             }                          
         } 
+
+    }
+
+    private function friend_in_array($friend)
+    {
+        return array_search($friend, $this->_friends);
+    }
+
+    public function friend_add($friend_to_add)
+    {
+        if(!friend_in_array($friend_to_add))
+        {
+            $this->_friends[] = $friend_to_add;
+        }
+        else
+        {
+            // TODO : erreur : this user is already your friend
+        }
+    }
+
+    public function friends_add($friends_to_add)
+    {
+        foreach($friends_to_add as $friend)
+        {
+            $this->friend_add($friend);
+        }
+
+    }
+
+    public function friend_remove($friend_to_remove)
+    {
+        $friend_key = friend_in_array($friend_to_remove);
+        if($friend_key)
+        {
+            unset($this->_friends[$friend_key]);
+        }
+        else
+        {
+            // TODO : erreur : this user is not your friend !
+        }
+    }
+
+    public function friends_remove($friends_to_remove)
+    {
+        foreach($friends_to_remove as $friend)
+        {
+            $this->friend_remove($friend);
+        }
 
     }
 }
