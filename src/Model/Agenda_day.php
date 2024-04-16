@@ -7,9 +7,11 @@ class Agenda_day
 	private $_date;
 	private $_start_time;
 	private $_end_time;
+	private static $_middle_of_the_day;
 
 	public function __construct($date, $start_time, $end_time)
 	{
+		Agenda_day::$_middle_of_the_day = (new \DateTime(date("H:i:s", strtotime('12PM'))))->setTimezone(new \DateTimeZone('Europe/Paris'))->format('H:i');
 		$this->_date = $date;
 		$this->_start_time = $start_time;
 		$this->_end_time = $end_time;
@@ -40,10 +42,29 @@ class Agenda_day
 		$this->_end_time = $new_end_time;
 	}
 
-	/**
-	 * TODO Auto-generated comment.
-	 */
-	public function compare_to($agenda_day) {
-		return false;
+	// TODO : add some comments
+	private function compare_time($this_time_to_compare, $time_to_compare)
+	{
+		if( ($time_to_compare <= Agenda_day::$_middle_of_the_day && $this_time_to_compare <= Agenda_day::$_middle_of_the_day)
+			|| ($time_to_compare >= Agenda_day::$_middle_of_the_day && $this_time_to_compare >= Agenda_day::$_middle_of_the_day) )
+		{
+			return true;
+		}
+		return false;		
+	}
+
+	public function compare_to_start($agenda_day)
+	{
+		return $this->compare_time(($this->__get_start_time())->format('H:i'),
+									($agenda_day->__get_start_time())->format('H:i'));
+	}
+
+	public function compare_to_end($agenda_day)
+	{
+		return $this->compare_time(($this->__get_end_time())->format('H:i'),
+									($agenda_day->__get_end_time())->format('H:i'));
 	}
 }
+
+?>
+
