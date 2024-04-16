@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Amis</title>
+  <link rel="stylesheet" href="../css/friendspage.css" />
+</head>
+<body>
+  <div class="PageFriends">
+    <h1 class="VosAmis">VOS AMIS</h1>
+    <form class="Ajouteramis">
+      <input type="text" class="AjouterDesAmis" placeholder="Ajouter des amis...">
+      <button class="loupeButton" onclick="handleButtonClick()">
+        <img class="loupe" src="../images/loupe.svg" alt="Loupe Icon">
+      </button>    
+    </form>
+    <button class="EditButton" onclick="handleEditClick()">
+      <img src="../images/edit1.svg" alt="Edit Icon">
+    </button>
+
+    <div class="Ami1">
+      <p class="ami1">Ami 1</p>
+      <button class="MinusButton1" onclick="handleMinusClick()">
+        <img class="minus1" src="../images/minus.svg" alt="Minus Icon">
+      </button>
+    </div>
+    <div class="Ami2">
+      <p class="ami2">Ami 2</p>
+      <button class="MinusButton2" onclick="handleMinusClick()">
+        <img class="minus2" src="../images/minus.svg" >
+      </button>
+    </div>
+    <div class="Ami3">
+      <p class="ami3">Ami 3</p>
+      <button class="MinusButton3" onclick="handleMinusClick()">
+        <img class="minus3" src="../images/minus.svg" >
+      </button>
+    </div>
+    <div class="Ami4">
+      <p class="ami4">Ami 4</p>
+      <button class="MinusButton4" onclick="handleMinusClick()">
+        <img class="minus4" src="../images/minus.svg" >
+      </button>
+    </div>
+
+    <div class="Nomprenom1">
+      <p class="nomprenom1">Nom Prénom</p>
+      <button class="PlusButton" onclick="yourFunction()">
+        <img class="plusbutton" src="../images/plus.svg" >
+      </button>
+    </div> 
+  </div>
+
+  <header class="HeaderLoggedIn">
+    <button class="UserButton" onclick="handleUserClick()">
+        <img class="User" src="../images/profileuser.svg">
+    </button>
+    <h2 class="PrenomNom">Prénom NOM</h2>            
+    <button class="CovoitButton" onclick="handleCovoitClick()">
+        <h2 class="CovoitUnistra">COVOIT’ UNISTRA</h2>
+    </button>
+    <button class="FriendsButton" onclick="handleFriendsClick()">
+        <img class="Friends" src="../images/friends.svg">
+    </button>
+</header>
+</body>
+</html>
