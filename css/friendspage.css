@@ -1,0 +1,257 @@
+.PageFriends {
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), linear-gradient(180deg, rgba(17.36, 126.23, 113.63, 0.78) 0%, rgba(31.91, 118.09, 108.12, 0.78) 0%, rgba(0.15, 121.04, 107.06, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
+}
+
+.VosAmis {
+  width: 521px;
+  height: 82px;
+  left: 842px;
+  top: 220px;
+  position: absolute;
+  color: black;
+  font-size: 44px;
+  font-family: Jaldi;
+  font-weight: 400;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+.MinusButton1, .MinusButton2, .MinusButton3, .MinusButton4 {
+  position: absolute;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.MinusButton1 {
+  left: 481px;
+  top: 8px;
+}
+
+.MinusButton2 {
+  left: 481px;
+  top: 8px;
+}
+
+.MinusButton3 {
+  left: 481px;
+  top: 8px;
+}
+
+.MinusButton4 {
+  left: 481px;
+  top: 11px;
+}
+
+.minus1 {
+  width: 40px;
+  height: 40px;
+}
+
+.minus2 {
+  width: 40px;
+  height: 40px;
+}
+
+.minus3 {
+  width: 40px;
+  height: 40px;
+}
+
+.minus4 {
+  width: 40px;
+  height: 40px;
+}
+
+.PlusButton {
+  position: absolute;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  left: 505px;
+  top: 12px;
+}
+
+.plusbutton {
+  width: 40px;
+  height: 40px;
+}
+
+.Ajouteramis {
+  width: 560px;
+  height: 67px;
+  left: 61px;
+  top: 257px;
+  position: absolute;
+}
+
+.AjouterDesAmis {
+  width: 550px;
+  height: 67px;
+  left: 1px;
+  top: 0;
+  position: absolute;
+  color: #757575;
+  font-size: 30px;
+  font-family: Jaldi;
+  font-weight: 400;
+  border: 3px #BDBDBD solid;
+  background: #EDEDED;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.loupeButton {
+  left: 500px;
+  top: 15px;
+  position: absolute;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.loupe{
+  width: 40px;
+  height: 40px;
+}
+
+.EditButton {
+  width: 64px;
+  height: 64px;
+  left: 1318px;
+  top: 243px;
+  position: absolute;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.Ami1, .Ami2, .Ami3, .Ami4 {
+  width: 530px;
+  height: 67px;
+  position: absolute;
+  background: #EDEDED;
+  border-radius: 10px;
+  border: 3px #BDBDBD solid;
+}
+
+.Ami1 {
+  left: 841px;
+  top: 341px;
+}
+
+.Ami2 {
+  left: 841px;
+  top: 434px;
+}
+
+.Ami3 {
+  left: 841px;
+  top: 528px;
+}
+
+.Ami4 {
+  left: 841px;
+  top: 621px;
+}
+
+.ami1, .ami2, .ami3, .ami4 {
+  width: auto;
+  left: 16px;
+  top: -12px;
+  position: absolute;
+  color: #757575;
+  font-size: 30px;
+  font-family: Jaldi;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Nomprenom1 {
+  width: 560px;
+  height: 67px;
+  left: 64px;
+  top: 420px;
+  position: absolute;
+  background: rgba(237.15, 237.15, 237.15, 0.90);
+  border-radius: 10px;
+  border: 3px #BDBDBD solid;
+}
+
+.nomprenom1 {
+  font-size: 30px;
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
+.HeaderLoggedIn {
+  width: 1440px;
+  height: 112px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  left: 8px;
+  top: 0px;
+  position: absolute;
+  background: #B2DFDB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+
+.UserButton {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  width: 74px;
+  height: 74px;
+  left: 1342px;
+  top: 20px;
+  position: absolute;
+}
+
+.PrenomNom {
+  left: 984px;
+  top: 20px;
+  position: absolute;
+  color: #212121;
+  font-size: 32px;
+  font-family: Jaldi;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.CovoitButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 234px;
+  color: black;
+  font-size: 28px;
+  font-family: Kaushan Script;
+  word-wrap: break-word;
+  left: 20px;
+  top: -15px;
+  position: absolute;
+  font-weight: 400;
+}
+
+.FriendsButton {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  width: 74px;
+  height: 78px;
+  left: 1233px;
+  top: 18px;
+  position: absolute;
+}
