@@ -32,7 +32,7 @@ class Register_ViewModel
     public static function execute()
     {
         include('src/View/header_anonymous.php');
-        require('src/View/register_page.php');
+        require_once('src/View/register_page.php');
     }
 
     public static function check_register_data()
