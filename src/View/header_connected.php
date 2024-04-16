@@ -1,68 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  
+
+<head>  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/menu.css">
-  <title> Page de connexion </title>
+  <link rel="stylesheet" href="css/editdata.css" />
 </head>
 
-<body class="body1" >
+<header class="HeaderLoggedIn">
 
-    <header class="header">
-
-        <div class="flex justify-between align-center">
-
-            <nav class="navbar">
-
-                <img src="images/menu_burger.png" id="openBtn" class="menu-burger">
-
-                <div id="mySidenav" class="sidenav">
-
-                    <img src="images/menu_burger.png" id="closeBtn" class="menu-burger"><br>
-
-                        <ul>
-                            <li>
-                                <form action="index.php" method="POST">
-                                    
-                                    <input type="hidden" name="action" value="admin">
-                                    <input class="input-navbar" type="submit" value="admin">
-                                </form>
-                            </li>
-                            <li>
-                                <form action="index.php" method="POST">
-                                    <input type="hidden" name="action" value="logout">
-                                    <input class="input-navbar" type="submit" value="Se déconnecter">
-                                </form>
-                            </li>
-                        </ul>  
-
-                </div>
-
-            </nav>
+    <h2 class="PrenomNom"><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>  
 
 
-            <div>
-                <h1 class="logo-unistra1"> COVOIT' </h1>
-                <h1 class="logo-unistra2"> UNISTRA </h1>
-            </div>
+    <form id="form" action='index.php' method="POST" class="UserButton">
+        <input type="hidden" name="action" value="user_profile">
+        <input type="image" src="images/profileuser.svg" alt="User profile Icon">
+    </form>
+    
+    <form id="form" action='index.php' method="POST">
+        <input type="hidden" name="action" value="friends">
+        <input type="image" class="FriendsButton" src="images/friends.svg" alt="Friends Icon">
+    </form>
 
-            <div>
-                <label class="user-logo"><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></label>
-            </div>
+    <form id="form" action='index.php' method="POST" class="CovoitUnistra">
+        <input type="hidden" name="action" value="homepage">
+        <h2 class="CovoitButton">COVOIT’ UNISTRA</h2>
+    </form>
 
-            <div>
+</header>
+</html>
 
-                <form  id="btnProfil" action="index.php" method="POST">
-                        <input type="hidden" name="action" value="settings">
-                        <button type="submit"> <img src="images/profil.png" class="logo-profil" alt="PROFIL"> </button>
-                </form>
-
-            </div>
-            
-        </div>
-        
-    </header>
