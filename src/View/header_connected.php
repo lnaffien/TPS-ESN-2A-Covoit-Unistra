@@ -18,7 +18,7 @@
     </form>
     
     <form id="form" action='index.php' method="POST">
-        <input type="hidden" name="action" value="friends">
+        <input type="hidden" name="action" value="friend">
         <input type="image" class="FriendsButton" src="images/friends.svg" alt="Friends Icon">
     </form>
 
