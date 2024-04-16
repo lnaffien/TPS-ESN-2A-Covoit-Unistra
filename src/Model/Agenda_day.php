@@ -53,13 +53,13 @@ class Agenda_day
 		return false;		
 	}
 
-	public function compare_to_start($agenda_day)
+	public function compare_start_time($agenda_day)
 	{
 		return $this->compare_time(($this->__get_start_time())->format('H:i'),
 									($agenda_day->__get_start_time())->format('H:i'));
 	}
 
-	public function compare_to_end($agenda_day)
+	public function compare_end_time($agenda_day)
 	{
 		return $this->compare_time(($this->__get_end_time())->format('H:i'),
 									($agenda_day->__get_end_time())->format('H:i'));
