@@ -25,7 +25,7 @@ class Login_ViewModel
     // TODO
     public static function execute()
     {
-        include('src/View/header_anonymous.php');
+        include('src/View/header_anonymous.html');
         require_once('src/View/login_page.html');
     }
 

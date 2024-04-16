@@ -15,8 +15,9 @@
         <h1 class="BienvenueSurCovoitUnistra">Bienvenue sur Covoit’ Unistra !</h1>
 
         <form id="form" action='' method="POST">
+          <input type="hidden" name="action_login_submit" value="login_submit">
+
           <div class="Email">
-            <input type="hidden" name="action_login_submit" value="login_submit">
             <input type="email" name="email" placeholder="E-mail" class="EmailInput" required>
             <div class="Line1"></div>
             <img class="EmailIcon" src="images/email.svg" alt="Email Icon">
@@ -32,7 +33,7 @@
         </form>
       
         <form id="form" action="index.php" method="POST">
-          <input type="hidden" name="action_register_button" value="register">
+          <input type="hidden" name="action" value="register">
           <button class="InscriptionButton" type="submit">Inscription</button>
         </form>
 
