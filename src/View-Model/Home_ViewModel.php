@@ -6,20 +6,17 @@ class Home_ViewModel
 {
     public static function execute()
     {   
-        // Load html view
         require_once('src/Model/User.php');
-        $htmlContents = file_get_contents('src/View/header_connected.php');
-        $htmlContents = str_replace("USER_FIRST_NAME", ($_SESSION['user'])->__get('prenom'), $htmlContents);
-        $htmlContents = str_replace("USER_LAST_NAME", ($_SESSION['user'])->__get('nom'), $htmlContents);
-        echo $htmlContents;
+        require_once('src/Model/Agenda_manager.php');
 
-        require_once('src/View/home_page.php');
+        include('src/View/header_connected.php');
 
         // Load agenda for 7 days starting from the current date
         // TODO : Timezone
-        require_once('src/Model/Agenda_manager.php');
-
         $currentDate = (new \DateTime((string)date('Y-m-d H:i:s')))->setTimezone(new \DateTimeZone('Europe/Paris'));
+        $_SESSION['dateSelected'] = $currentDate->format('Y-m-d');
+        
+        require_once('src/View/home_page.php');
         $calendarFull = Agenda_manager::get_full_agenda($_SESSION['user']->__get('nagenda'));
         $calendarWeek = Agenda_manager::filter_date($calendarFull, $currentDate, 7);
         

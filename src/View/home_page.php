@@ -20,22 +20,18 @@
 
                 <div class="flex justify-center">
 
-                    <input type="search" name="BarreR" placeholder="Recherche..." class="BarreR" value=<?php echo $_SESSION['userSelected'];?>>
+                    <input type="search" name="BarreR" placeholder="Recherche..." class="BarreR" value="...">
 
                 </div>
                 <div class="flex align-center justify-between">
 
                     <div class="align-date">
-
                         <input class="input_date" id="inputDate" type="date" name="date" value=<?php echo $_SESSION['dateSelected'];?>>
-
                     </div>
 
                     <div>
-
                         <input type="hidden" name="action" value="homepage_filters">
                         <input class="input-barre-date" type="submit" value="MàJ" >
-
                     </div>
 
                 </div>

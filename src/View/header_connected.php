@@ -51,13 +51,13 @@
             </div>
 
             <div>
-                <label class="user-logo">USER_FIRST_NAME USER_LAST_NAME</label>
+                <label class="user-logo"><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></label>
             </div>
 
             <div>
 
                 <form  id="btnProfil" action="index.php" method="POST">
-                        <input type="hidden" name="action" value="profil">
+                        <input type="hidden" name="action" value="settings">
                         <button type="submit"> <img src="images/profil.png" class="logo-profil" alt="PROFIL"> </button>
                 </form>
 
