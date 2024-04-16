@@ -13,11 +13,13 @@ class User
     private $_friends = array();
 
     /* Constructeur de la classe Utilisateur
-     * Parametres : - nom
+     * Parametres : - idUser
+     *              - nom
      *              - prenom
      *              - email
      *              - telephone
      *              - nagenda
+     *              - friends
      */
     public function __construct($idUser, $nom, $prenom, $email, $telephone, $nagenda, $friends)
     {
@@ -34,7 +36,7 @@ class User
     {
         switch($property)
         {
-            case 'idUser':
+            case 'id' :
             {
                 return $this->_idUser;
                 break;
@@ -81,6 +83,11 @@ class User
     {
         switch($property)
         {
+            case 'id' :
+            {
+                $this->_id = $value;
+                break;
+            }
             case 'nom':
             {
                 $this->_nom = $value;
@@ -123,7 +130,7 @@ class User
     {
         switch($property)
         {
-            case 'idUser':
+            case 'id':
             {
                 return $this->_idUser - $value; // TODO : 0 = faux
                 break;
@@ -172,47 +179,59 @@ class User
         return array_search($friend, $this->_friends);
     }
 
-    public function friend_add($friend_to_add)
+    public function add_friend($friend_to_add)
     {
         if(!friend_in_array($friend_to_add))
         {
             $this->_friends[] = $friend_to_add;
+            return true;
         }
         else
         {
             // TODO : erreur : this user is already your friend
+            return false;
         }
     }
 
-    public function friends_add($friends_to_add)
+    /*
+     * false = 0 -> il y a eu un problème avec au moins 1 ami
+     * true = 1
+     */
+    public function add_friends($friends_to_add)
     {
+        $result = true;
+
         foreach($friends_to_add as $friend)
         {
-            $this->friend_add($friend);
+            $result &= $this->add_friend($friend);
         }
-
+        return $result;
     }
 
-    public function friend_remove($friend_to_remove)
+    public function remove_friend($friend_to_remove)
     {
         $friend_key = friend_in_array($friend_to_remove);
         if($friend_key)
         {
             unset($this->_friends[$friend_key]);
+            return true;
         }
         else
         {
             // TODO : erreur : this user is not your friend !
+            return false;
         }
     }
 
-    public function friends_remove($friends_to_remove)
+    public function remove_friends($friends_to_remove)
     {
+        $result = true;
+
         foreach($friends_to_remove as $friend)
         {
-            $this->friend_remove($friend);
+            $result &= $this->remove_friend($friend);
         }
-
+        return $result;
     }
 }
 ?>

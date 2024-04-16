@@ -73,7 +73,96 @@ class Database_manager
 	{
 		$query_result = Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$mail\"");
 		$query_result_size = $query_result->fetchColumn();
-		return ($query_result_size != 0) ? 1 : 0;
+		return ($query_result_size != 0) ? true : false;
+	}
+
+	/*private static function add_data_format_properties($properties)
+	{
+		$query_start_string = "(";
+		$query_end_string = "VALUES(";
+		$keys = array_keys($properties);
+
+		foreach($keys as $key)
+		{
+			$query_start_string += "$key, ";
+			$query_end_string += "$properties[$key], ";
+		}
+
+		// Remove excess characters 
+		$query_start_string = rtrim($query_start_string, ",");
+		$query_end_string = rtrim($query_start_string, ",");
+
+		// Add missing characters
+		$query_start_string += ") ";
+		$query_end_string += ")";
+
+		// Merge start and end string queries
+		return $query_start_string + $query_end_string;
+	}*/
+
+	/*public static function add_data($table, $properties, $filter)
+	{
+		
+		
+
+
+		//(idUtilisateur, idUtilisateurAmi) VALUES(?, ?)";
+	}*/
+
+	public static function add_friend($user_current, $user_to_add)
+	{
+		// Check if the relationship doesn't exist
+		if(Database_manager::get_data('AMI', '*', "WHERE idUtilisateur=$user_current AND idUtilisateurAmi=$user_to_add"));
+		{
+			//TODO : erreur car la relation existe déjà
+			return false;
+		}
+
+		// Insert new relationship into data table
+		try
+		{
+			$query = "INSERT INTO AMI (idUtilisateur, idUtilisateurAmi) VALUES(?, ?)";
+			$stmt = Database_manager::get_connection()->prepare($query);
+			$stmt->execute(array(
+							$user_current->__get("id"),
+							$user_to_add->__get("id") ));
+		} catch (Exception $e)
+		{
+			// TODO : Gestion des erreurs
+			print_r("Error while adding new friend relationship into data table : $e");
+			$stmt->rollback();
+			return false;
+		}
+		return true;
+	}
+
+	public static function remove_friend($user_current, $user_to_remove)
+	{
+		// Check if the relationship exists
+		if(!Database_manager::get_data('AMI', '*', "WHERE idUtilisateur=$user_current AND idUtilisateurAmi=$user_to_add"));
+		{
+			//TODO : erreur car la relation n'existe pas
+			return false;
+		}
+
+		// Remove relationship from data table
+		try
+		{
+			$query = "DELETE FROM AMI WHERE idUtilisateur=? AND idUtilisateurAmi=?";
+			$stmt = Database_manager::get_connection()->prepare($query);
+
+			$stmt = Database_manager::get_connection()->prepare($query);
+			$stmt->execute(array(
+							$user_current->__get("id"),
+							$user_to_add->__get("id") ));
+		} catch (Exception $e)
+		{
+			// TODO : Gestion des erreurs
+			print_r("Error while removing data from relationship table : $e");
+			$stmt->rollback();
+			return false;
+		}
+		return true;
 	}
 
 	// TODO
@@ -85,7 +174,7 @@ class Database_manager
 		if(Database_manager::mail_already_exists($user->__get("email")))
 		{
 			print_r("User already exists\n");
-			return 0;
+			return false;
 		}
 
 		// Hash password
@@ -113,9 +202,10 @@ class Database_manager
 			// TODO : Gestion des erreurs
 			print_r("Error while adding new user into data table : $e");
 			$stmt->rollback();
+			return false;
 		}
 
-		return 1;
+		return true;
 	}
 
 	protected static function delete_user($user)
@@ -129,8 +219,10 @@ class Database_manager
 		{
 			print_r("Error while deleting user from data table : $e");
 			$stmt->rollback();
+			return false;
 		}
 
+		return true;
 	}
 
 	// TODO : comments
@@ -141,14 +233,14 @@ class Database_manager
 		if(!Database_manager::mail_already_exists($new_user_data->__get("email")))
 		{
 			print_r("Error while updating table : User does not exists\n");
-			return 0;
+			return false;
 		}
 
 		// Check if the property is updatable
 		if($property == "idUser")
 		{
 			print_r("Error while updating table : Cannot change id value\n");
-			return 0;
+			return false;
 		}
 		
 		// Update data table
@@ -164,6 +256,7 @@ class Database_manager
 		{
 			print_r("Error while updating user data : $e");
 			$stmt->rollback();
+			return true;
 		}
 	}
 }
