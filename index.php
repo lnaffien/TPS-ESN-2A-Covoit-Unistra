@@ -17,6 +17,7 @@ require_once('src/View-Model/Test_ViewModel.php');
 require_once('src/View-Model/Login_ViewModel.php');
 require_once('src/View-Model/Register_ViewModel.php');
 require_once('src/View-Model/Home_ViewModel.php');
+require_once('src/View-Model/Settings_ViewModel.php');
 /*
 require_once('src/controllers/logout.php');
 require_once('src/controllers/homepage.php');
@@ -38,10 +39,15 @@ try {
                 break;
             // Register page
             case 'register':
-                (new Register_ViewModel())->execute();
+                Register_ViewModel::execute();
                 break;
-            case 'homepage': // Homepage
+            // Home page
+            case 'homepage':
                 Home_ViewModel::execute();
+                break;
+            // Settings page
+            case 'settings':
+                Settings_ViewModel::execute();
                 break;
            /* case 'homepage_filters': // Homepage - Rafraîchissement Homepage avec filtres
                 (new Homepage_Ctrl())->valideFilters($_POST['date'], $_POST['BarreR']);
@@ -53,9 +59,7 @@ try {
             case 'register_new': // Création d'un nouveau compte
                 (new Register_Ctrl())->newUser();
                 break;
-            case 'profil': // Page profil
-                (new Profil_Ctrl())->execute();
-                break;
+
             case 'modifier_profil': // Modification de la page profil
                 (new modifierProfil_ctrl())->execute();
                 break;
