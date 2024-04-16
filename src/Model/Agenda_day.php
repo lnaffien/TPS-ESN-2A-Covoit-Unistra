@@ -43,6 +43,7 @@ class Agenda_day
 	}
 
 	// TODO : add some comments
+	// TODO : retourner un seuil de compatibilité en fonction du temps de différence entre les 2 horaires
 	private function compare_time($this_time_to_compare, $time_to_compare)
 	{
 		if( ($time_to_compare <= Agenda_day::$_middle_of_the_day && $this_time_to_compare <= Agenda_day::$_middle_of_the_day)
