@@ -19,12 +19,15 @@
     
     <form id="form" action='index.php' method="POST">
         <input type="hidden" name="action" value="friend">
-        <input type="image" class="FriendsButton" src="images/friends.svg" alt="Friends Icon">
+        <input type='image' class="FriendsButton" src="images/friends.svg" alt="Friends Icon"/>
     </form>
 
     <form id="form" action='index.php' method="POST" class="CovoitUnistra">
         <input type="hidden" name="action" value="homepage">
-        <h2 class="CovoitButton">COVOIT’ UNISTRA</h2>
+        <h2 class="CovoitButton">
+            <input type='submit' value="COVOIT’ UNISTRA" class="CovoitButton">
+        </h2>
+
     </form>
 
 </header>
