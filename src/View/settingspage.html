@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parametres</title>
+    <link rel="stylesheet" href="../css/settingspage.css">
+</head>
+<body>
+
+<div class="AccountSettings">
+  <div class="Settings">
+      <div class="Background"></div>
+      <h1 class="Parametres">Paramètres</h1>
+      <img class="Arrow" src="../images/arrow.svg"></img>
+      
+      <button class="ModifierInformationsPersonnelles" onclick="handleButtonClick()">Modifier mes informations personnelles</button>
+      <button class="HistoriqueAnnuel" onclick="handleButtonClick()">Historique annuel</button>
+      <button class="Tutoriel" onclick="handleButtonClick()">Tutoriel</button>
+      <button class="SupressionCompte" onclick="handleButtonClick()">Supprimer mon compte</button>
+
+      <div class="PersonalData">    
+        <div class="Background2"></div>
+        
+        <div class="CalendarNumber">
+          <h2 class="numcal">Numéro Calendrier :</h2>
+          <p class="cal">0123456789</p>
+        </div>
+        <div class="Tel">
+          <h2 class="telephone">Téléphone :</h2>
+          <p class="nb">+33 X XX XX XX XX</p>
+        </div>
+        <div class="Mail">
+          <h2 class="email">Mail :</h2>
+          <p class="unistramail">xxxxxx@unistra.fr</p>
+        </div>
+        <div class="NomPrenom">Nom<br/>Prénom</div>
+        <img class="Photo" src="../images/profileuser.svg">
+      </div>
+    </div>
+
+    <header class="HeaderLoggedIn">
+      <button class="UserButton" onclick="handleUserClick()">
+          <img class="User" src="../images/profileuser.svg">
+      </button>
+      <h2 class="PrenomNom">Prénom NOM</h2>            
+      <button class="CovoitButton" onclick="handleCovoitClick()">
+          <h2 class="CovoitUnistra">COVOIT’ UNISTRA</h2>
+      </button>
+      <button class="FriendsButton" onclick="handleFriendsClick()">
+          <img class="Friends" src="../images/friends.svg">
+      </button>
+  </header>
+</div>
+
+</body>
+</html>
