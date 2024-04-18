@@ -14,17 +14,29 @@
   justify-content: center;
 }
 
-.Background {
-  width: auto;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), 
-              linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
-}
-
-.Align_left_center {
+header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-left: 40%;
+ /* min-height: 100px; */
+  
+  background: #B2DFDB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+header > h2,
+header > input[type=image] {
+  margin-left: auto;
+}
+
+body {
+  width: auto;
+  height: 100%;
+
+  margin: 0;
+  background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), 
+              linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
 }
 
 input[type=image] {
@@ -42,6 +54,25 @@ input[type=date] {
 
   margin-left: 15px;
   margin-right: 15px;
+}
+
+.CovoitButton {
+  font-size: 28px;
+  font-family: Kaushan Script;
+  font-weight: bold;
+
+  width: fit-content;
+  margin: 0;
+  cursor: pointer;
+  background: none;
+  color: black;
+  border: none;
+}
+
+.Align_left_center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 ul {
@@ -152,95 +183,3 @@ h2 {
 }
 
 /*
-
-.LundiConcordance {
-  width: 946px;
-  height: 314.26px;
-  left: 52px;
-  top: 54px;
-  position: absolute;
-}
-
-
-
-.RefreshButton {
-    width: 69px;
-    height: 62px;
-    left: 149px;
-    top: 149px;
-    position: absolute;
-}
-
-.CalendarButton {
-    width: 87px;
-    height: 65px;
-    left: 45px;
-    top: 143px;
-    position: absolute;
-}
-
-
-
-.HeaderLoggedIn {
-  width: 1440px;
-  height: 112px;
-  padding-top: 11px;
-  padding-bottom: 11px;
-  left: 0px;
-  top: 0px;
-  position: absolute;
-  background: #B2DFDB;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  display: inline-flex;
-}
-
-.UserButton {
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  width: 74px;
-  height: 74px;
-  left: 1342px;
-  top: 20px;
-  position: absolute;
-}
-
-.PrenomNom {
-  left: 984px;
-  top: 20px;
-  position: absolute;
-  color: #212121;
-  font-size: 32px;
-  font-family: Jaldi;
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
-.CovoitButton {
-  border: none;
-  background: none;
-  cursor: pointer;
-  width: 234px;
-  color: black;
-  font-size: 28px;
-  font-family: Kaushan Script;
-  left: 20px;
-  top: -15px;
-  position: absolute;
-}
-
-.FriendsButton {
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  width: 74px;
-  height: 78px;
-  left: 1233px;
-  top: 18px;
-  position: absolute;
-}
