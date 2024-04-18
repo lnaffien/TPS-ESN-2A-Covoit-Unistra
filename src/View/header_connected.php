@@ -9,10 +9,10 @@
 
 <header>
 
-    <form action='index.php' method="POST" class="CovoitButton">
+    <form action='index.php' method="POST" class="CovoitLogoButton">
         <input type="hidden" name="action" value="homepage">
         <h2>
-            <input type='submit' value="COVOIT’ UNISTRA" class="CovoitButton">
+            <input type='submit' value="COVOIT’ UNISTRA" class="CovoitLogoButton">
         </h2>
     </form>
 

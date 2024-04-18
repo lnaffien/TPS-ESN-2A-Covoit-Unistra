@@ -56,13 +56,17 @@ input[type=date] {
   margin-right: 15px;
 }
 
-.CovoitButton {
+.CovoitLogoButton {
   font-size: 28px;
   font-family: Kaushan Script;
   font-weight: bold;
 
-  width: fit-content;
   margin: 0;
+  padding: 0;
+
+  width: fit-content;
+  height: fit-content;
+
   cursor: pointer;
   background: none;
   color: black;
