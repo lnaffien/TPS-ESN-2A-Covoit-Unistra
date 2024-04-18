@@ -5,7 +5,7 @@
         <title>Home Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
         <link rel="stylesheet" href="../css/homepage.css" />
-      </head>
+    </head>
   <body>
     <div class="HomePage">     
       <button class="RefreshButton" onclick="handleRefreshClick()">
@@ -29,7 +29,7 @@
             <h2 class="debutlundi">17h30</h2>
             <h2 class="finlundi">8h30</h2>   
             <div class="Moirow">
-                <div class="Rectangle6"></div>
+                <div class="Rectangle6" ></div>
                 <h2 class="Moi">Moi</h2>
             </div>
             <button class="AddUserButton" onclick="handleButtonClick()">
@@ -37,6 +37,10 @@
             </button>
             <div class="Ami1row">
                 <div class="Rectangle4"></div>
+                <script src="../js/jauge.js"></script>
+                <script>
+                    resizeAndColor("300px","435px","linear-gradient(to right, #c81717d7, #24bc3380)");
+                </script>  
                 <h2 class="Ami1">Ami1</h2>
                 <button class="RequestButton2" onclick="handleRequest1Click()">
                     <img class="requesticon2" src="../images/request.svg" alt="Request 1 Button">
