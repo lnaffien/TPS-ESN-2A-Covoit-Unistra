@@ -17,6 +17,8 @@ require_once('src/View-Model/Test_ViewModel.php');
 require_once('src/View-Model/Login_ViewModel.php');
 require_once('src/View-Model/Register_ViewModel.php');
 require_once('src/View-Model/Home_ViewModel.php');
+require_once('src/View-Model/Edit_User_ViewModel.php');
+/*
 require_once('src/View-Model/Settings_ViewModel.php');
 /*
 require_once('src/controllers/logout.php');
@@ -45,11 +47,18 @@ try {
             case 'homepage':
                 Home_ViewModel::execute();
                 break;
+            // User profile page
+            case 'user_profile':
+                Edit_User_ViewModel::execute();
+                break;
+            case 'friend' :
+                Friend_ViewModel::execute();
+                break;
             // Settings page
-            case 'settings':
+           /* case 'settings':
                 Settings_ViewModel::execute();
                 break;
-           /* case 'homepage_filters': // Homepage - Rafraîchissement Homepage avec filtres
+            case 'homepage_filters': // Homepage - Rafraîchissement Homepage avec filtres
                 (new Homepage_Ctrl())->valideFilters($_POST['date'], $_POST['BarreR']);
                 break;
             case 'logout': // Déconnexion
@@ -80,7 +89,7 @@ try {
     else
     {
         // Page d'accueil
-        //(new Test_ViewModel())->execute();
+       // (new Test_ViewModel())->execute();
         Login_ViewModel::execute();
         //(new Login_Ctrl())->execute();
     }
