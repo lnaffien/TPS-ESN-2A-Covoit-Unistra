@@ -1,5 +1,8 @@
 <?php
-
+// != 100% -> jaune
+// vert jaune orange rouge
+// 20 50 75
+// 2H 4H 6H
 if(isset($_POST['home_page_click']))
 {
     $next_page_instruction = 'homepage';
@@ -36,8 +39,27 @@ class Home_ViewModel
         $currentDate = (new \DateTime((string)date('Y-m-d H:i:s')))->setTimezone(new \DateTimeZone('Europe/Paris'));
         $_SESSION['dateSelectedStart'] = $currentDate;
         $_SESSION['dateSelectedEnd'] = (clone $currentDate)->modify("7 days");
+
+        // Test lines : add friends
+        $friend = clone $_SESSION['user'];
+        //$_SESSION['user']->add_friend($friend);
+
+        /*foreach($_SESSION['user']->__get('friends') as $friend)
+        {
+            if(isset($friend))
+            {
+                print_r($friend);
+                print_r("<br/>");
+            }
+            else
+            {
+                print_r("JE SUIS NULL !");
+            }
+
+        }*/        
         
         require_once('src/View/home_page.php');
+
         $calendarFull = Agenda_manager::get_full_agenda($_SESSION['user']->__get('nagenda'));
         $calendarWeek = Agenda_manager::filter_date($calendarFull, $currentDate, 7);
         
