@@ -16,24 +16,35 @@ class Test_ViewModel
         $user = new User(4, "NAFFIEN_etu", "Lucie_etu", "lucie.naffien@etu.unistra.fr", null, 18581, null);
         $user2 = new User(12, "NAFFIEN_etu", "Lucie_etu", "lucie.naffien@etu.unistra.fr", null, 18581, null); 
 
-
          // Load user friends
+         $user_friends[] = array();
          $friends_query = User_Database_manager::get_friend($user2);
-         print_r($friends_query->rowcount());
-
-         $friend_row_data = $friends_query->fetch(\PDO::FETCH_ASSOC);
-         print_r($friend_row_data['idUtilisateur']);
-
-         $friend_data = User_Database_manager::get_user_from_id($friend_row_data['idUtilisateurAmi']);
-         print_r($friend_data);
-
-         foreach($friend_row_data as $friend)
-         {
-            $friend_data = User_Database_manager::get_user_from_id($friend['idUtilisateurAmi']);
-            print_r($friend_data);
-
-         }
          
+         // Parse result into an array
+         $friends_row_data = $friends_query->fetchAll(\PDO::FETCH_ASSOC);
+
+         foreach($friends_row_data as $friend_line)
+         {            
+            print_r($friend_line['idUtilisateurAmi']);
+            print_r("<br/>");
+
+            // Get friend data
+            $friend_data = User_Database_manager::get_user_from_id($friend_line['idUtilisateurAmi']);
+            $friend_row_data = $friend_data->fetch(\PDO::FETCH_ASSOC);
+            print_r($friend_row_data);
+            print_r("<br/>");
+
+            $user_friends[] = new User( $friend_row_data['idUser'],
+                                        $friend_row_data['nom'],
+                                        $friend_row_data['prenom'], 
+                                        $friend_row_data['email'],
+                                        $friend_row_data['telephone'],
+                                        $friend_row_data['nagenda'],
+                                        null);
+         }
+         print_r("<br/>");
+         print_r($user_friends);
+  
          /*
 
          $friends = array();
