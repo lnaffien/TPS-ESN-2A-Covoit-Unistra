@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
 
-    <?php include "src/View/header_connected.php" ?>
+    <?php include "src/View/header_logged.php" ?>
 
 <body>
     <div class="Align_left_center">

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/connexion.css" />
 </head>
 
-<?php include "src/View/header_not_logged.php" ?>
+<?php include "src/View/header_not_logged.html" ?>
 
 <body>
   <div class="PageConnection">

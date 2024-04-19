@@ -12,7 +12,7 @@ class User_Database_manager
 
     public static function get_user_from_id($id)
     {
-        return Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$id\"");
+        return Database_manager::get_data('UTILISATEUR', '*', "WHERE idUser=\"$id\"");
     }
 
 	private static function mail_already_exists($mail)
@@ -128,6 +128,11 @@ class User_Database_manager
 
 		// Update user data
 		return Database_manager::update_data('UTILISATEUR', $properties, $filter);
+	}
+
+	public static function get_friend($user)
+	{
+		return Database_manager::get_data("AMI", "*", "WHERE idUtilisateur=\"" . $user->__get("id") . "\"");
 	}
 
 	public static function add_friend($user_current, $user_to_add)

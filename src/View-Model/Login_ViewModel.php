@@ -25,7 +25,7 @@ class Login_ViewModel
     // TODO
     public static function execute()
     {
-        require_once('src/View/login_page.html');
+        require_once('src/View/login_page.php');
     }
 
     public static function check_login()

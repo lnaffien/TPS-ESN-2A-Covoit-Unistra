@@ -31,7 +31,7 @@ class Register_ViewModel
     // TODO
     public static function execute()
     {
-        require_once('src/View/register_page.html');
+        require_once('src/View/register_page.php');
     }
 
     public static function check_register_data()
