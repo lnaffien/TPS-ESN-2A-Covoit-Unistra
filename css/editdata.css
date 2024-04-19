@@ -212,7 +212,7 @@
 .AnnulerButton {
     width: 262.46px;
     height: 103px;
-    left: 440px;
+    left: 450px;
     top: 1039px;
     position: absolute;
     cursor: pointer;
@@ -236,7 +236,7 @@
 .ValiderButton {
     width: 262.46px;
     height: 103px;
-    left: 594px;
+    left: 800px;
     top: 1039px;
     position: absolute;
     cursor: pointer;
