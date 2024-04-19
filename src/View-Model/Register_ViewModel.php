@@ -20,7 +20,7 @@ if(isset($_POST['action_register_submit']))
                 <script type='text/javascript'>
                     document.back_to_index_form.submit();
                 </script>
-");
+            ");
 // TODO : https://www.phptutorial.net/php-tutorial/php-registration-form/ pour avoir un truc plus propre
     }
 }
@@ -31,7 +31,6 @@ class Register_ViewModel
     // TODO
     public static function execute()
     {
-        include('src/View/header_anonymous.html');
         require_once('src/View/register_page.html');
     }
 
@@ -55,11 +54,11 @@ class Register_ViewModel
         } 
 
         // Check mail format
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+       /* if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         {
             $_SESSION['error'] = 'Mail : Incorrect format.';
             return false;
-        }
+        }*/
 
         // Check if the given email is already associated to an existing user
         require_once('src/Model/Database_manager.php');

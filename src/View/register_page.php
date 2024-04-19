@@ -6,6 +6,9 @@
     <title>SignUp Page</title>
     <link rel="stylesheet" href="css/editdata.css">
 </head>
+
+<?php include "src/View/header_not_logged.php" ?>
+
 <body>
     <div class="PersonalDataModification">
         <div class="Background">

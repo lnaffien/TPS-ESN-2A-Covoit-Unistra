@@ -37,8 +37,13 @@ class Home_ViewModel
         // Load agenda for 7 days starting from the current date
         // TODO : Timezone
         $currentDate = (new \DateTime((string)date('Y-m-d H:i:s')))->setTimezone(new \DateTimeZone('Europe/Paris'));
-        $_SESSION['dateSelectedStart'] = $currentDate;
-        $_SESSION['dateSelectedEnd'] = (clone $currentDate)->modify("7 days");
+        $_SESSION['dateSelected']['start'] = $currentDate;
+        $_SESSION['dateSelected']['end'] = (clone $currentDate)->modify("7 days");
+
+        $interval = DateInterval::createFromDateString('1 day');
+        $_SESSION['dateSelected']['period'] = new DatePeriod($currentDate, $interval, $_SESSION['dateSelected']['end']);
+
+
 
         // Test lines : add friends
         $friend = clone $_SESSION['user'];
