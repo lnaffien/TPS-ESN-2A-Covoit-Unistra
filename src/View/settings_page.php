@@ -6,6 +6,9 @@
     <title>Parametres</title>
     <link rel="stylesheet" href="../../css/settingspage.css">
 </head>
+
+<?php include "src/View/header_logged.php" ?>
+
 <body>
 
   <div class="AccountSettings">
