@@ -29,7 +29,12 @@ class User
         $this->_email = $email;
         $this->_telephone = $telephone;
         $this->_nagenda = $nagenda;
-        $this->_friends[] = $friends;
+
+        if(isset($friends))
+        {
+            $this->_friends[] = $friends;
+        }
+        
     }
 
     public function __get($property)
@@ -81,53 +86,71 @@ class User
 
     public function __set($property, $value)
     {
-        switch($property)
+        if(isset($value))
         {
-            case 'id' :
+            
+            switch($property)
             {
-                $this->_id = $value;
-                break;
-            }
-            case 'nom':
-            {
-                $this->_nom = $value;
-                break;
-            }
-            case 'prenom':
-            {
-                $this->_prenom = $value;
-                break;
-            }
-            case 'email':
-            {
-                $this->_email = $value;
-                break;
-            }
-            case 'telephone':
-            {
-                $this->_telephone = $value;
-                break;
-            }
-            case 'nagenda':
-            {
-                $this->_nagenda = $value;
-                break;
-            }          
-            case 'friends':
-            {
-                $this->_friends = $value;
-                break;
-            }
-            default:
-            {
-                throw new Exception('User : __set : Invalid Property {$property}');
-            }                          
-        } 
+                case 'id' :
+                {
+                    $this->_id = $value;
+                    break;
+                }
+                case 'nom':
+                {
+                    $this->_nom = $value;
+                    break;
+                }
+                case 'prenom':
+                {
+                    $this->_prenom = $value;
+                    break;
+                }
+                case 'email':
+                {
+                    $this->_email = $value;
+                    break;
+                }
+                case 'telephone':
+                {
+                    $this->_telephone = $value;
+                    break;
+                }
+                case 'nagenda':
+                {
+                    $this->_nagenda = $value;
+                    break;
+                }          
+                case 'friends':
+                {
+                    $this->_friends = $value;
+                    break;
+                }
+                default:
+                {
+                    throw new Exception('User : __set : Invalid Property {$property}');
+                }                          
+            } 
+        }
+    }
 
+    public function __set_all_personal_data($nom, $prenom, $email, $telephone, $nagenda)
+    {
+        $this->_nom = $nom;
+        $this->_prenom = $prenom;
+        $this->_email = $email;
+        $this->_telephone = $telephone;
+        $this->_nagenda = $nagenda;
     }
 
     public function compare_to($property, $value)
     {
+        if(!isset($value))
+        {
+            # TODO : look how to cleanly handle errors
+            return false;
+        }
+
         switch($property)
         {
             case 'id':
@@ -181,7 +204,7 @@ class User
 
     public function add_friend($friend_to_add)
     {
-        if(!friend_in_array($friend_to_add))
+        if(!$this->friend_in_array($friend_to_add))
         {
             $this->_friends[] = $friend_to_add;
             return true;
