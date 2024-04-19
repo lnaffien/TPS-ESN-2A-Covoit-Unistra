@@ -43,10 +43,8 @@ class Home_ViewModel
         $interval = DateInterval::createFromDateString('1 day');
         $_SESSION['dateSelected']['period'] = new DatePeriod($currentDate, $interval, $_SESSION['dateSelected']['end']);
 
-
-
         // Test lines : add friends
-        $friend = clone $_SESSION['user'];
+        //$friend = clone $_SESSION['user'];
         //$_SESSION['user']->add_friend($friend);
 
         /*foreach($_SESSION['user']->__get('friends') as $friend)

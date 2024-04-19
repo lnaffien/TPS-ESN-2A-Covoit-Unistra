@@ -12,6 +12,7 @@ require_once('src/Model/User.php');
 session_start();
 
 // On charge les contrôleurs et les modèles
+require_once('src/View-Model/Test_ViewModel.php');
 
 require_once('src/View-Model/Login_ViewModel.php');
 require_once('src/View-Model/Register_ViewModel.php');
@@ -88,8 +89,8 @@ try {
     else
     {
         // Page d'accueil
-        (new Test_ViewModel())->execute();
-       // Login_ViewModel::execute();
+        //(new Test_ViewModel())->execute();
+        Login_ViewModel::execute();
         //(new Login_Ctrl())->execute();
     }
 } catch (Exception $e) {

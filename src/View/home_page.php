@@ -55,7 +55,7 @@
 
 
                             <?php 
-                                foreach((array)$_SESSION['user']->__get('friends') as $friend)
+                                foreach($_SESSION['user']->__get('friends') as $friend)
                                 {
                                     ?>
                                 <li class="UserRow"> 

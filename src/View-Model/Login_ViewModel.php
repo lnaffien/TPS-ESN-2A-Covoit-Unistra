@@ -65,32 +65,11 @@ class Login_ViewModel
 
         // Load user infromations
         require_once('src/Model/User.php');
-
-        $user = new User($user_row_data['idUser'],
-                            $user_row_data['nom'],
-                            $user_row_data['prenom'], 
-                            $user_row_data['email'],
-                            $user_row_data['telephone'],
-                            $user_row_data['nagenda'],
-                            null);
+        $user = Login_ViewModel::create_user($user_row_data);
 
         // Load user friends
-     /*   $friends_query = User_Database_manager::get_friend($user);
-        $friends = array();
-        foreach($friends_query as $friend)
-        {
-            $friend_data = User_Database_manager::get_user_from_id($friend['idUtilisateurAmi']);
-
-            $friends[] = new User($friend_data['idUser'],
-                                    $friend_data['nom'],
-                                    $friend_data['prenom'], 
-                                    $friend_data['email'],
-                                    $friend_data['telephone'],
-                                    $friend_data['nagenda'],
-                                    null);
-        }
-
-        $user->__set('friends', $friends);*/
+        $friends = Login_ViewModel::load_friend($user);
+        $user->__set('friends', $friends);
         
         // Store logged user info into cookies
         $_SESSION['user'] = $user;
@@ -98,6 +77,39 @@ class Login_ViewModel
         return true;
 
        // unset($_SESSION['user']);
+    }
+
+    private static function create_user($new_user_properties)
+    {
+        return new User( $new_user_properties['idUser'],
+                            $new_user_properties['nom'],
+                            $new_user_properties['prenom'], 
+                            $new_user_properties['email'],
+                            $new_user_properties['telephone'],
+                            $new_user_properties['nagenda'],
+                            null);
+    }
+
+    private static function load_friend($user)
+    {
+        // Load user friends
+        $user_friends = array();
+        $friends_query = User_Database_manager::get_friend($user);
+         
+        // Parse result into an array
+        $friends_row_data = $friends_query->fetchAll(\PDO::FETCH_ASSOC);
+
+        foreach($friends_row_data as $friend_line)
+        {         
+            // Get friend data
+            $friend_data = User_Database_manager::get_user_from_id($friend_line['idUtilisateurAmi']);
+            $friend_row_data = $friend_data->fetch(\PDO::FETCH_ASSOC);
+
+            // Add friend data to a friends list
+            $user_friends[] = Login_ViewModel::create_user($friend_row_data);
+        }
+
+        return $user_friends;
     }
 
 }
