@@ -1,58 +1,120 @@
 .AccountSettings {
-    width: 1440px;
-    height: 1024px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%),
+                linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
+  }
+  
+  .Settings {
+    width: 90%;
+    max-width: 1288px;
+    height: auto;
+    padding: 20px;
     position: relative;
-    background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
-}
-
-.Settings {
-    width: 1288px;
-    height: 817px;
-    left: 76px;
-    top: 176px;
-    position: absolute;
-}
-
-.Background {
-    width: 1288px;
-    height: 817px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
     background: rgba(255, 255, 255, 0.60);
     border: 6px #BDBDBD solid;
-}
-
-.Parametres {
-    width: 714.03px;
-    height: 118.90px;
-    left: 287.33px;
-    top: 0px;
-    position: absolute;
+  }
+  
+  .TitleContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .Parametres {
+    flex: 1; 
+    margin-top: 10px;
     text-align: center;
     color: black;
     font-size: 40px;
     font-family: Jaldi;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-.Arrow {
+  }
+  
+  .Arrow {
     width: 100px;
     height: 100px;
-    left: 17.51px;
-    top: 5px;
-    position: absolute;
-}
-
-.ModifierInformationsPersonnelles,
-.HistoriqueAnnuel,
-.Tutoriel,
-.SupressionCompte {
-    width: 844px;
-    height: 77px;
-    left: 370px;
-    position: absolute;
+    margin-left: 20px; 
+  }
+  
+  .SettingsContainer {
+    display: flex;
+  }
+  
+  .PersonalData {
+    width: 50%;
+  }
+  
+  .Background2 {
+    width: 70%;
+    height: auto;
+    position: relative;
+    background: #B2DFDB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 3px #BDBDBD solid;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .CalendarNumber,
+  .Tel,
+  .Mail {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .numcal,
+  .telephone,
+  .email {
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 32px;
+    font-family: Jaldi;
+  }
+  
+  .nb,
+  .cal,
+  .unistramail {
+    width: 100%;
+    margin-top: 5px;
+    font-size: 25px;
+    font-family: Jaldi;
+  }
+  
+  .NomPrenom {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    font-size: 35px;
+    font-family: Jaldi;
+    line-height: 50px;
+  }
+  
+  .Photo {
+    margin: auto;
+    border-radius: 50%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .ButtonsContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 20px; 
+  }
+  
+  .ModifierInformationsPersonnelles,
+  .HistoriqueAnnuel,
+  .Tutoriel,
+  .SuppressionCompte {
+    margin-top: 20px;
     cursor: pointer;
     background: #B2DFDB;
     border: 3px #BDBDBD solid;
@@ -61,179 +123,7 @@
     font-family: Jaldi;
     font-weight: 400;
     line-height: 77px;
-}
-
-.ModifierInformationsPersonnelles {
-    top: 174px;
-    color: black;
-}
-  
-.HistoriqueAnnuel {
-    top: 275px;
-    color: black;
-}
-  
-.Tutoriel {
-    top: 376px;
-    color: black;
-}
-  
-.SupressionCompte {
-    top: 716px;
-    color: #FF0000;
-}
-
-.PersonalData {
-    width: 325px;
-    height: 684px;
-    left: 18px;
-    top: 109px;
-    position: absolute;
-}
-
-.Background2 {
-    width: 325px;
-    height: 684px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    background: #B2DFDB;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: 3px #BDBDBD solid;
-}
-
-.CalendarNumber,
-.Tel,
-.Mail {
-    width: 280px;
-    height: 81px;
-    left: 18px;
-    position: absolute;
-}
-
-.CalendarNumber {
-    top: 400px;
-}
-
-.Tel {
-    top: 600px;
-}
-
-.Mail {
-    top: 500px;
-}
-
-.numcal,
-.telephone,
-.email {
-    position: absolute;
-    text-align: center;
-    font-size: 32px;
-    font-family: Jaldi;
-    font-weight: 400;
-    word-wrap: break-word;
-    width: 100%;
-    top: -35px;
-    text-align: left;
-}
-
-.nb,
-.cal,
-.unistramail {
-    position: absolute;
-    font-size: 25px;
-    font-family: Jaldi;
-    font-weight: 400;
-    word-wrap: break-word;
-    width: 252px;
-}
-
-.NomPrenom {
-    width: 227px;
-    height: 98px;
-    left: 49px;
-    top: 248px;
-    position: absolute;
-    text-align: center;
-    color: black;
-    font-size: 35px;
-    font-family: Jaldi;
-    font-weight: 400;
-    line-height: 50px;
-    word-wrap: break-word;
-}
-
-.Photo {
-    width: 200px;
-    height: 200px;
-    left: 60px;
-    top: 35px;
-    position: absolute;
-    border-radius: 9999px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-
-.HeaderLoggedIn {
-    width: 1440px;
-    height: 112px;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    background: #B2DFDB;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
+    width: auto;
+    margin-bottom: 10px; 
   }
   
-  .UserButton {
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-    width: 74px;
-    height: 74px;
-    left: 1342px;
-    top: 20px;
-    position: absolute;
-  }
-  
-  .PrenomNom {
-    left: 984px;
-    top: 20px;
-    position: absolute;
-    color: #212121;
-    font-size: 32px;
-    font-family: Jaldi;
-    font-weight: 400;
-    word-wrap: break-word;
-  }
-  
-  .CovoitButton {
-    border: none;
-    background: none;
-    cursor: pointer;
-    width: 234px;
-    color: black;
-    font-size: 28px;
-    font-family: Kaushan Script;
-    left: 20px;
-    top: -15px;
-    position: absolute;
-  }
-  
-  .FriendsButton {
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-    width: 74px;
-    height: 78px;
-    left: 1233px;
-    top: 18px;
-    position: absolute;
-  }
