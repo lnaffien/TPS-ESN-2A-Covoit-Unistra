@@ -58,207 +58,101 @@ class Database_manager
 	 */
 	public static function get_data($table, $property, $filter)
 	{
-		$query_string = ("SELECT $property FROM $table $filter");	// Vraiment pas ouf à cause des injections de code
-		$query = Database_manager::get_connection()->prepare($query_string);
-		//$query = Database_manager::get_connection()->prepare("SELECT :property FROM :table :filter"); // possible que pour des valeurs de filtre, car "select '*' " n'est pas compréhensible en sql
-		//$query->bindParam(':property', $property, PDO::PARAM_STR);
-		//$query->bindParam(':table', $table, PDO::PARAM_STR);
-		//$query->bindParam(':filter', $filter);
-		$query->execute();
+		$query = ("SELECT $property FROM $table $filter");
+		$stmt = Database_manager::get_connection()->prepare($query);
+		$stmt->execute();
 
-		return $query;
+		return $stmt;
 	}
 
-	private static function mail_already_exists($mail)
+	
+	private static function properties_values_to_string($properties)
 	{
-		$query_result = Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$mail\"");
-		$query_result_size = $query_result->fetchColumn();
-		return ($query_result_size != 0) ? true : false;
+		$properties_string = "\"";
+		$properties_string .= implode("\", \"", $properties);
+		$properties_string .= "\"";
+
+		return $properties_string;
 	}
 
-	/*private static function add_data_format_properties($properties)
+	private static function properties_keys_to_string($properties)
 	{
-		$query_start_string = "(";
-		$query_end_string = "VALUES(";
+		$properties_string = "";
 		$keys = array_keys($properties);
+		return implode(", ", $keys);
+	}
 
-		foreach($keys as $key)
+	private static function properties_to_string_for_update($properties)
+	{
+		$properties_string = "";
+		foreach($properties as $key => $value)
 		{
-			$query_start_string += "$key, ";
-			$query_end_string += "$properties[$key], ";
+			$properties_string .= "$key=\"$value\", ";
 		}
 
-		// Remove excess characters 
-		$query_start_string = rtrim($query_start_string, ",");
-		$query_end_string = rtrim($query_start_string, ",");
+		return substr($properties_string, 0, -2);
+	}
 
-		// Add missing characters
-		$query_start_string += ") ";
-		$query_end_string += ")";
-
-		// Merge start and end string queries
-		return $query_start_string + $query_end_string;
-	}*/
-
-	/*public static function add_data($table, $properties, $filter)
-	{
-		
-		
-
-
-		//(idUtilisateur, idUtilisateurAmi) VALUES(?, ?)";
-	}*/
-
-	public static function add_friend($user_current, $user_to_add)
-	{
-		// Check if the relationship doesn't exist
-		if(Database_manager::get_data('AMI', '*', "WHERE idUtilisateur=$user_current AND idUtilisateurAmi=$user_to_add"));
-		{
-			//TODO : erreur car la relation existe déjà
-			return false;
-		}
-
-		// Insert new relationship into data table
+	public static function add_data($table, $properties)
+	{		
 		try
 		{
-			$query = "INSERT INTO AMI (idUtilisateur, idUtilisateurAmi) VALUES(?, ?)";
+			$query = "INSERT INTO $table (" .
+						Database_manager::properties_keys_to_string($properties) .
+						") VALUES (" .
+						Database_manager::properties_values_to_string($properties) .
+						")";
+						print("$query <br/>");
 			$stmt = Database_manager::get_connection()->prepare($query);
-			$stmt->execute(array(
-							$user_current->__get("id"),
-							$user_to_add->__get("id") ));
+			$stmt->execute();
+			
 		} catch (Exception $e)
 		{
 			// TODO : Gestion des erreurs
-			print_r("Error while adding new friend relationship into data table : $e");
+			print_r("Error while adding data into data table : $e");
 			$stmt->rollback();
 			return false;
 		}
 		return true;
 	}
 
-	public static function remove_friend($user_current, $user_to_remove)
-	{
-		// Check if the relationship exists
-		if(!Database_manager::get_data('AMI', '*', "WHERE idUtilisateur=$user_current AND idUtilisateurAmi=$user_to_add"));
-		{
-			//TODO : erreur car la relation n'existe pas
-			return false;
-		}
-
-		// Remove relationship from data table
-		try
-		{
-			$query = "DELETE FROM AMI WHERE idUtilisateur=? AND idUtilisateurAmi=?";
-			$stmt = Database_manager::get_connection()->prepare($query);
-
-			$stmt = Database_manager::get_connection()->prepare($query);
-			$stmt->execute(array(
-							$user_current->__get("id"),
-							$user_to_add->__get("id") ));
-		} catch (Exception $e)
-		{
-			// TODO : Gestion des erreurs
-			print_r("Error while removing data from relationship table : $e");
-			$stmt->rollback();
-			return false;
-		}
-		return true;
-	}
-
-	// TODO
-	public static function add_user($user, $password) : bool
-	{	
-		// TODO : vérifier que les 2 mdp sont similaires
-
-		// Check if user email already exists
-		if(Database_manager::mail_already_exists($user->__get("email")))
-		{
-			print_r("User already exists\n");
-			return false;
-		}
-
-		// Hash password
-		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-		// Get current date
-		date_default_timezone_set('Europe/Paris');
-		$current_date = date("Y-m-d");
-
-		// Insert new user into data table
-		try
-		{
-			$query = "INSERT INTO UTILISATEUR (nom, prenom, email, motDePasse, nagenda, telephone, dateInscription) VALUES(?, ?, ?, ?, ?, ?, ?)";
-			$stmt = Database_manager::get_connection()->prepare($query);
-			$stmt->execute(array(
-							$user->__get("nom"),
-							$user->__get("prenom"),
-							$user->__get("email"),
-							$hashed_password,
-							$user->__get("nagenda"),
-							$user->__get("telephone"),
-							$current_date ));
-		} catch (Exception $e)
-		{
-			// TODO : Gestion des erreurs
-			print_r("Error while adding new user into data table : $e");
-			$stmt->rollback();
-			return false;
-		}
-
-		return true;
-	}
-
-	protected static function delete_user($user)
+	public static function update_data($table, $properties, $filter)
 	{
 		try
 		{
-			$query = "DELETE FROM UTILISATEUR WHERE email=?";
-			$stmt = Database_manager::get_connection()->prepare($query);
-			$stmt->execute(array( $user->__get("email") ));
-		} catch (Exception $e)
-		{
-			print_r("Error while deleting user from data table : $e");
-			$stmt->rollback();
-			return false;
-		}
-
-		return true;
-	}
-
-	// TODO : comments
-	// TODO : tableau de properties avec un begintransaction() ?
-	public static function update_user($new_user_data, $property)
-	{
-		// Check if user email already exists
-		if(!Database_manager::mail_already_exists($new_user_data->__get("email")))
-		{
-			print_r("Error while updating table : User does not exists\n");
-			return false;
-		}
-
-		// Check if the property is updatable
-		if($property == "idUser")
-		{
-			print_r("Error while updating table : Cannot change id value\n");
-			return false;
-		}
-		
-		// Update data table
-		try
-		{
-			$property_value = $new_user_data->__get($property);
-			$id_value = $new_user_data->__get("idUser");
-
-			$query = "UPDATE UTILISATEUR SET $property=\"$property_value\" WHERE idUser=$id_value";
+			$query = "UPDATE $table SET " .
+						Database_manager::properties_to_string_for_update($properties) .
+						" $filter";
+			echo ("$query <br/>");
 			$stmt = Database_manager::get_connection()->prepare($query);
 			$stmt->execute();
 		} catch (Exception $e)
 		{
-			print_r("Error while updating user data : $e");
+			// TODO : Gestion des erreurs
+			print_r("Error while updating data table : $e");
 			$stmt->rollback();
-			return true;
+			return false;
 		}
+		return true;
 	}
+
+	public static function delete_data($table, $filter)
+	{
+		try
+		{
+			$query = "DELETE FROM $table $filter";
+			$stmt = Database_manager::get_connection()->prepare($query);
+			$stmt->execute();
+
+		} catch (Exception $e)
+		{
+			print_r("Error while deleting data from data table : $e");
+			$stmt->rollback();
+			return false;
+		}
+		return true;
+	}
+
 }
 
 ?>

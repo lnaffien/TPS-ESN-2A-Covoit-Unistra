@@ -1,55 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
-    <title> Page principale </title>
+    <head>
+        <meta charset="utf-8" />
+        <title>Home Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
 
-</head>
+    <?php include "src/View/header_logged.php" ?>
 
-<body class="body1" >
+<body>
+    <div class="Align_left_center">
+        <form id="form" action='src/View-Model/Home_ViewModel.php' method="POST">
+            <input type="hidden" name="home_page_click" value="pick_calendar_date">
+            <input type="date" value="<?php echo $_SESSION['dateSelectedStart']->format('Y-m-d') ?>" class="CalendarButton">
+        </form>
+        
+        <form action='src/View-Model/Home_ViewModel.php' method="POST">
+            <input type="hidden" name="home_page_click" value="reload_calendar_data">
+            <input type="image" class="RefreshButton" src="images/refresh.svg" alt="Refresh Icon">
+        </form>
 
-    <main>
+        <h1 class="Semaine">Semaine du <?php echo $_SESSION['dateSelected']['start']->format('d/m') ?> au <?php echo $_SESSION['dateSelected']['end']->format('d/m Y') ?></h1>
+    </div>
+    
+    <ul>
 
-        <section>
+        <?php
+        foreach($_SESSION['dateSelected']['period'] as $date)
+            {
+                print_r("<br/>");
+            ?>
+                <li>
 
-            <form action="index.php" method="POST">
+                    <h1 class="DayLabel"><?php print_r($date->format('l')) ?></h1>
 
-                <div class="flex justify-center">
+                    <div class="DayRectangle">
 
-                    <input type="search" name="BarreR" placeholder="Recherche..." class="BarreR" value="...">
+                        <div class = "Time">
+                            <h2>8h30</h2> 
+                            <h2>17h30</h2>
+                        </div> 
 
-                </div>
-                <div class="flex align-center justify-between">
+                        <form action='' method="POST" class="AddUserButton">
+                                <input type="hidden" name="" value="">
+                                <input type="image" src="images/adduser.svg" alt="Add user Icon">
+                            </form>
 
-                    <div class="align-date">
-                        <input class="input_date" id="inputDate" type="date" name="date" value=<?php echo $_SESSION['dateSelected'];?>>
+                        <ul>
+                            <li class="UserRow"> 
+                                <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>                       
+                                <div class="DayTimeRectangle"></div>
+                            </li>
+
+
+                            <?php 
+                                foreach((array)$_SESSION['user']->__get('friends') as $friend)
+                                {
+                                    ?>
+                                <li class="UserRow"> 
+                                    <h2><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></h2>                       
+                                    <div class="DayTimeRectangle"></div>
+
+                                    <form action='' method="POST" class="RequestCarpoolingIcon">
+                                        <input type="hidden" name="" value="">
+                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon">
+                                    </form>
+                                </li>
+                                    <?php 
+                                }
+                            ?>
+                        </ul>
+
                     </div>
 
-                    <div>
-                        <input type="hidden" name="action" value="homepage_filters">
-                        <input class="input-barre-date" type="submit" value="MàJ" >
-                    </div>
+                    
+                </li>
+            <?php 
+        } ?>
 
-                </div>
-
-            </form>
-
-        </section>
-
-        <section>
-
-            <form id="form1">
-               
-            </form>
-        </section>
-    </main>
+        </ul>
+     
+    </div>
 </body>
-
-
-
-
 </html>

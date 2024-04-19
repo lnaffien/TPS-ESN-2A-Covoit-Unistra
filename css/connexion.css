@@ -1,0 +1,103 @@
+.PageConnection {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%),
+              linear-gradient(180deg, rgba(17.36, 126.23, 113.63, 0.78) 0%, rgba(31.91, 118.09, 108.12, 0.78) 0%, rgba(0.15, 121.04, 107.06, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
+}
+
+.Background {
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+  padding: 20px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.60);
+  border: 6px #BDBDBD solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Email, .Password {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.EmailInput, .MotDePasseInput {
+  flex: 1;
+  height: 68px;
+  background: #EDEDED;
+  border-radius: 10px;
+  border: 3px #BDBDBD solid;
+  color: #757575;
+  font-size: 30px;
+  font-family: Jaldi;
+  padding-left: 92px;
+}
+
+.Line1, .Line2 {
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  background: #BDBDBD;
+}
+
+.Line1 {
+  top: 0;
+  left: 150px; 
+}
+
+.Line2 {
+  bottom: 0;
+  left: 150px; 
+}
+
+.EmailIcon, .PasswordIcon {
+  width: 64px;
+  height: 40px; 
+}
+
+.EmailIcon {
+  margin-left: 10px; 
+}
+
+.PasswordIcon {
+  margin-left: 10px;
+}
+
+.InscriptionButton, .ConnexionButton {
+  width: 100%;
+  max-width: 240px;
+  height: 72.40px;
+  background: #009688;
+  border-radius: 10px;
+  border: 3px #00796B solid;
+  text-align: center;
+  color: white;
+  font-size: 32px;
+  font-family: Jaldi;
+  cursor: pointer;
+}
+
+.ConnexionButton {
+  margin-left: 110px;
+}
+
+.InscriptionButton {
+  margin-top: 20px;
+}
+
+.BienvenueSurCovoitUnistra {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+  font-size: 36px;
+  font-family: Jaldi;
+}
