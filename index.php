@@ -18,6 +18,7 @@ require_once('src/View-Model/Login_ViewModel.php');
 require_once('src/View-Model/Register_ViewModel.php');
 require_once('src/View-Model/Home_ViewModel.php');
 require_once('src/View-Model/Edit_User_ViewModel.php');
+require_once('src/View-Model/Friends_ViewModel.php');
 /*
 require_once('src/View-Model/Settings_ViewModel.php');
 /*
