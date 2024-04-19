@@ -1,55 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="../css/styleguide.css" />
-    <link rel="stylesheet" href="../css/friendspage.css" />
-  </head>
-  <body>
-    <div class="page-friends">
-      <div class="div">
-        <div class="overlap">
-          <div class="text-wrapper">VOS AMIS</div>
-          <img class="svg" src="../images/edit1.svg" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Amis</title>
+  <link rel="stylesheet" href="../../css/friendspage.css" />
+</head>
+<body>
+  <div class="PageFriends">
+
+
+      <div class="RechercheColumn">
+        <form class="Ajouteramis">
+          <input type="text" class="AjouterDesAmis" placeholder="Ajouter des amis...">
+          <button class="loupeButton" type="submit" onclick="handleButtonClick()">
+            <img class="loupe" src="../../images/loupe.svg" alt="Loupe Icon">
+          </button>    
+        </form>
+        <div class="Nomprenom1">
+          <p class="nomprenom1">Nom Prénom</p>
+          <button class="PlusButton" onclick="yourFunction()">
+            <img class="plusbutton" src="../../images/plus.svg" >
+          </button>
         </div>
-        <div class="ami">
-          <div class="overlap-group"><div class="text-wrapper-2">Ami 3</div></div>
-        </div>
-        <div class="overlap-wrapper">
-          <div class="overlap-group"><div class="text-wrapper-3">Ami 1</div></div>
-        </div>
-        <div class="nom-prenom">
-          <div class="div-wrapper"><div class="text-wrapper-4">Nom Prénom</div></div>
-        </div>
-        <div class="overlap-group-wrapper">
-          <div class="overlap-2"><div class="text-wrapper-5">Ami 2</div></div>
-        </div>
-        <div class="ami-2">
-          <div class="overlap-3"><div class="text-wrapper-6">Ami 4</div></div>
-        </div>
-        <div class="ami-3">
-          <div class="overlap-3"><div class="text-wrapper-7">Ami 6</div></div>
-        </div>
-        <div class="ami-4">
-          <div class="overlap-3"><div class="ami-5">Ami 5</div></div>
-        </div>
-        <div class="ajouter-amis">
-          <div class="overlap-4">
-            <div class="group">
-              <div class="overlap-group-2"><div class="text-wrapper-8">Ajouter des amis...</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="header-logged-in">
-          <img class="profileuser-svg" src="../images/profileuser.svg" />
-          <div class="text-wrapper-9">Prénom NOM</div>
-          <div class="text-wrapper-10">COVOIT’ UNISTRA</div>
-          <img class="friends-svg" src="../images/friends.svg" />
-        </div>
-        <img class="minus-svg" src="../images/minus.svg" />
-        <img class="plus-svg" src="../images/plus.svg" />
       </div>
-    </div>
-  </body>
+      <div class="AmisColumns">
+        <div class="AmisBar">
+            <h1 class="VosAmis">VOS AMIS</h1>
+            <button class="EditButton" onclick="handleEditClick()">
+              <img src="../../images/edit1.svg" alt="Edit Icon">
+            </button>
+        </div>
+        <div class="Ami1">
+          <p class="ami1">Ami 1</p>
+          <button class="MinusButton1" onclick="handleMinusClick()">
+            <img class="minus1" src="../../images/minus.svg" alt="Minus Icon">
+          </button>
+        </div>
+      </div>
+
+
+  </div>
+</body>
 </html>
