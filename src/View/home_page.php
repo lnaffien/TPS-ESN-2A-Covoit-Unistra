@@ -5,12 +5,11 @@
         <title>Home Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
         <link rel="stylesheet" href="css/style.css" />
-      </head>
+    </head>
 
-     <!-- <?php include "src/View/header_connected.php" ?> -->
+    <?php include "src/View/header_connected.php" ?>
 
-
-<body class="Background">
+<body>
     <div class="Align_left_center">
         <form id="form" action='src/View-Model/Home_ViewModel.php' method="POST">
             <input type="hidden" name="home_page_click" value="pick_calendar_date">
@@ -22,56 +21,63 @@
             <input type="image" class="RefreshButton" src="images/refresh.svg" alt="Refresh Icon">
         </form>
 
-        <h1 class="Semaine">Semaine du <?php echo $_SESSION['dateSelectedStart']->format('d/m') ?> au <?php echo $_SESSION['dateSelectedEnd']->format('d/m Y') ?></h1>
+        <h1 class="Semaine">Semaine du <?php echo $_SESSION['dateSelected']['start']->format('d/m') ?> au <?php echo $_SESSION['dateSelected']['end']->format('d/m Y') ?></h1>
     </div>
     
     <ul>
-        <li>
 
-            <h1 class="DayLabel">LUNDI</h1>
+        <?php
+        foreach($_SESSION['dateSelected']['period'] as $date)
+            {
+                print_r("<br/>");
+            ?>
+                <li>
 
-            <div class="DayRectangle">
+                    <h1 class="DayLabel"><?php print_r($date->format('l')) ?></h1>
 
-                <div class = "Time">
-                    <h2>8h30</h2> 
-                    <h2>17h30</h2>
-                </div> 
+                    <div class="DayRectangle">
 
-                <form action='' method="POST" class="AddUserButton">
-                        <input type="hidden" name="" value="">
-                        <input type="image" src="images/adduser.svg" alt="Add user Icon">
-                    </form>
+                        <div class = "Time">
+                            <h2>8h30</h2> 
+                            <h2>17h30</h2>
+                        </div> 
 
-                <ul>
-                    <li class="UserRow"> 
-                        <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>                       
-                        <div class="DayTimeRectangle"></div>
-                    </li>
-
-
-                    <?php 
-                        foreach((array)$_SESSION['user']->__get('friends') as $friend)
-                        {
-                            ?>
-                        <li class="UserRow"> 
-                            <h2><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></h2>                       
-                            <div class="DayTimeRectangle"></div>
-
-                            <form action='' method="POST" class="RequestCarpoolingIcon">
+                        <form action='' method="POST" class="AddUserButton">
                                 <input type="hidden" name="" value="">
-                                <input type="image" src="images/request.svg" alt="Carpooling request Icon">
+                                <input type="image" src="images/adduser.svg" alt="Add user Icon">
                             </form>
-                        </li>
+
+                        <ul>
+                            <li class="UserRow"> 
+                                <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>                       
+                                <div class="DayTimeRectangle"></div>
+                            </li>
+
+
                             <?php 
-                        }
-                    ?>
-                </ul>
+                                foreach((array)$_SESSION['user']->__get('friends') as $friend)
+                                {
+                                    ?>
+                                <li class="UserRow"> 
+                                    <h2><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></h2>                       
+                                    <div class="DayTimeRectangle"></div>
 
-            </div>
+                                    <form action='' method="POST" class="RequestCarpoolingIcon">
+                                        <input type="hidden" name="" value="">
+                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon">
+                                    </form>
+                                </li>
+                                    <?php 
+                                }
+                            ?>
+                        </ul>
 
+                    </div>
 
-            
-        </li>
+                    
+                </li>
+            <?php 
+        } ?>
 
     </ul>
 </body>
