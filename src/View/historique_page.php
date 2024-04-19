@@ -6,6 +6,9 @@
         <title>Historique</title>
         <link rel="stylesheet" href="../../css/historiquepage.css" />
     </head>
+    
+    <?php include "src/View/header_logged.php" ?>
+
     <body>
         <div class="AnnualHistory">        
             <div class="HistoriqueAnnuel">

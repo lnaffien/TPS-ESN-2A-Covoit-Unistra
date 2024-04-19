@@ -6,6 +6,9 @@
     <title>Parametres</title>
     <link rel="stylesheet" href="../../css/settingspage.css">
 </head>
+
+<?php include "src/View/header_logged.php" ?>
+
 <body>
 
   <div class="AccountSettings">
@@ -13,8 +16,8 @@
       <div class="Background">
         
         <div class="TitleContainer">
-          <h1 class="Parametres">Paramètres</h1>
           <img class="Arrow" src="../../images/arrow.svg"></img>
+          <h1 class="Parametres">Paramètres</h1>
         </div>
              
         <div class="SettingsContainer">
