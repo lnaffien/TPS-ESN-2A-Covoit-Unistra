@@ -79,6 +79,8 @@
             <?php 
         } ?>
 
-    </ul>
+        </ul>
+     
+    </div>
 </body>
 </html>

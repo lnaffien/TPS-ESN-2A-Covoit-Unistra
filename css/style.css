@@ -1,189 +1,853 @@
-.flex-init-setup {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+/* ************************************** */
+/* UTILITAIRES */
+/* ************************************** */
+.wrapper {
+  width: 1180px;
+  margin: 0 auto;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
   display: flex;
 }
-.flex-ppal-setup {
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
-  flex-flow: column wrap;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
   justify-content: center;
 }
 
-header {
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.return-mainpage {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 40%;
- /* min-height: 100px; */
-  
-  background: #B2DFDB;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-header > h2,
-header > input[type=image] {
-  margin-left: auto;
+.align label {	
+  display: inline-block; /* <label> sont de type inline, on ne peut pas modifier leur largeur */
+  /* pour eviter le retour à la ligne car element de type block */
+  width: 150px;
+  padding: 10px;
 }
 
-body {
-  width: auto;
-  height: 100%;
-
-  margin: 0;
-  background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), 
-              linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
+.align-date label {	
+  display: inline-block; /* <label> sont de type inline, on ne peut pas modifier leur largeur */
+  /* pour eviter le retour à la ligne car element de type block */
+  padding: 10px;
 }
 
-input[type=image] {
-  min-width: 50px;
-  max-width: 90px;
-
-  margin-left: 15px;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-input[type=date] {
-  min-width: 120px;
-  min-height: 50px;
-
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-.CovoitLogoButton {
-  font-size: 28px;
-  font-family: Kaushan Script;
-  font-weight: bold;
-
-  margin: 0;
-  padding: 0;
-
-  width: fit-content;
-  height: fit-content;
-
-  cursor: pointer;
-  background: none;
-  color: black;
-  border: none;
-}
-
-.Align_left_center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-ul {
-  list-style-type: none; /* Remove bullets */
-  padding-left: 2%;
-}
-
-h1,
-h2 {
-  font-family: Jaldi;
-  font-weight: 400;
-  word-wrap: break-word;
-  color: #212121;
+.align label.label-mdp {	
+  display: inline-block; /* <label> sont de type inline, on ne peut pas modifier leur largeur */
+  /* pour eviter le retour à la ligne car element de type block */
+  width: 225px;
+  padding: 10px;
 }
 
 h1 {
-  font-size: 32px;
+  color: black;
+  font-weight: bold;
+  opacity: .7;
+  font-size: 1.6rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 }
 
-h2 {
-  font-size: 25px;
+.header {
+  position: relative;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-.Semaine {
-  flex: 1;
-  text-align: center;
-  padding-right: 20%;
-
-  color: #4C3030;
-  
-  margin-left: 15px;
-  margin-right: 15px;
+.margin-left {
+  margin-left: 20px;
 }
 
-.DayLabel {
+/* ************************************** */
+/* HEADER */
+/* ************************************** */
+.header .main-header-logo {
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 50px;
+  height: 50px;
+}
 
-  max-width: fit-content;
-  text-align: center;
+.logo-unistra1 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
 
-  background: #d9d9d9;
+.logo-unistra2 {
+  margin-left: 70px;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.user-logo {
+  padding-left: 20px;
+  padding-right: 200px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.header .input-mainpage {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  background: none;
+  border: none;
+}
+
+/* ************************************** */
+/* MAIN PROFIL */
+/* ************************************** */
+.body3{
+  background-image: url(../images/image-profil.jpg);
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#form3 {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 2rem;
+  width: 70%;
   border-radius: 20px;
-
-  padding : 1rem;
-  margin-bottom: -2%;
+  border-left: 1px solid rgba(255, 255, 255, .3);
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+  margin: auto;
+  margin-top: 70px;
+  overflow: auto;
 }
 
-.DayRectangle
-{
-  margin-left: 2%;
-  margin-right: 2%;
-  height: auto;
-
-  z-index: 1;
-
-  background: rgba(255, 255, 255, 0.40);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  border: 6px #bdbdbd solid;
+.label-user1 {
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.Time {
+.maps-logo {
+  width: 90px;
+  height: 80px;
+}
+
+.row {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  padding-left: 20%;  
-  padding-right: 20%;
 }
 
-.AddUserButton {
-  position: absolute;
-  right: 4%;
-  top:22%;
+.column {
+  flex-basis: 60%;
+  margin-right: 20px;
 }
 
-.UserRow {
+
+/* ************************************** */
+/* MAIN LOGIN */
+/* ************************************** */
+.body1{
+  background-image: url(../images/porsche.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: auto;
+}
+
+#form{
+  background: rgba(255, 255, 255, 0.5);
+  padding: 3rem;
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, .3);
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+  text-align: center;
+  margin: auto;
+  margin-top: 120px;
+  overflow: auto;
+}
+
+.home-logo {
+  padding-left: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+.header .input-logpage {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.error-input {
+  border: 3px solid red;
+}
+
+.error {
+  color: red;
+}
+
+/* ************************************** */
+/* MAIN INSCRIPTION */
+/* ************************************** */
+.body4{
+  background-image: url(../images/inscription.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: auto;
+}
+
+#form2{
+  background: rgba(255, 255, 255, 0.6);
+  padding: 3rem;
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, .3);
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+  margin: auto;
+  margin-top: 25px;
+  overflow: auto;
+  text-align: center;
+}
+
+.header .input-registerpage {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.register-logo {
+  padding-left: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+/* ************************************** */
+/* MAIN MAINPAGE */
+/* ************************************** */
+#form1 {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, .3);
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+  margin-left: 40px;
+  margin-right: 40px;
+  margin: 15px;
+  overflow: auto;
+}
+
+.rectangle-form{
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  width: fit-content;
+  border-radius: 20px;
+  border-left: 1px solid rgba(0, 0, 0, .3);
+  border-top: 1px solid rgba(0, 0, 0, .3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+  margin: 10px;
+  overflow: auto;
+  text-align: center;
+  
+}
+
+.logo-profil {
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.logo-profil:hover {
+  cursor: pointer;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+.navbar .sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: -250px;
+  background-color: rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(7px);
+  transition: left 0.5s ease;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Active class */
+.navbar .sidenav.active {
+  left: 0;
+  
+}
+
+.navbar .menu-burger {
+  margin-top: 10px;
+  margin-left: 20px;
+  height: 50px;
+  width: 50px;
+}
+
+.navbar .sidenav .menu-burger {
+  margin-top: 10px;
+}
+
+.navbar .menu-burger:hover {
+  cursor: pointer;
+}
+
+.navbar .input-navbar {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.label_date {
+  margin-left: 40px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.input_date {
+  backdrop-filter: blur(20px);
+  margin-left: 20px;
+}
+
+.BarreR {
+  margin-top: 20px;
+  width: 300px;
+  backdrop-filter: blur(20px);
+}
+
+.BarreR::placeholder {
+  color: black;
+}
+
+input.input-barre-date {
+  background: rgba(255, 255, 255, 0.6);
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+/* **************** */
+/* Block de données */
+/* **************** */
+.label-user {
+  font-size: 12px;
+  font-weight: 500px;
+}
+
+.barre-trajet1 {
+  position: relative;
+  background: #798FA8;
+  border-radius: 20px;
+  width: 8px;
+}
+
+.barre-trajet2 {
+  position: relative;
+  background: #323232;
+  border-radius: 20px;
+  width: 8px;
+}
+
+.barre-trajet3 {
+  position: relative;
+  left: -8px;
+  border-radius: 20px;
+  background: #FEBF57;
+  width: 8px;
+}
+
+
+.heure {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px;
+}
+
+.img-feu {
+  margin-left: 10px;
+  width: 90px;
+  height: 90px;
+}
+
+.rond-vert {
+  position: relative;
+  right: 51px;
+  bottom: 2px;
+  background-color: gray;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+
+}
+
+.rond-vert-transparent {
+  position: relative;
+  right: 51px;
+  bottom: 2px;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+
+.rond-orange {
+  position: relative;
+  right: 51px;
+  bottom: 11px;
+  background-color: gray;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.rond-orange-transparent {
+  position: relative;
+  right: 51px;
+  bottom: 11px;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.rond-rouge {
+  position: relative;
+  right: 51px;
+  bottom: 20px;
+  background-color: gray;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.rond-rouge-transparent {
+  position: relative;
+  right: 51px;
+  bottom: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.null-comp {
+  position: relative;
+  top: 80px;
+  right: 20px;
+  font-size: 13px;
+  font-weight: 500px;
+}
+
+.half-comp {
+  position: relative;
+  top: 85px;
+  right: 20px;
+  font-size: 13px;
+  font-weight: 500px;
+}
+
+.full-comp {
+  position: relative;
+  top: 90px;
+  right: 20px;
+  font-size: 13px;
+  font-weight: 500px;
+}
+
+.agendaContainer {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 5%;
+  flex-wrap: wrap;
+  margin: -15px;
 }
 
-.DayTimeRectangle {
+.agendaColumn {
   flex: 1;
-  margin-left: 5%;
-  margin-right: 5%;
-
-  min-height: 35px;
-
-  border-radius: 10px;
-  border: 3px #41b04c solid;
-  background: rgba(32.84, 37.79, 33.33, 0.50);
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
 }
 
-.RequestCarpoolingIcon {
-  padding-right: 2%;
+.agendaHeader {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
 }
 
+.agendaItem {
+  padding: 10px;
+}
 
+.agendaName {
+  font-weight: bold;
+}
 
-/*
+/* ************************************** */
+/* MAIN ADMIN */
+/* ************************************** */
+.body2{
+  background-image: url(../images/page-Admin.jpg);
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: auto;
+}
 
-.RefreshButton,
-.CalendarButton {
+.barre-separatrice {
+  background: #323232;
+  border-radius: 20px;
+  height: 8px;
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.flex-admin {
+  display: flex;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-left: 40px;
+  margin-right: 50px;
+}
+
+a {
+  color:black;
+  text-decoration: none;
+  font-size: 12px;
+  transition: all .3s;
+}
+
+::placeholder {
+  color: black;
+}
+
+  input {
+    background: transparent;
     border: none;
-    background: none;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    padding: 0.8rem;
+    width: 200px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color:black;
+    font-weight: 300;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    margin-bottom: 10px;
+  }
+  
+  input:hover, 
+  input[type="email"]:focus, 
+  input[type="password"]:focus {
+    border: .5px solid black;
+    background: rgba(255, 255, 255, .2);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, .2);
+  }
+  
+  input[type="submit"]{
+    color: black;
     cursor: pointer;
+    font-size: 1rem;
+    width: 150px;
+    margin-top: 20px;
+  }
+
+  input:hover {
+    color: black;
+  }
+
+
+.email-co::placeholder, .mdp-co::placeholder {
+  color: black;
 }
 
-/*
+label, input {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+@media screen and (max-width: 900px) {
+
+  .row {
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .header .main-header-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-unistra1 {
+    font-size: 0.9em;
+  }
+  
+  .logo-unistra2 {
+    margin-left: 35px;
+    font-size: 0.9em;
+  }
+  
+  .user-logo {
+    padding-right: 50px;
+    font-size: 14px;
+  }
+
+  .maps-logo {
+    height: 60px;
+    width: 60px;
+  }
+
+  #form3 {
+    width: 65%;
+    margin-bottom: 20px;
+  }
+
+  .MainPageBtn input[type="submit"] {
+    margin-left: 10px;
+    width: 90px;
+    font-size: 11px;
+  }
+
+  #form {
+    margin-top: 150px;
+    width: 65%;
+  }
+
+  .body1 {
+    background-position: -200px 0;
+  }
+
+  #form2 {
+    margin-top: 120px;
+    width: 65%;
+  }
+
+  .return-mainpage {
+    display: block;
+  }
+
+  /* *************** */
+  /* MAINPAGE        */
+  /* *************** */
+  .rectangle-form{
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    width: fit-content;
+    margin: 10px;
+    
+  }
+
+  .header .logo-profil {
+    height: 30px;
+    width: 30px;
+  }
+
+  .navbar .sidenav {
+    height: 100%;
+    width: 150px;
+    left: -150px;
+  }
+
+  .navbar .menu-burger {
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+  }
+
+  .navbar .sidenav .menu-burger {
+    margin-top: 15px;
+  }
+
+  .navbar .input-navbar {
+    width: 100px;
+    font-size: 12px;
+  }
+
+  .label_date {
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .input_date {
+    width: 120px;
+  }
+
+  .BarreR {
+    width: 200px;
+  }
+
+  input.input-barre-date {
+    margin-right: 10px;
+    margin-bottom: 30px;
+    width: 100px;
+    font-size: 12px;
+  }
+
+  /* **************** */
+/* Block de données */
+/* **************** */
+.label-user {
+  font-size: 10px;
+}
+
+.barre-trajet1 {
+  height: 250px;
+  width: 8px;
+}
+
+.barre-trajet2 {
+  height: 250px;
+  width: 8px;
+}
+
+.barre-trajet3 {
+  left: -8px;
+  height: 180px;
+  width: 8px;
+}
+
+.heure {
+  font-size: 13px;
+}
+
+.img-feu {
+  margin-left: 15px;
+  width: 80px;
+  height: 80px;
+}
+
+.rond-vert {
+  right: 46px;
+  bottom: 2px;
+  width: 11px;
+  height: 11px;
+}
+
+.rond-orange {
+  right: 46px;
+  bottom: 10px;
+  width: 11px;
+  height: 11px;
+}
+
+.rond-rouge {
+  right: 46px;
+  bottom: 17px;
+  width: 11px;
+  height: 11px;
+}
+
+.null-comp {
+  top: 55px;
+  right: 20px;
+  font-size: 12px;
+}
+
+.half-comp {
+  top: 60px;
+  right: 20px;
+  font-size: 12px;
+}
+
+.full-comp {
+  top: 65px;
+  right: 20px;
+  font-size: 12px;
+}
+
+.barre-separatrice {
+  height: 6px;
+}
+
+.flex-admin {
+  display: block;
+}
+
+.margin-left {
+  margin-left: 0;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+}
