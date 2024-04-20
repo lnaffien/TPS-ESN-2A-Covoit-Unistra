@@ -60,15 +60,6 @@ class Register_ViewModel
             return false;
         }*/
 
-        // Check if the given email is already associated to an existing user
-        require_once('src/Model/Database_manager.php');
-        $user_data = Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$email\"");        
-        if($user_data->rowcount() != 0)
-        {
-            $_SESSION['error'] = 'User already exists.';
-            return false;
-        }
-
         // TODO : check password format
         // TODO : check telephone format
         // TODO : nagenda format
@@ -82,7 +73,8 @@ class Register_ViewModel
         
         // Add user
         $user = new User(null, $nom, $prenom, $email, $telephone, $nagenda, null);
-        return Database_manager::add_user($user, $mdp);
+        require_once("src/Model/User_Database_manager.php");
+        return User_Database_manager::add_user($user, $mdp);
     }
 }
 
