@@ -5,16 +5,15 @@ require_once('src/Model/User.php');
 
 class User_Database_manager
 {
-    public static function get_users_from_email($email)
-    {
-        return Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$email\"");
-    }
+	/********************************************************************************
+	 * 							UTILITIES											*
+	 * 								Private functions used by the public ones		*
+	 ********************************************************************************/
 
-    public static function get_user_from_id($id)
-    {
-        return Database_manager::get_data('UTILISATEUR', '*', "WHERE idUser=\"$id\"");
-    }
-
+	/* mail_already_exists : Check if an user with the given email address exists in the database
+	 * Parameter : mail : Mail address to check in the database
+	 * Return : True if the given email address is associated to an existing user, false otherwise
+	 */
 	private static function mail_already_exists($mail)
 	{
 		$query_result = Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$mail\"");
@@ -22,6 +21,10 @@ class User_Database_manager
 		return ($query_result_size != 0) ? true : false;
 	}
 
+	/* id_exists : Check if an user with the given id exists in the database
+	 * Parameter : id : Number to check in the database
+	 * Return : True if the given id is associated to an existing user, false otherwise
+	 */
 	private static function id_exists($id)
 	{
 		$query_result = Database_manager::get_data('UTILISATEUR', '*', "WHERE idUser=\"$id\"");
@@ -29,6 +32,11 @@ class User_Database_manager
 		return ($query_result_size != 0) ? true : false;
 	}
 
+	/* relationship_exists : Check if a relationship between 2 users exists in the database
+	 * Parameters : - user_current : 
+	 * 			    - user_to_add  :  
+	 * Return : True if a relationship between the given users exists, false otherwise
+	 */
 	private static function relationship_exists($user_current, $user_to_add)
 	{
 		$user_current_id = $user_current->__get('id');
@@ -39,7 +47,12 @@ class User_Database_manager
 		return ($query_result_size != 0) ? true : false;
 	}
 
-
+	/* get_basic_properties : Set the basic properties of the given user.
+	 *		It includes : 'nom', 'prenom', 'email', 'agenda' and 'telephone'.
+	 *		If null or empty, 'telephone' is ignored.
+	 * Parameter : user : User data to get the properties.
+	 * Return : A dictionnary with above properties containing the user data.
+	 */
 	private static function get_basic_properties($user)
 	{
         $properties = array (
@@ -56,6 +69,31 @@ class User_Database_manager
 
 		return $properties;
 	}
+
+
+	/************************************************************************************
+	 * 							DATABASE QUERIES										*
+	 * 								Public functions to access data related to users	*
+	 ************************************************************************************/
+
+	/* get_users_from_email : Get all users in the database with the given email address.
+	 * Parameter : email : Email address of the user(s) to get.
+	 * Return : User(s) data registered with the given email. Needs to be fecth into an array to be read.
+	 */
+    public static function get_users_from_email($email)
+    {
+        return Database_manager::get_data('UTILISATEUR', '*', "WHERE email=\"$email\"");
+    }
+
+	/* get_user_from_id : Get all users in the database with the given id.
+	 * Parameter : id : Id of the user to get.
+	 * Return : User data registered with the given id. Needs to be fecth into an array to be read.
+	 */
+    public static function get_user_from_id($id)
+    {
+        return Database_manager::get_data('UTILISATEUR', '*', "WHERE idUser=\"$id\"");
+    }
+
 
     public static function add_user($user, $password)
     {
