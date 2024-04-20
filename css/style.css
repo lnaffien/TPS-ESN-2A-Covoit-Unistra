@@ -44,7 +44,8 @@ input[type=image] {
   max-width: 90px;
 
   margin-left: 15px;
-  margin-right: 15px;
+  margin-right: 1%;
+
   cursor: pointer;
 }
 
@@ -54,6 +55,18 @@ input[type=date] {
 
   margin-left: 15px;
   margin-right: 15px;
+}
+
+input[type=text] 
+{
+  color: #757575;
+  font-size: 30px;
+  border: 3px #BDBDBD solid;
+  background: #EDEDED;
+  border-radius: 10px;
+
+  width: 90%; 
+  padding: 1%;
 }
 
 .CovoitLogoButton {
@@ -84,12 +97,21 @@ ul {
   padding-left: 2%;
 }
 
+h3,
 h1,
-h2 {
+h2,
+p,
+input[type=text] {
   font-family: Jaldi;
   font-weight: 400;
   word-wrap: break-word;
   color: #212121;
+  padding-left: 2%;
+}
+
+h3 {
+  font-size: 44px;
+  text-transform: uppercase;
 }
 
 h1 {
@@ -98,6 +120,11 @@ h1 {
 
 h2 {
   font-size: 25px;
+}
+
+p {
+  font-size: 30px;
+  margin: 0;
 }
 
 .Semaine {
@@ -175,7 +202,63 @@ h2 {
   padding-right: 2%;
 }
 
+.PageFriends {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  justify-content: space-around;
+}
 
+.Form_image_end {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10%;
+  width: auto;
+}
+
+.Form_image_end > input[type=image] {
+  margin-left: 0;
+  padding: 1%;
+
+  border: 3px #BDBDBD solid;
+  background: #EDEDED;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: none;
+
+}
+
+.Form_image_end > input[type=text]
+{
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0px;
+}
+
+.Text_image_end,
+.Text_image_end_bck {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top:5%;
+  margin-right: 1%;
+
+  padding-right: 1%;
+  padding-top: 1%;
+}
+
+.Text_image_end_bck {
+  border: 3px #BDBDBD solid;
+  background: #EDEDED;
+  border-radius: 10px;
+
+}
+
+
+
+/*******************************************************************/
 
 /*
 
