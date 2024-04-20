@@ -13,7 +13,7 @@
     <div class="Align_left_center">
         <form id="form" action='src/View-Model/Home_ViewModel.php' method="POST">
             <input type="hidden" name="home_page_click" value="pick_calendar_date">
-            <input type="date" value="<?php echo $_SESSION['dateSelectedStart']->format('Y-m-d') ?>" class="CalendarButton">
+            <input type="date" value="<?php echo $_SESSION['dateSelected']['start']->format('Y-m-d') ?>" class="CalendarButton">
         </form>
         
         <form action='src/View-Model/Home_ViewModel.php' method="POST">
