@@ -17,25 +17,43 @@
   </form>
 
   <div class="PageFriends">
+
+      <!-- Search user part -->
       <div>
         
-        <form action='' method="POST" class='Form_image_end'>
-          <input type="hidden" name="" value="">
-          <input type="text" placeholder="Ajouter des amis...">
+        <form action='index.php' method="POST" class='Form_image_end'>          
+          <input type="hidden" name="action" value="friend">
+          <input type="hidden" name="friend_page_click" value="search_user">
+          <input type="text" name="search" placeholder="Ajouter des amis...">
           <input type='image' src="images/loupe.svg" alt="Research Icon" class="loupeButton"/>  
         </form>
 
-        <div class="Text_image_end_bck">
-          <p>Nom Prénom</p>
-          <form class="" action='' method="POST">
-            <input type="hidden" name="" value="">
-            <input type='image' src="images/plus.svg" alt="Add Friends Icon"/>  
-          </form>
-        </div>
-
+        <?php
+          foreach($_SESSION['search_users'] as $searched_user)
+          {
+        ?>
+          <div class="Text_image_end_bck">
+            <p>
+              <?php 
+                print_r($searched_user['nom']);
+                print_r(" ");
+                print_r($searched_user['prenom'])
+              ?>
+            </p>
+            <form action='index.php' method="POST">
+              <input type="hidden" name="action" value="friend">
+              <input type="hidden" name="friend_page_click" value="add_friend">
+              <?php echo "<input type='hidden' name='friend_id' value='" . $searched_user['idUser'] . "'>" ?>             
+              <input type='image' src="images/plus.svg" alt="Add Friends Icon"/>  
+            </form>
+          </div>
+        <?php
+          }
+        ?>
+        
       </div>
 
-
+      <!-- Manage friends part -->
       <div>
 
         <div class="Text_image_end">
@@ -54,8 +72,11 @@
               <li class="Text_image_end_bck"> 
                 <p class="ami1"><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></p>                       
 
-                  <form action='' method="POST" >
-                      <input type="hidden" name="" value="">
+                  <form action='index.php' method="POST" >
+                    <input type="hidden" name="action" value="friend">
+                    <input type="hidden" name="friend_page_click" value="remove_friend">
+                    <?php echo "<input type='hidden' name='friend_id' value='" . $friend->__get('id') . "'>" ?>             
+
                       <input type="image" src="images/minus.svg" alt="Remove Friend Icon">
                   </form>
                 </li>

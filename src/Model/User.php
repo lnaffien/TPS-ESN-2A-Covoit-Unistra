@@ -202,6 +202,18 @@ class User
         return array_search($friend, $this->_friends);
     }
 
+    public function get_friend_by_id($friend_id)
+    {
+        foreach($this->_friends as $friend)
+        {
+            if($friend->__get('id') == $friend_id)
+            {
+                return $friend;
+            }
+        }
+        return false;
+    }
+
     public function add_friend($friend_to_add)
     {
         if(!$this->friend_in_array($friend_to_add))
@@ -233,7 +245,7 @@ class User
 
     public function remove_friend($friend_to_remove)
     {
-        $friend_key = friend_in_array($friend_to_remove);
+        $friend_key = $this->friend_in_array($friend_to_remove);
         if($friend_key)
         {
             unset($this->_friends[$friend_key]);

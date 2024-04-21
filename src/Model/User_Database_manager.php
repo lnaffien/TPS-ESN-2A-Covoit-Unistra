@@ -78,7 +78,7 @@ class User_Database_manager
 
 	/* get_users_from_email : Get all users in the database with the given email address.
 	 * Parameter : email : Email address of the user(s) to get.
-	 * Return : User(s) data registered with the given email. Needs to be fecth into an array to be read.
+	 * Return : User(s) data registered with the given email. Needs to be fetch into an array to be read.
 	 */
     public static function get_users_from_email($email)
     {
@@ -87,11 +87,22 @@ class User_Database_manager
 
 	/* get_user_from_id : Get all users in the database with the given id.
 	 * Parameter : id : Id of the user to get.
-	 * Return : User data registered with the given id. Needs to be fecth into an array to be read.
+	 * Return : User data registered with the given id. Needs to be fetch into an array to be read.
 	 */
     public static function get_user_from_id($id)
     {
         return Database_manager::get_data('UTILISATEUR', '*', "WHERE idUser=\"$id\"");
+    }
+
+	/* get_users_from_name : Get all users in the database containing the given first or last name.
+	 * Parameters : - first_name : Part of the first name of the user to search for.
+	 * 				- last_name  : Part of the last name of the user to search for.
+	 * Return : Users data registered with the given first or last name, order by their last name, then by their first name.
+	 * 			Needs to be fetch into an array to be read.
+	 */
+	public static function get_users_from_name($first_name, $last_name)
+    {
+        return Database_manager::get_data('UTILISATEUR', '*', "WHERE (nom LIKE \"%$last_name%\") OR (nom LIKE \"%$first_name%\") OR (prenom LIKE \"%$first_name%\") OR (prenom LIKE \"%$last_name%\") ORDER BY nom, prenom ASC");
     }
 
 
@@ -175,21 +186,22 @@ class User_Database_manager
 
 	public static function add_friend($user_current, $user_to_add)
     {
-		// TODO : tester si les id existent ?
+		// TODO : tester si les id existent ? -> pas besoin car comme c'est une FK la bdd va retourner une erreur si elle n'existe pas
 
 		// Check if relationship already exists
 		if(User_Database_manager::relationship_exists($user_current, $user_to_add))
 		{
-			print_r("Error while updating table : Relationship already exists\n");
+			print_r("Error while adding data to friend table : Relationship already exists\n");
 			return false;
 		}
 
-		// Set data to update
+		// Set data to add
 		$properties = (array( "idUtilisateur" => $user_current->__get("id"),
 								"idUtilisateurAmi" => $user_to_add->__get("id") ));
 
-		// Update friend data
-        return Database_manager::delete_data("AMI", $filter);
+		// Add friend data
+		$user_current->add_friend($user_to_add);
+        return Database_manager::add_data("AMI", $properties);
     }
 
 	public static function remove_friend($user_current, $user_to_remove)
@@ -200,7 +212,12 @@ class User_Database_manager
 			print_r("Error while updating table : Relationship doesn't exists\n");
 			return false;
 		}
+
+		// Set the filter to select the relationship to remove
 		$filter = "WHERE idUtilisateur=\"" . $user_current->__get("id") . "\" AND idUtilisateurAmi=\"" . $user_to_remove->__get("id") . "\"";
+		
+		// Remove friend
+		$user_current->remove_friend($user_to_remove);
 		return Database_manager::delete_data("AMI", $filter);
     }
 
