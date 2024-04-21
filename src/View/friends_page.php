@@ -29,6 +29,8 @@
         </form>
 
         <?php
+        if(isset($_SESSION['search_users']))
+        {
           foreach($_SESSION['search_users'] as $searched_user)
           {
         ?>
@@ -49,6 +51,7 @@
           </div>
         <?php
           }
+        }
         ?>
         
       </div>
@@ -58,8 +61,9 @@
 
         <div class="Text_image_end">
           <h3>VOS AMIS</h3>
-          <form class="" action='' method="POST">
-            <input type="hidden" name="" value="">
+          <form action='index.php' method="POST">
+            <input type="hidden" name="action" value="friend">
+            <input type="hidden" name="friend_page_click" value="remove_friend_btn">
             <input type='image' src="images/edit1.svg" alt="Edit Friends Icon" class="EditButton"/>  
           </form>      
         </div>
@@ -70,14 +74,17 @@
             {
           ?>
               <li class="Text_image_end_bck"> 
-                <p class="ami1"><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></p>                       
+                <p><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></p>                       
 
                   <form action='index.php' method="POST" >
                     <input type="hidden" name="action" value="friend">
                     <input type="hidden" name="friend_page_click" value="remove_friend">
-                    <?php echo "<input type='hidden' name='friend_id' value='" . $friend->__get('id') . "'>" ?>             
-
-                      <input type="image" src="images/minus.svg" alt="Remove Friend Icon">
+                    <?php echo "<input type='hidden' name='friend_id' value='" . $friend->__get('id') . "'>" ;
+                      if($_SESSION['remove_friend_btn'])
+                      {
+                        echo '<input type="image" src="images/minus.svg" alt="Remove Friend Icon">';
+                      }
+                    ?>                        
                   </form>
                 </li>
           <?php 

@@ -48,6 +48,10 @@ if(isset($_POST['friend_page_click']))
             User_Database_manager::remove_friend($_SESSION['user'], $old_friend);
             break;
 
+        // The button to display the friends removal has been clicked
+        case 'remove_friend_btn' :
+            $_SESSION['remove_friend_btn'] ? $_SESSION['remove_friend_btn'] = false : $_SESSION['remove_friend_btn'] = true;
+            break;
 
     }
     print("<form id='form' name='action_next_page' action='index.php' method='POST'>
@@ -65,6 +69,10 @@ class Friend_ViewModel
 {
     public static function execute()
     {
+        if(!isset( $_SESSION['remove_friend_btn']))
+        {
+            $_SESSION['remove_friend_btn'] = false;
+        }
         require_once('src/View/friends_page.php');
     }
 }

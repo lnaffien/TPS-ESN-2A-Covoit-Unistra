@@ -246,16 +246,8 @@ class User
     public function remove_friend($friend_to_remove)
     {
         $friend_key = $this->friend_in_array($friend_to_remove);
-        if($friend_key)
-        {
-            unset($this->_friends[$friend_key]);
-            return true;
-        }
-        else
-        {
-            // TODO : erreur : this user is not your friend !
-            return false;
-        }
+        
+        unset($this->_friends[$friend_key]);
     }
 
     public function remove_friends($friends_to_remove)
