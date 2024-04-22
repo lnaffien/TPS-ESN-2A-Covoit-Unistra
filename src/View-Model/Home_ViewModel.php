@@ -1,8 +1,5 @@
 <?php
-// != 100% -> jaune
-// vert jaune orange rouge
-// 20 50 75
-// 2H 4H 6H
+
 if(isset($_POST['home_page_click']))
 {
     $next_page_instruction = 'homepage';

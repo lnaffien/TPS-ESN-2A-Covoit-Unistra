@@ -2,6 +2,15 @@
 /**
  * TODO Auto-generated comment.
  */
+// TODO : énumération remplie à partir d'un .ini
+/*
+enum Suit: string
+{
+    case Hearts = 'H';
+    case Diamonds = 'D';
+    case Clubs = 'C';
+    case Spades = 'S';
+}*/
 define("_NAGENDA_IUT_HAG", 30606);
 define("_NAGENDA_ILLKIRCH", 301);
 
@@ -103,40 +112,37 @@ class Agenda_day
 	{
 		$this->_end_time = $new_end_time;
 	}
+// != 100% -> jaune
+// vert jaune orange rouge
+// 0  25  50  75  100
+//    6H  4H  2H   0H
 
 	// TODO : add some comments
-	// TODO : retourner un seuil de compatibilité en fonction du temps de différence entre les 2 horaires
-	private function compare_time($this_time_to_compare, $time_to_compare)
+	private static function compare_time($this_time_to_compare, $time_to_compare)
 	{
 		$datetime1 = new DateTime($this_time_to_compare);
 		$datetime2 = new DateTime($time_to_compare);
 
+		// Calculates the interval in hour between the given times
 		$interval = $datetime1->diff($datetime2);
 		$interval_hours = $interval->h; 
-		
-		if ($interval_hours <= 2) {
-			return true; //compatibles
-		}
-		return false; //non-compatibles
 
-		/*if( ($time_to_compare <= Agenda_day::$_middle_of_the_day && $this_time_to_compare <= Agenda_day::$_middle_of_the_day)
-			|| ($time_to_compare >= Agenda_day::$_middle_of_the_day && $this_time_to_compare >= Agenda_day::$_middle_of_the_day) )
+		switch($interval_hours)
 		{
-			return true;
+			case 0 :
+				return 100;
+				break;
+			case $interval_hours <= 2 :
+				return 75;
+				break;
+			case $interval_hours <= 4 :
+				return 50;
+				break;
+			case $interval_hours <= 6 :
+				return 25;
+				break;			
 		}
-		return false;*/
-	}
-
-	public function compare_start_time($agenda_day)
-	{
-		return $this->compare_time(($this->__get_start_time())->format('H:i'),
-									($agenda_day->__get_start_time())->format('H:i'));
-	}
-
-	public function compare_end_time($agenda_day)
-	{
-		return $this->compare_time(($this->__get_end_time())->format('H:i'),
-									($agenda_day->__get_end_time())->format('H:i'));
+		return 0;
 	}
 
 	private static function same_location($places_array, $this_place_to_compare, $place_to_compare)
@@ -186,15 +192,28 @@ class Agenda_day
 		return false;
 	}
 
-	public function compare_start_place($agenda_day)
+	public function compare_start_time_and_place($agenda_day)
 	{
-		return Agenda_day::compare_place($this->__get('start_place'), $agenda_day->__get('start_place'));
+		if(! Agenda_day::compare_place($this->__get('start_place'), $agenda_day->__get('start_place')) )
+		{
+			return -1;
+		}
+
+		return Agenda_day::compare_time(($this->__get_start_time())->format('H:i'),
+									($agenda_day->__get_start_time())->format('H:i'));
 	}
 
-	public function compare_end_place($agenda_day)
+	public function compare_end_time_and_place($agenda_day)
 	{
-		return Agenda_day::compare_place($this->__get('end_place'), $agenda_day->__get('end_place'));
+		if(! Agenda_day::compare_place($this->__get('end_place'), $agenda_day->__get('end_place')) )
+		{
+			return -1;
+		}
+
+		return Agenda_day::compare_time(($this->__get_end_time())->format('H:i'),
+									($agenda_day->__get_end_time())->format('H:i'));
 	}
+
 }
 
 ?>
