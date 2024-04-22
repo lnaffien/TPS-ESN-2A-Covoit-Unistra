@@ -4,7 +4,7 @@
 class Test_ViewModel
 {
     // TODO
-    public function execute()
+    public static function execute()
     {
         /*include('src/View/header_anonymous.php');
         require('src/View/test_page.php'); */
@@ -14,89 +14,34 @@ class Test_ViewModel
         require_once('src/Model/Agenda_manager.php');
 
         $user = new User(4, "NAFFIEN_etu", "Lucie_etu", "lucie.naffien@etu.unistra.fr", null, 18581, null);
-        $user2 = new User(12, "NAFFIEN_etu", "Lucie_etu", "lucie.naffien@etu.unistra.fr", null, 18581, null); 
+        $user2 = new User(12, "NAFFIEN_etu", "Lucie_etu", "lucie.naffien@etu.unistra.fr", null, 18581, null);  
+        
+        /* Illkirch : A, B ou C, puis 3 chiffes OU Cafétéria 
+         * HAG : 
+         */ 
+        $raw_calendar = Agenda_manager::get_full_agenda(18581);
+        //print_r($raw_calendar);
 
-         // Load user friends
-         $user_friends[] = array();
-         $friends_query = User_Database_manager::get_friend($user2);
-         
-         // Parse result into an array
-         $friends_row_data = $friends_query->fetchAll(\PDO::FETCH_ASSOC);
-
-         foreach($friends_row_data as $friend_line)
-         {            
-            print_r($friend_line['idUtilisateurAmi']);
-            print_r("<br/>");
-
-            // Get friend data
-            $friend_data = User_Database_manager::get_user_from_id($friend_line['idUtilisateurAmi']);
-            $friend_row_data = $friend_data->fetch(\PDO::FETCH_ASSOC);
-            print_r($friend_row_data);
-            print_r("<br/>");
-
-            $user_friends[] = new User( $friend_row_data['idUser'],
-                                        $friend_row_data['nom'],
-                                        $friend_row_data['prenom'], 
-                                        $friend_row_data['email'],
-                                        $friend_row_data['telephone'],
-                                        $friend_row_data['nagenda'],
-                                        null);
-         }
-         print_r("<br/>");
-         print_r($user_friends);
-  
-         /*
-
-         $friends = array();
-         foreach($friends_query as $friend)
-         {
-             $friend_data = User_Database_manager::get_user_from_id($friend['idUtilisateurAmi']);
-             $friend_row_data = $friend_data->fetch(\PDO::FETCH_ASSOC);
-
-             print_r($friend_data['nom']);             
-             print_r("hey<br/>");
-
-             
-             print_r("<br/>");
- 
-            /* $friends[] = new User($friend_data['idUser'],
-                                     $friend_data['nom'],
-                                     $friend_data['prenom'], 
-                                     $friend_data['email'],
-                                     $friend_data['telephone'],
-                                     $friend_data['nagenda'],
-                                     null);
-         }*/
- 
-
-       /* $properties = array('nom' => "INSERER", 
-                             'prenom' => 'donnees',
-                             'email' => 'inserer@donnees.com',
-                             'motDePasse' => 'hopla',
-                             'nagenda' => 65412,
-                             'dateInscription' => ((new \DateTime((string)date('Y-m-d')))->setTimezone(new \DateTimeZone('Europe/Paris')))->format('Y-m-d') );
-*/
-        //User_Database_manager::remove_friend($user, $user2);
-
-        /*$user_id = $user->__get("idUser");
-        $query_result = Database_manager::get_data('UTILISATEUR', '*', "WHERE idUser=$user_id");
-        foreach ($query_result as $row) {
-            foreach($row as $data)
-            {
-                print_r($data);
+        foreach($raw_calendar as $event)
+        {
+            /*
+             * LOCATION : salle
+             * SUMMARY : intitulé
+            */
+            print($event->compare_start_place($event) ? "similaires" : "différents");
+            //$array = ((string)$event->LOCATION);
+           /* print_r($event->__get('date'));
+            print_r(" : ");
+            print_r($event->__get('start_place'));
+            print_r("    |    ");
+            print_r($event->__get('end_place'));*/
+           // $array = $event->serialize();
+            //print_r($array);
+            //print_r((string)$event->SEQUENCE);//
                 print_r("<br/>");
-            }
+               // break;
             
-            print_r("<br/><br/>");
         }
-
-
-        Database_manager::update_user($user, 'nom');*/
-
-       /* $agenda = Agenda_manager::get_full_agenda($user->__get("nagenda"));
-        $start_date = (new \DateTime((string)date('Y-m-d H:i:s')))->setTimezone(new \DateTimeZone('Europe/Paris'));
-        Agenda_manager::filter_date($agenda, $start_date, 7);*/
-
     }
 
 }
