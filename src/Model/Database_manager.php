@@ -1,7 +1,5 @@
 <?php
 
-require_once('src/Model/User.php');
-
 /**
  * TODO Auto-generated comment.
  */

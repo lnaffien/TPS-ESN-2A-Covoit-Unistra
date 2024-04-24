@@ -134,6 +134,7 @@ class User
         }
     }
 
+    // TODO : a supprimer ? 
     public function __set_all_personal_data($nom, $prenom, $email, $telephone, $nagenda)
     {
         $this->_nom = $nom;
@@ -142,7 +143,7 @@ class User
         $this->_telephone = $telephone;
         $this->_nagenda = $nagenda;
     }
-
+/*
     public function compare_to($property, $value)
     {
         if(!isset($value))
@@ -196,7 +197,7 @@ class User
         } 
 
     }
-
+*/
     private function friend_in_array($friend)
     {
         return array_search($friend, $this->_friends);
@@ -243,6 +244,8 @@ class User
         return $result;
     }
 
+    // TODO : il se passe quoi si l'ami n'existe pas ?
+    // Et du coup $result de remove_friends ne se met pas à jour
     public function remove_friend($friend_to_remove)
     {
         $friend_key = $this->friend_in_array($friend_to_remove);
