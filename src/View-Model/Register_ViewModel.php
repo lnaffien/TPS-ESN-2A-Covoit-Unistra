@@ -2,26 +2,17 @@
 
 if(isset($_POST['action_register_submit']))
 {
-    if(Register_ViewModel::check_register_data())
+   if(Register_ViewModel::check_register_data())
     {
-        print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
-                    <input type='hidden' name='action' value='login'>
-                </form>
-                <script type='text/javascript'>
-                    document.back_to_index_form.submit();
-                </script>
-            ");
+        // rediriger vers login page
+        header('Location: index.php?action=login');
+        exit;
     }
     else
     {
-        print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
-                    <input type='hidden' name='action' value='register'>
-                </form>
-                <script type='text/javascript'>
-                    document.back_to_index_form.submit();
-                </script>
-            ");
-// TODO : https://www.phptutorial.net/php-tutorial/php-registration-form/ pour avoir un truc plus propre
+        // rediriger vers register page
+           header('Location: index.php?action=register');
+           exit;
     }
 }
 
@@ -74,7 +65,20 @@ class Register_ViewModel
         // Add user
         $user = new User(null, $nom, $prenom, $email, $telephone, $nagenda, null);
         require_once("src/Model/User_Database_manager.php");
-        return User_Database_manager::add_user($user, $mdp);
+        $success = User_Database_manager::add_user($user, $mdp);
+
+       if($success) {
+            //envoyer email de confirmation
+            $to = $email; 
+            $subject = 'Confirmation';
+            $message = 'Cher ' . $prenom . ',<br><br>Vous etes officiellement enregistrés sur CovoitUnistra! .';
+            $headers = "From: covoitunistra@gmail.com\r\n";
+            $headers .= "Content-Type: text/html; charset=UTF-8\r\n";      
+            mail($to, $subject, $message, $headers);
+           return true; 
+       } else {
+           return false; 
+       }
     }
 }
 

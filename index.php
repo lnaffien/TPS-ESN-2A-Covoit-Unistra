@@ -13,7 +13,6 @@ session_start();
 
 // On charge les contrôleurs et les modèles
 require_once('src/View-Model/Test_ViewModel.php');
-
 require_once('src/View-Model/Login_ViewModel.php');
 require_once('src/View-Model/Register_ViewModel.php');
 require_once('src/View-Model/Home_ViewModel.php');
