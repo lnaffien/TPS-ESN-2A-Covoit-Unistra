@@ -13,7 +13,7 @@
     <div class="PersonalDataModification">
         <div class="Background"></div>
 
-        <h1 class="EditInfos">Modifier Mes Informations Personnelles</h1> 
+        <h1 class="EditInfos">Modifier mes informations personnelles</h1> 
         
         <form id="form" action='index.php' method="POST">
             <input type="hidden" name="action" value="homepage">
