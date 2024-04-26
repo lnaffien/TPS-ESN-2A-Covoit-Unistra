@@ -1,0 +1,89 @@
+.AccountPopUp{
+display: flex;
+width: 450px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+border-radius: 10px;
+border: 3px solid var(--DIVIDER, #BDBDBD);
+background: #FFF;
+}
+
+.Parametres,
+.Deconnexion{
+display: flex;
+width: 377px;
+height: 66px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+color: #000;
+font-family: Jaldi;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.Line{
+    width: 453px;
+    height: 5px;
+    background: #BDBDBD;
+}
+
+.ValidationPopUp,
+.RequestPopUp{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+align-items: center; 
+width: 450px;
+border-radius: 10px;
+border: 6px solid var(--DIVIDER, #BDBDBD);
+background: var(--MAIN-Light, #B2DFDB);
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.modifs{
+width: 400px;
+color: #000;
+text-align: center;
+font-family: Jaldi;
+font-size: 30px;
+font-weight: 400;
+margin-bottom: 20px;
+}
+
+.Rectangle {
+    width: 210px;
+    border-radius: 10px;
+    border: 3px solid var(--MAIN, #00796B);
+    background: var(--MAIN-Dark, #009688);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-align: center;
+    font-family: Jaldi;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 35px;
+    cursor: pointer; 
+    margin-bottom: 10px;
+}
+
+.Informations{
+flex-shrink: 0;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.text{
+color: #000;
+font-family: Jaldi;
+font-size: 28px;
+font-weight: 400;
+}

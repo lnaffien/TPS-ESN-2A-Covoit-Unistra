@@ -30,6 +30,7 @@
         foreach($_SESSION['dateSelected']['period'] as $date)
             {
                 print_r("<br/>");
+
             ?>
                 <li>
 
@@ -48,9 +49,19 @@
                             </form>
 
                         <ul>
+                            
                             <li class="UserRow"> 
-                                <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>                       
-                                <div class="DayTimeRectangle"></div>
+                                <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>     
+                                <!--script src="jauge.js"></script-->                  
+                                 <!--?php
+                                    //require_once 'src/Model/Agenda_manager.php';
+                                ?-->                              
+                                                      
+                                <div class="DayTimeRectangle">
+                                
+                                   <!--h3>Start Time: <!?php echo $date->__get_start_time()->format('H:i:s'); ?><--/h3> 
+                                   <h3>End Time: <!?php echo $date->__get_end_time()->format('H:i:s'); ?></h3--> 
+                                </div>
                             </li>
 
 

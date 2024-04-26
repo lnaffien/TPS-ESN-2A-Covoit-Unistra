@@ -121,6 +121,22 @@ CREATE TABLE `utilisateur` (
   `telephone` varchar(15) DEFAULT NULL,
   `dateInscription` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `historique`
+--
+
+CREATE TABLE `historique_covoiturage` (
+  `idCovoiturage` int(11) NOT NULL,
+  `dateCovoiturage` date DEFAULT NULL
+  `idConducteur` int(11) NOT NULL,
+  `idPassager` int(11) NOT NULL,
+  PRIMARY KEY (`idCovoiturage`),
+  CONSTRAINT `FK_idConducteur` FOREIGN KEY (`idConducteur`) REFERENCES `utilisateur` (`idUser`),
+  CONSTRAINT `FK_idPassager` FOREIGN KEY (`idPassager`) REFERENCES `utilisateur` (`idUser`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Index pour les tables déchargées
@@ -174,6 +190,13 @@ ALTER TABLE `trajet`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`idUser`);
+
+--
+-- Index pour la table `historique`
+--
+ALTER TABLE `historique`
+  ADD PRIMARY KEY (`idCovoiturage`);
+  ADD KEY `idConducteur` (`idConducteur`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées

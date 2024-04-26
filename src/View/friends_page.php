@@ -18,7 +18,6 @@
 
   <div class="PageFriends">
 
-      <!-- Search user part -->
       <div>
         
         <form action='index.php' method="POST" class='Form_image_end'>          

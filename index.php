@@ -18,15 +18,9 @@ require_once('src/View-Model/Register_ViewModel.php');
 require_once('src/View-Model/Home_ViewModel.php');
 require_once('src/View-Model/Edit_User_ViewModel.php');
 require_once('src/View-Model/Friends_ViewModel.php');
-/*
+require_once('src/View-Model/Notifications_ViewModel.php');
 require_once('src/View-Model/Settings_ViewModel.php');
-/*
-require_once('src/controllers/logout.php');
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/register.php');
-require_once('src/controllers/profil.php');
-require_once('src/controllers/modifProfil.php');
-require_once('src/controllers/admin.php');*/
+
 
 try {
     if (isset($_POST['action'])){
@@ -49,36 +43,21 @@ try {
                 break;
             // User profile page
             case 'user_profile':
-                Edit_User_ViewModel::execute();
+                Settings_ViewModel::execute();
                 break;
+            // Friends page
             case 'friend' :
                 Friend_ViewModel::execute();
                 break;
+            // Notifications page
+            case 'notification':
+                Notifications_ViewModel::execute();
+                break;
             // Settings page
-           /* case 'settings':
+           case 'settings':
                 Settings_ViewModel::execute();
                 break;
-            case 'homepage_filters': // Homepage - Rafraîchissement Homepage avec filtres
-                (new Homepage_Ctrl())->valideFilters($_POST['date'], $_POST['BarreR']);
-                break;
-            case 'logout': // Déconnexion
-                (new Logout_Ctrl())->execute();
-                break;
 
-            case 'register_new': // Création d'un nouveau compte
-                (new Register_Ctrl())->newUser();
-                break;
-
-            case 'modifier_profil': // Modification de la page profil
-                (new modifierProfil_ctrl())->execute();
-                break;
-            case 'admin': // Page admin 
-                (new Admin_ctrl())->execute();
-                break;
-            case 'delete_users': // Suppression d'un utilisateur
-                (new Admin_ctrl())->delete_users();
-                break;
-                */
             default:
                 // Page d'erreur 404
                 http_response_code(404);
@@ -91,7 +70,6 @@ try {
         // Page d'accueil
         //(new Test_ViewModel())->execute();
         Login_ViewModel::execute();
-        //(new Login_Ctrl())->execute();
     }
 } catch (Exception $e) {
     echo $e;
