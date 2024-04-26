@@ -68,8 +68,9 @@ try {
     else
     {
         // Page d'accueil
-        //(new Test_ViewModel())->execute();
-        Login_ViewModel::execute();
+        Test_ViewModel::execute();
+        //Login_ViewModel::execute();
+        //(new Login_Ctrl())->execute();
     }
 } catch (Exception $e) {
     echo $e;

@@ -48,7 +48,7 @@ if(isset($_POST['friend_page_click']))
             User_Database_manager::remove_friend($_SESSION['user'], $old_friend);
             break;
 
-        // The button to display the friends removal has been clicked
+        // Display or hide the friends removal button
         case 'remove_friend_btn' :
             $_SESSION['remove_friend_btn'] ? $_SESSION['remove_friend_btn'] = false : $_SESSION['remove_friend_btn'] = true;
             break;
