@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : mer. 24 avr. 2024 à 14:01
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Apr 27, 2024 at 04:34 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `appcovoit`
+-- Database: `appcovoit`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ami`
+-- Table structure for table `ami`
 --
 
 CREATE TABLE `ami` (
@@ -36,12 +36,12 @@ CREATE TABLE `ami` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `avis`
+-- Table structure for table `avis`
 --
 
 CREATE TABLE `avis` (
-  `idUserFK` int(11) DEFAULT NULL,
-  `idTrajetFK` int(11) DEFAULT NULL,
+  `idAvis` int(11) NOT NULL,
+  `idUserFK` int(11) NOT NULL,
   `note` int(11) DEFAULT NULL,
   `commentaire` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -49,66 +49,23 @@ CREATE TABLE `avis` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `creneau`
+-- Table structure for table `historique`
 --
 
-CREATE TABLE `creneau` (
-  `idCreneau` int(11) NOT NULL,
-  `numCalendrier` varchar(100) DEFAULT NULL,
-  `matiere` varchar(30) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `heureDebut` time DEFAULT NULL,
-  `heureFin` time DEFAULT NULL,
-  `disponibilite` varchar(30) DEFAULT NULL,
-  `localisation` varchar(30) DEFAULT NULL
+CREATE TABLE `historique` (
+  `idCovoiturage` int(11) NOT NULL,
+  `dateCovoiturage` date NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idUserAmi` int(11) NOT NULL,
+  `status` enum('awaiting','denied','accepted') NOT NULL,
+  `aller` tinyint(1) NOT NULL,
+  `retour` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `possede`
---
-
-CREATE TABLE `possede` (
-  `idUserFK` int(11) NOT NULL,
-  `idCreneauFK` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `reservation`
---
-
-CREATE TABLE `reservation` (
-  `idReservation` int(11) NOT NULL,
-  `nbPlaceReservees` int(11) NOT NULL,
-  `dateReservation` date DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
-  `idTrajetFK` int(11) DEFAULT NULL,
-  `idPassagerFK` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `trajet`
---
-
-CREATE TABLE `trajet` (
-  `idTrajet` int(11) NOT NULL,
-  `villeDepart` varchar(50) DEFAULT NULL,
-  `villeArrivee` varchar(50) DEFAULT NULL,
-  `dateDepart` date DEFAULT NULL,
-  `heureDepart` time DEFAULT NULL,
-  `nbPlaces` int(11) DEFAULT NULL,
-  `idConducteurFK` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `utilisateur`
+-- Table structure for table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
@@ -121,29 +78,13 @@ CREATE TABLE `utilisateur` (
   `telephone` varchar(15) DEFAULT NULL,
   `dateInscription` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
--- --------------------------------------------------------
 
 --
--- Structure de la table `historique`
---
-
-CREATE TABLE `historique_covoiturage` (
-  `idCovoiturage` int(11) NOT NULL,
-  `dateCovoiturage` date DEFAULT NULL
-  `idConducteur` int(11) NOT NULL,
-  `idPassager` int(11) NOT NULL,
-  PRIMARY KEY (`idCovoiturage`),
-  CONSTRAINT `FK_idConducteur` FOREIGN KEY (`idConducteur`) REFERENCES `utilisateur` (`idUser`),
-  CONSTRAINT `FK_idPassager` FOREIGN KEY (`idPassager`) REFERENCES `utilisateur` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
---
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `ami`
+-- Indexes for table `ami`
 --
 ALTER TABLE `ami`
   ADD PRIMARY KEY (`idAmi`),
@@ -151,124 +92,70 @@ ALTER TABLE `ami`
   ADD KEY `FK_idUtilisateurAmi` (`idUtilisateurAmi`);
 
 --
--- Index pour la table `avis`
+-- Indexes for table `avis`
 --
 ALTER TABLE `avis`
-  ADD KEY `idTrajetFK` (`idTrajetFK`),
-  ADD KEY `idUserFK` (`idUserFK`);
+  ADD PRIMARY KEY (`idAvis`);
 
 --
--- Index pour la table `creneau`
+-- Indexes for table `historique`
 --
-ALTER TABLE `creneau`
-  ADD PRIMARY KEY (`idCreneau`);
+ALTER TABLE `historique`
+  ADD PRIMARY KEY (`idCovoiturage`),
+  ADD KEY `FK_idUser` (`idUser`) USING BTREE,
+  ADD KEY `FK_idUserAmi` (`idUserAmi`) USING BTREE;
 
 --
--- Index pour la table `possede`
---
-ALTER TABLE `possede`
-  ADD KEY `idUserFK` (`idUserFK`),
-  ADD KEY `idCreneauFK` (`idCreneauFK`);
-
---
--- Index pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`idReservation`),
-  ADD KEY `idTrajetFK` (`idTrajetFK`),
-  ADD KEY `idPassagerFK` (`idPassagerFK`);
-
---
--- Index pour la table `trajet`
---
-ALTER TABLE `trajet`
-  ADD PRIMARY KEY (`idTrajet`),
-  ADD KEY `idConducteurFK` (`idConducteurFK`);
-
---
--- Index pour la table `utilisateur`
+-- Indexes for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`idUser`);
 
 --
--- Index pour la table `historique`
---
-ALTER TABLE `historique`
-  ADD PRIMARY KEY (`idCovoiturage`);
-  ADD KEY `idConducteur` (`idConducteur`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `ami`
+-- AUTO_INCREMENT for table `ami`
 --
 ALTER TABLE `ami`
   MODIFY `idAmi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `creneau`
+-- AUTO_INCREMENT for table `avis`
 --
-ALTER TABLE `creneau`
-  MODIFY `idCreneau` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `avis`
+  MODIFY `idAvis` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `reservation`
+-- AUTO_INCREMENT for table `historique`
 --
-ALTER TABLE `reservation`
-  MODIFY `idReservation` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `historique`
+  MODIFY `idCovoiturage` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `trajet`
---
-ALTER TABLE `trajet`
-  MODIFY `idTrajet` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `utilisateur`
+-- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `ami`
+-- Constraints for table `ami`
 --
 ALTER TABLE `ami`
   ADD CONSTRAINT `FK_idUtilisateur` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_idUtilisateurAmi` FOREIGN KEY (`idUtilisateurAmi`) REFERENCES `utilisateur` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `avis`
+-- Constraints for table `historique`
 --
-ALTER TABLE `avis`
-  ADD CONSTRAINT `avis_ibfk_1` FOREIGN KEY (`idTrajetFK`) REFERENCES `trajet` (`idTrajet`),
-  ADD CONSTRAINT `avis_ibfk_2` FOREIGN KEY (`idUserFK`) REFERENCES `utilisateur` (`idUser`);
-
---
--- Contraintes pour la table `possede`
---
-ALTER TABLE `possede`
-  ADD CONSTRAINT `possede_ibfk_1` FOREIGN KEY (`idUserFK`) REFERENCES `utilisateur` (`idUser`),
-  ADD CONSTRAINT `possede_ibfk_2` FOREIGN KEY (`idCreneauFK`) REFERENCES `creneau` (`idCreneau`);
-
---
--- Contraintes pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`idTrajetFK`) REFERENCES `trajet` (`idTrajet`),
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`idPassagerFK`) REFERENCES `utilisateur` (`idUser`);
-
---
--- Contraintes pour la table `trajet`
---
-ALTER TABLE `trajet`
-  ADD CONSTRAINT `trajet_ibfk_1` FOREIGN KEY (`idConducteurFK`) REFERENCES `utilisateur` (`idUser`);
+ALTER TABLE `historique`
+  ADD CONSTRAINT `FK_idUser` FOREIGN KEY (`idUser`) REFERENCES `utilisateur` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_idUserAmi` FOREIGN KEY (`idUserAmi`) REFERENCES `utilisateur` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
