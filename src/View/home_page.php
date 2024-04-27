@@ -34,7 +34,7 @@
             ?>
                 <li>
 
-                    <h1 class="DayLabel"><?php print_r($date->format('l')) ?></h1>
+                <h1 class="DayLabel"><?php print_r($date->format('l')) ?></h1>
 
                     <div class="DayRectangle">
 
@@ -42,11 +42,6 @@
                             <h2>8h30</h2> 
                             <h2>17h30</h2>
                         </div> 
-
-                        <form action='' method="POST" class="AddUserButton">
-                                <input type="hidden" name="" value="">
-                                <input type="image" src="images/adduser.svg" alt="Add user Icon">
-                            </form>
 
                         <ul>
                             
@@ -84,7 +79,7 @@
                         </ul>
 
                     </div>
-
+                    
                     
                 </li>
             <?php 
