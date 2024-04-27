@@ -18,7 +18,8 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 40%;
+  justify-content: center;
+ /* padding-left: 40%;*/
  /* min-height: 100px; */
   
   background: #B2DFDB;
@@ -39,6 +40,38 @@ body {
               linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
 }
 
+body > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  
+  width: fit-content;
+  min-width: 50%;
+  height: fit-content;
+  padding: 20px;
+
+  background-color: rgba(255, 255, 255, 0.60);
+  border: 6px #BDBDBD solid;
+}
+
+img {
+  width: 20%;
+  margin-left: 3%;
+  margin-right: 3%;
+  min-width: 50px;
+}
+
+form {
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 input[type=image] {
   min-width: 50px;
   max-width: 90px;
@@ -57,16 +90,39 @@ input[type=date] {
   margin-right: 15px;
 }
 
+input[type=email],
+input[type=password],
 input[type=text] 
 {
   color: #757575;
-  font-size: 30px;
-  border: 3px #BDBDBD solid;
-  background: #EDEDED;
+  font-size: 24px;
+  border: none;
+  border-left: 3px #BDBDBD solid;
+  background: #EDEDED;  
+
+  height: 70px;
+  padding: 0px;
+  padding-left: 2%;
+  margin-right: 2%;
+
+}
+
+button {
+  width: fit-content;
+
+  background: #009688;  
+  border: 3px #00796B solid;
   border-radius: 10px;
 
-  width: 90%; 
-  padding: 1%;
+  font-size: 28px;
+  font-family: Jaldi;
+  text-align: center;
+  color: white;
+  padding: 5%;
+
+  margin: 5%;
+
+  cursor: pointer;
 }
 
 .CovoitLogoButton {
@@ -107,6 +163,7 @@ input[type=text] {
   word-wrap: break-word;
   color: #212121;
   padding-left: 2%;
+  text-align: center;
 }
 
 h3 {
@@ -142,10 +199,9 @@ p {
 
   max-width: fit-content;
   text-align: center;
-
-  background: #d9d9d9;
+  z-index: 2;
+  background: white;
   border-radius: 20px;
-
   padding : 1rem;
   margin-bottom: -2%;
 }
@@ -156,7 +212,7 @@ p {
   margin-right: 2%;
   height: auto;
 
-  z-index: 1;
+  z-index: 0;
 
   background: rgba(255, 255, 255, 0.40);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -209,21 +265,33 @@ p {
   justify-content: space-around;
 }
 
+form > div,
 .Form_image_end {
   display: flex;
   flex-direction: row;
-  padding-top: 10%;
-  width: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+  padding-left: 2%;
+  padding-right: 2%;
+
+  border: 3px #BDBDBD solid;
+  background: #EDEDED;
+  border-radius: 10px;
+
+  width: 100%;
+  height: 70px;
+
 }
 
 .Form_image_end > input[type=image] {
   margin-left: 0;
   padding: 1%;
 
-  border: 3px #BDBDBD solid;
+ /* border: 3px #BDBDBD solid;
   background: #EDEDED;
   border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;*/
   border-left: none;
 
 }
@@ -253,9 +321,13 @@ p {
   border: 3px #BDBDBD solid;
   background: #EDEDED;
   border-radius: 10px;
-
 }
 
+.Arrow_back {
+  position: absolute;
+  margin-left: 0;
+
+}
 
 
 /*******************************************************************/

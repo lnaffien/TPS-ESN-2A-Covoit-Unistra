@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp Page</title>
-    <link rel="stylesheet" href="css/editdata.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <?php include "src/View/header_not_logged.html" ?>
 
 <body>
-    <div class="PersonalDataModification">
-        <div class="Background">
-        <h1 class="EditInfos">Créer un Nouveau Compte</h1> 
+    <div class="Background">
 
-        <form id="form" action='index.php' method="POST">
+        <form action='index.php' method="POST">
             <input type="hidden" name="action" value="login">
-            <input type="image" class="Arrow1" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
+            <input type="image" class="Arrow_back" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
         </form>
+
+        <h1>Créer un Nouveau Compte</h1> 
           
      <form id="form" action="" method="POST" class="RegistrationForm">
         <input type="hidden" name="action_register_submit" value="register_submit">
@@ -51,7 +51,6 @@
         <button  type="submit" class="ValiderButton" >Valider</button>
     </form>      
     </div>
-  </div>
 </div>
 
 </body>
