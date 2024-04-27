@@ -5,6 +5,7 @@
         <title>Home Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/popup.css">
     </head>
 
     <?php include "src/View/header_logged.php" ?>
@@ -68,10 +69,31 @@
                                     <h2><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></h2>                       
                                     <div class="DayTimeRectangle"></div>
 
+                                 
                                     <form action='' method="POST" class="RequestCarpoolingIcon">
                                         <input type="hidden" name="" value="">
-                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon">
+                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon" id="requestButton" onclick="togglePopup()">
                                     </form>
+
+                                    
+                                        <!-- Content of your popup>
+                                        <div class="RequestPopUp" id="RequestPopUp" style="display: none;">
+                                            <h1>Demande de covoiturage</h1>
+                                            <div class="Informations">
+                                                <h2 class="text">Covoitureur : </h2>
+                                                <h2 class="text">Date :  </h2>   
+                                                <h2 class="text">Mail :</h2>    
+                                                <h2 class="text">Téléphone :</h2>  
+                                                <div class="checkboxes">
+                                                    <label class="text"><input type="checkbox" name="aller_simple" value="aller_simple"> Aller</label>
+                                                    <label class="text"><input type="checkbox" name="aller_retour" value="aller_retour"> Retour</label>
+                                                </div>   
+                                            </div>
+                                            <button class="Rectangle Request" type="submit">Envoyer <br/>une demande</button>
+                                        </div-->
+                                    
+                                    <script src="js/popup.js"></script>
+
                                 </li>
                                     <?php 
                                 }
