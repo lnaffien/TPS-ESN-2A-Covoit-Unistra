@@ -22,7 +22,6 @@ class Agenda_day
 	private $_start_place;
 	private $_end_place;
 
-	// TODO : et la end_place ?
 	public function __construct($date, $start_time, $end_time, $start_place)
 	{
 		$this->_date = $date;
@@ -88,7 +87,7 @@ class Agenda_day
 		}
 	}
 	
-// TODO : a supprimer !
+
 	public function __get_date()
 	{
 		return $this->_date;
