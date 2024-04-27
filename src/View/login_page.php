@@ -17,12 +17,12 @@
         <form action='' method="POST">
           <input type="hidden" name="action_login_submit" value="login_submit">
 
-          <div>
+          <div class="Image-text">
             <img src="images/email.svg" alt="Email Icon">
             <input type="email" name="email" placeholder="E-mail" required>         
           </div>
 
-          <div>
+          <div class="Image-text">
             <img src="images/password.svg" alt="Password Icon">
             <input type="password" name="mdp" placeholder="Mot de Passe" required>                
           </div>       

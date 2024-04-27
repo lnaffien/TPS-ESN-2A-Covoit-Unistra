@@ -39,7 +39,7 @@ body {
               linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
 }
 
-body > div {
+.Background {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,18 +91,22 @@ input[type=date] {
 
 input[type=email],
 input[type=password],
-input[type=text] 
+input[type=text],
+input[type=telephone],
+input[type=number] 
 {
   color: #757575;
   font-size: 24px;
-  border: none;
-  border-left: 3px #BDBDBD solid;
+  border: 3px #BDBDBD solid;
+  border-radius: 10px;
   background: #EDEDED;  
 
   height: 70px;
+  width: 100%;
   padding: 0px;
   padding-left: 2%;
   margin-right: 2%;
+  margin: 2%;
 
 }
 
@@ -258,45 +262,63 @@ p {
   justify-content: space-around;
 }
 
-form > div,
-.Form_image_end {
+.Arrow_back {
+  position: absolute;
+  margin-left: 0;
+
+}
+
+/* Form entries with an image at the start */
+
+/* Form entries with an image at the end */
+
+/*.Image-text*/
+.Text-image {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 10%;
-  padding-left: 2%;
+ /* margin-top: 10%;
+ /* padding-left: 2%;
   padding-right: 2%;
 
   border: 3px #BDBDBD solid;
   background: #EDEDED;
   border-radius: 10px;
-
+*/
   width: 100%;
-  height: 70px;
+  height: 100%;
+
+  padding: 0px;
+  margin: 0px;
 
 }
 
-.Form_image_end > input[type=image] {
+.Text-image > input[type=image] {
   margin-left: 0;
   padding: 1%;
+  height: max-content;
 
- /* border: 3px #BDBDBD solid;
+  border: 3px #BDBDBD solid;
   background: #EDEDED;
   border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;*/
+  border-bottom-right-radius: 10px;
   border-left: none;
 
 }
 
-.Form_image_end > input[type=text]
+.Text-image > input[type=text],
+.Text-image > input[type=password],
+.Text-image > input[type=number]
 {
+  margin: 0;
+
   border-right: none;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0px;
 }
-
-.Text_image_end,
+/*
+.Text-image,
 .Text_image_end_bck {
   display: flex;
   flex-direction: row;
@@ -309,18 +331,12 @@ form > div,
   padding-right: 1%;
   padding-top: 1%;
 }
-
+*//*
 .Text_image_end_bck {
   border: 3px #BDBDBD solid;
   background: #EDEDED;
   border-radius: 10px;
-}
-
-.Arrow_back {
-  position: absolute;
-  margin-left: 0;
-
-}
+}*/
 
 
 /*******************************************************************/

@@ -19,36 +19,29 @@
 
         <h1>Créer un Nouveau Compte</h1> 
           
-     <form id="form" action="" method="POST" class="RegistrationForm">
+     <form id="form" action="" method="POST">
         <input type="hidden" name="action_register_submit" value="register_submit">
-               
-        <input type="text" class="Nom" name="nom" placeholder="Nom" required>        
-        <input type="text" class="Prenom" name="prenom" placeholder="Prénom" required>   
-        <input  type="email" class="Email" name="email" placeholder="E-mail" required>
-        <input type="telephone" class="Telephone" name="telephone" placeholder="Téléphone">   
+        <input type="text" name="nom" placeholder="Nom" required>        
+        <input type="text" name="prenom" placeholder="Prénom" required>   
+        <input  type="email" name="email" placeholder="E-mail" required>
+        <input type="telephone" name="telephone" placeholder="Téléphone">   
                           
-        <div class="Calendar">
-            <input type="number" class ="CalendarInput" name="nagenda" placeholder="Numéro de Calendrier" min="1000" max="99999" required>
-            <button type="submit">
-                <img class="Info" src="images/info.svg">
-            </button>
+        <div class="Text-image">
+            <input type="number" name="nagenda" placeholder="Numéro de Calendrier" min="1000" max="99999" required>
+            <input type='image' src="images/info.svg">
         </div>
 
-        <div class="Password">
-            <input type="password" class="PassInput" name="mdp" placeholder="Mot de passe" required>
-            <button type="submit">
-                <img class="EyePass" src="images/eye.svg">
-            </button>
+        <div class="Text-image">
+            <input type="password" name="mdp" placeholder="Mot de passe" required>
+            <input type='image' src="images/eye.svg">
         </div>
 
-        <div class="PassConfirmation">
-            <input type="password" class="PassConfirmationInput" name="confirm_mdp" placeholder="Confirmer le mot de passe" required>
-            <button type="submit">
-                <img class="EyePassConf" src="images/eye.svg">
-            </button>
+        <div class="Text-image">
+            <input type="password" name="confirm_mdp" placeholder="Confirmer le mot de passe" required>
+            <input type='image' src="images/eye.svg">
         </div>
 
-        <button  type="submit" class="ValiderButton" >Valider</button>
+        <button  type="submit">Valider</button>
     </form>      
     </div>
 </div>
