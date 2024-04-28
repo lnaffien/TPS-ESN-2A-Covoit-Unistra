@@ -9,13 +9,13 @@
 
 <header>
 
-    <form action='index.php' method="POST" class="CovoitLogoButton">
+    <form action='index.php' method="POST">
         <input type="hidden" name="action" value="homepage">
-        <h2>
-            <input type='submit' value="COVOIT’ UNISTRA" class="CovoitLogoButton">
-        </h2>
+        <h1>
+            <input type='submit' value="COVOIT’ UNISTRA">
+        </h1>
     </form>
-
+    
     <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>  
 
     <form action='index.php' method="POST">
