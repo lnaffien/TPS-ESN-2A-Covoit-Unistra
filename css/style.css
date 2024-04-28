@@ -1,3 +1,5 @@
+/* Flex default setup */
+
 .flex-init-setup {
   display: -webkit-box;
   display: -moz-box;
@@ -13,6 +15,8 @@
   -moz-justify-content: center;
   justify-content: center;
 }
+
+/* Headers */
 
 header {
   display: flex;
@@ -30,6 +34,8 @@ header > input[type=image] {
   margin-left: auto;
 }
 
+/* Backgrounds */
+
 body {
   width: auto;
   height: 100%;
@@ -39,6 +45,7 @@ body {
               linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
 }
 
+.BackgroundRow, 
 .Background {
   display: flex;
   flex-direction: column;
@@ -51,11 +58,80 @@ body {
   width: fit-content;
   min-width: 50%;
   height: fit-content;
-  padding: 20px;
+  padding: 2%;
+}
 
+.Background {
   background-color: rgba(255, 255, 255, 0.60);
   border: 6px #BDBDBD solid;
 }
+
+.BackgroundRow {
+  flex-direction: row;
+  align-items: start;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.BackgroundRow > div {
+  width: 70%;  
+  padding: 20px;
+  margin: 2%;
+
+  background: #B2DFDB;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 3px #BDBDBD solid;
+}
+
+.BackgroundRow > * > * > p,
+.BackgroundRow > * > * > h2 {
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+.BackgroundRow > * > * > p {
+  margin-left: 10%;
+}
+
+.BackgroundRow > div > img {
+  min-width: 150px;
+  align-self: center;
+  margin-left: 25%;
+}
+
+
+.BackgroundRow > * > * > input[type=submit] {
+  text-align: left;
+  margin: 2%;
+  min-width: 500px;
+}
+
+.BackgroundRow > * > * > input[type=submit],
+button {
+  width: 100%;
+
+  background: #009688;  
+  border: 3px #00796B solid;
+  border-radius: 10px;
+
+  font-size: 28px;
+  font-family: Jaldi;
+  color: white;
+  white-space: normal;
+
+  padding: 5%;
+
+  cursor: pointer;
+}
+
+button {
+  width: fit-content;
+  min-width: 250px;
+  text-align: center;
+  margin: 5%;
+}
+
+/*  */
 
 img {
   width: 20%;
@@ -109,23 +185,8 @@ input[type=number]
 
 }
 
-button {
-  width: fit-content;
 
-  background: #009688;  
-  border: 3px #00796B solid;
-  border-radius: 10px;
 
-  font-size: 28px;
-  font-family: Jaldi;
-  text-align: center;
-  color: white;
-  padding: 5%;
-
-  margin: 5%;
-
-  cursor: pointer;
-}
 /*
 .CovoitLogoButton {
   font-size: 28px;
@@ -155,6 +216,8 @@ ul {
   list-style-type: none; /* Remove bullets */
   padding-left: 2%;
 }
+
+/* Texts */
 
 h3,
 h1,
@@ -268,7 +331,8 @@ p {
 
 .Arrow_back {
   position: relative;
-  left:-300px
+  left:-400px;
+  top:10px;
 
 }
 
@@ -322,22 +386,32 @@ p {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0px;
 }
-/*
-.Text-image,
-.Text_image_end_bck {
+
+
+.Text-image_space {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  margin-top:5%;
-  margin-right: 1%;
+  min-height: 70px;
+  min-width: 500px;
 
+  margin: 4%;
+  margin-right: 0px;
   padding-right: 1%;
   padding-top: 1%;
+
+  border: 3px #BDBDBD solid;
+  background: #EDEDED;
+  border-radius: 10px;
 }
-*//*
-.Text_image_end_bck {
+
+.Text-image_space > p {
+  text-align: left;
+}
+/*
+.Text_image_end_bck
   border: 3px #BDBDBD solid;
   background: #EDEDED;
   border-radius: 10px;

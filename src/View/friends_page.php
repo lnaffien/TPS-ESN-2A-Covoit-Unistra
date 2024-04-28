@@ -13,14 +13,14 @@
 
   <form action='index.php' method="POST">
     <input type="hidden" name="action" value="homepage">
-    <input type="image" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
+    <input type="image" src="images/arrow.svg" class="Arrow_back" alt="Go back arrow Icon"></img> 
   </form>
 
   <div class="PageFriends">
 
       <div>
         
-        <form action='index.php' method="POST" class='Form_image_end'>          
+        <form action='index.php' method="POST" class="Text-image">          
           <input type="hidden" name="action" value="friend">
           <input type="hidden" name="friend_page_click" value="search_user">
           <input type="text" name="search" placeholder="Ajouter des amis...">
@@ -33,7 +33,7 @@
           foreach($_SESSION['search_users'] as $searched_user)
           {
         ?>
-          <div class="Text_image_end_bck">
+          <div class="Text-image_space">
             <p>
               <?php 
                 print_r($searched_user['nom']);
@@ -58,7 +58,7 @@
       <!-- Manage friends part -->
       <div>
 
-        <div class="Text_image_end">
+        <div class="Text-image">
           <h3>VOS AMIS</h3>
           <form action='index.php' method="POST">
             <input type="hidden" name="action" value="friend">
@@ -72,7 +72,7 @@
             foreach($_SESSION['user']->__get('friends') as $friend)
             {
           ?>
-              <li class="Text_image_end_bck"> 
+              <li class="Text-image_space"> 
                 <p><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></p>                       
 
                   <form action='index.php' method="POST" >

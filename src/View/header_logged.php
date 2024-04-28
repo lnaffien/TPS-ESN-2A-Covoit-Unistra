@@ -29,7 +29,7 @@
     </form>
 
     <form action='index.php' method="POST">
-        <input type="hidden" name="action" value="user_profile">
+        <input type="hidden" name="action" value="settings">
         <input id="userProfileIcon" type="image" src="images/profileuser.svg" alt="User profile Icon">
     </form>
 

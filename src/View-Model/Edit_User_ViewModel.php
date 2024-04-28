@@ -16,7 +16,7 @@ if(isset($_POST['action_update_submit']))
     else
     {
         print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
-                    <input type='hidden' name='action' value='user_profile'>
+                    <input type='hidden' name='action' value='settings'>
                 </form>
                 <script type='text/javascript'>
                     document.back_to_index_form.submit();
