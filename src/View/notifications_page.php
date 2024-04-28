@@ -9,10 +9,12 @@
     
     <?php include "src/View/header_logged.php" ?>
 
-    <body>
+<body>
 
-        <div class="Notifications">
+    <div class="Notifications">
+        
         <div class="Background">
+
             <div class="TitleContainer">
                 <form action='index.php' method="POST">
                     <input type="hidden" name="action" value="homepage">
@@ -26,19 +28,19 @@
                 <p class="text">Prénom NOM</p>
                 <p class="text">Aller Simple</p>
                 <div class="Icons">
-                <form action='index.php' method="POST">
-                    <input type="hidden" name="action" value="acceptCovoit">
-                    <input type="image" src="images/accept.svg" alt="accepticon">
-                </form>
-                <form action='index.php' method="POST">
-                    <input type="hidden" name="action" value="rejectCovoit">
-                    <input type="image" src="images/cancel.svg" alt="rejecticon">
-                </form>
+                    <form action='index.php' method="POST">
+                        <input type="hidden" name="action" value="acceptCovoit">
+                        <input type="image" src="images/accept.svg" alt="accepticon">
+                    </form>
+                    <form action='index.php' method="POST">
+                        <input type="hidden" name="action" value="rejectCovoit">
+                        <input type="image" src="images/cancel.svg" alt="rejecticon">
+                    </form>
+                </div>
             </div>
 
-            </div>
-        </div>
+        </div>      
     </div>
-
-  </body>
+    
+</body>
 </html>

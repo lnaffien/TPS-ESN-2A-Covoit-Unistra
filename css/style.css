@@ -242,16 +242,17 @@ h3 {
 
 h1,
 h1 > * {
-  font-size: 32px;
+  font-size: 30px;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 28px;
 }
 
 p {
-  font-size: 30px;
+  font-size: 24px;
   margin: 0;
+  margin-top: 5px;
 }
 
 .Semaine {
@@ -408,6 +409,11 @@ p {
 
 .Text-image_space > p {
   text-align: left;
+}
+
+.Parametres,
+.ModifTitre{
+  margin-top: -30px;
 }
 /*
 .Text_image_end_bck

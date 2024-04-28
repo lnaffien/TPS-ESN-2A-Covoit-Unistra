@@ -5,23 +5,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(180deg, rgba(178, 223, 219, 0) 0%, #B2DFDB 100%), 
-    linear-gradient(180deg, rgba(17, 126, 113, 0.78) 0%, rgba(31, 118, 108, 0.78) 0%, rgba(0, 121, 107, 0.37) 100%, rgba(0, 121, 107, 0.49) 100%);
+    background: var(--Dgrad, linear-gradient(180deg, rgba(17, 126, 114, 0.78) 0%, rgba(32, 118, 108, 0.78) 0.01%, rgba(0, 121, 107, 0.37) 99.99%, rgba(0, 121, 107, 0.49) 100%), linear-gradient(180deg, ));
   }
   
-  .HistoriqueAnnuel {
-    width: 90%;
+  .Background {
+    width: 80%;
     max-width: 1288px;
     height: auto;
-    padding: 20px;
-    position: relative;
+    flex-shrink: 0;
+    border: 6px solid var(--DIVIDER, #BDBDBD);
     background: rgba(255, 255, 255, 0.60);
-    border: 6px #BDBDBD solid;
 }
 
 .TitleContainer {
     display: flex;
-    align-items: center;
+    margin-left: -280px;
 }
 
 .histotext {
@@ -31,13 +29,9 @@
     color: black;
     font-size: 40px;
     font-family: Jaldi;
+    margin-left: 200px;
 }
 
-.Arrow {
-    width: 100px;
-    height: 100px;
-    margin-left: 20px; 
-}
 
 .Array {
     width: 50%;
@@ -45,7 +39,6 @@
     display: flex;
     flex-direction: column;
 }
-
 
 .arrayheader,
 .Ligne1 {
@@ -76,31 +69,27 @@
 }
 
 .DateText {
-    margin-left: -30px;
+    margin-left: -50px;
 }
 
 .Filter {
     width: 30px;
     height: 30px;
-    z-index: 1;
+    z-index: 2;
     margin: auto;
+    margin-top: 12px;
 }
 
-.DateColumn,
-.CovoitureursColumn {
-    width: calc(50% - 20px); 
-    background: white;
-    padding: 10px;
-    border: 3px #BDBDBD solid;
-}
-
-.Ex1annee,
-.Ex1covoitureur {
+.text {
     color: black;
     font-size: 25px;
     font-family: Jaldi;
-    margin-top: 10px;
+    padding: 20px;
+    border: 3px #BDBDBD solid;
+    background: white;
+    text-align: center;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
 }
-
-
-

@@ -30,13 +30,8 @@
 
     <form action='index.php' method="POST">
         <input type="hidden" name="action" value="settings">
-        <input id="userProfileIcon" type="image" src="images/profileuser.svg" alt="User profile Icon">
+        <input type="image" src="images/profileuser.svg" alt="User profile Icon">
     </form>
-
-    <!--img id="userProfileIcon" src="images/profileuser.svg" alt="User profile Icon" style="cursor: pointer;" onclick="togglePopup()">
-    <script src="js/popup.js"></script>
-    <div id="popupContainer" class="popup-container"></div-->
-
 
 </header>
 </html>

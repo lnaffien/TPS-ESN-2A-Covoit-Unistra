@@ -11,13 +11,11 @@
 
 <body>
     <div class="Background">
-        
         <form  action='index.php' method="POST">
             <input type="hidden" name="action" value="homepage">
             <input type="image" class="Arrow_back" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
         </form>
-
-        <h1>Modifier mes informations personnelles</h1> 
+        <h1 class="ModifTitre">Modifier mes informations personnelles</h1> 
        
         <form action="" mehtod="POST">
             <input type="hidden" name="action_update_submit" value="update_submit">
@@ -28,7 +26,7 @@
             <input type="telephone" name="telephone" placeholder="Téléphone" value="<?php echo ($_SESSION['user']->__get('telephone') != null) ? $_SESSION['user']->__get('telephone') : ''; ?>">   
                               
             <div class="Text-image">
-                <input type="number" name="nagenda" placeholder="Numéro de Calendrier" min="1000" max="99999" required>
+                <input type="number" name="nagenda" placeholder="Numéro de Calendrier"  value="<?php echo $_SESSION['user']->__get('nagenda') ?>" min="1000" max="99999" required>
                 <input type='image' src="images/info.svg">
             </div>
 
