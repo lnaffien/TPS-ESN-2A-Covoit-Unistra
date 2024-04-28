@@ -10,8 +10,7 @@
     <?php include "src/View/header_logged.php" ?>
 
     <body>
-        <div class="AnnualHistory">        
-            
+        <div class="AnnualHistory">             
                 <div class="Background">
                     <div class="TitleContainer">
                         <form action='index.php' method="POST">

@@ -20,7 +20,7 @@ require_once('src/View-Model/Friends_ViewModel.php');
 require_once('src/View-Model/Notifications_ViewModel.php');
 require_once('src/View-Model/Settings_ViewModel.php');
 require_once('src/View-Model/Historique_ViewModel.php');
-
+require_once('src/View-Model/Demande_ViewModel.php');
 
 try {
     if (isset($_POST['action'])){
@@ -57,6 +57,15 @@ try {
             case 'historique':
                 Historique_ViewModel::execute();
                 break;
+            case 'request':
+                $friendId = $_POST['friend_id'];
+                $friendName = $_POST['friend_name'];
+                $friendEmail = $_POST['friend_email'];
+                $friendDate = $_POST['friend_date'];
+                $friendTel = $_POST['friend_tel'];
+                Demande_ViewModel::execute($friendId, $friendName,$friendEmail,$friendDate,$friendTel);
+                break;
+
             default:
                 // Page d'erreur 404
                 http_response_code(404);
