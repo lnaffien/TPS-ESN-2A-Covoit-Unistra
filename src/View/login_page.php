@@ -27,12 +27,12 @@
             <input type="password" name="mdp" placeholder="Mot de Passe" required>                
           </div>       
           
-          <button type="submit">Connexion</button>
+          <input type="submit" value="Connexion">
         </form>
 
         <form action="index.php" method="POST">
           <input type="hidden" name="action" value="register">
-          <button type="submit">Inscription</button>
+          <input type="submit" value="Inscription">
         </form>        
   </div>
 </body>

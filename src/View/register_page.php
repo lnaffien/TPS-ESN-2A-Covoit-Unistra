@@ -11,14 +11,15 @@
 
 <body>
     <div class="Background">
+        <div class="TitleContainer">
+            <form action='index.php' method="POST">
+                <input type="hidden" name="action" value="login">
+                <input type="image" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
+            </form>
 
-        <form action='index.php' method="POST">
-            <input type="hidden" name="action" value="login">
-            <input type="image" class="Arrow_back" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
-        </form>
+            <h1>Créer un Nouveau Compte</h1> 
+        </div>
 
-        <h1>Créer un Nouveau Compte</h1> 
-          
      <form id="form" action="" method="POST">
         <input type="hidden" name="action_register_submit" value="register_submit">
         <input type="text" name="nom" placeholder="Nom" required>        
@@ -28,7 +29,9 @@
                           
         <div class="Text-image">
             <input type="number" name="nagenda" placeholder="Numéro de Calendrier" min="1000" max="99999" required>
-            <input type='image' src="images/info.svg">
+            <a href="src/View/Documentation_NumeroCalendrier.pdf" target="_blank">                
+                <img src="images/info.svg" alt="calendar number help">
+            </a>
         </div>
 
         <div class="Text-image">
