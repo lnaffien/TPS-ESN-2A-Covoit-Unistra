@@ -8,13 +8,3 @@ function resizeAndColor(width, left, backgroundColor) {
     rectangle.style.background = backgroundColor;
   }
 }
-
-
-function toggleTime(rectangle) {
-  var timeDiv = rectangle.querySelector('.Time');
-  if (timeDiv.style.display === 'none') {
-      timeDiv.style.display = 'block';
-  } else {
-      timeDiv.style.display = 'none';
-  }
-}

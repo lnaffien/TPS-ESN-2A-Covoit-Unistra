@@ -58,7 +58,6 @@
                                 </div>
                             </li>
 
-
                             <?php 
                                 foreach($_SESSION['user']->__get('friends') as $friend)
                                 {
@@ -73,34 +72,9 @@
                                         <input type="hidden" name="friend_date" value="<?php echo ($date->format('l')); ?>">
                                         <input type="hidden" name="friend_name" value="<?php echo $friend->__get('nom') . ' ' . $friend->__get('prenom'); ?>">
                                         <input type="hidden" name="friend_email" value="<?php echo $friend->__get('email'); ?>">
-                                        <input type="hidden" name="friend_tel" value="<?php echo $friend->__get('telephone'); ?>">   
-                                        <!--?php echo ($_SESSION['user']->__get('telephone') != null) ? $_SESSION['user']->__get('telephone') : ''; ?-->                              
+                                        <input type="hidden" name="friend_tel" value="<?php echo $friend->__get('telephone'); ?>">                             
                                         <input type="image" src="images/request.svg" alt="Carpooling request Icon">
                                     </form>
-
-                                        <!-- Content of your popup>
-                                        <div class="RequestPopUp" id="popup-1">
-                                            <div class="overlay"></div>
-                                            <div class="content">
-                                            <form action="index.php" method="POST">
-                                               <input type="hidden" name="action" value="request_covoit">
-                                                <h1>Demande de covoiturage</h1>
-                                                <div class="Informations">
-                                                    <h2 class="text">Covoitureur : </h2>
-                                                    <h2 class="text">Date :  </h2>   
-                                                    <h2 class="text">Mail :</h2>    
-                                                    <h2 class="text">Téléphone :</h2>  
-                                                    <div class="checkboxes">
-                                                    <label class="text"><input type="checkbox" name="aller_simple" value="aller_simple"> Aller</label>
-                                                    <label class="text"><input type="checkbox" name="aller_retour" value="aller_retour"> Retour</label>
-                                                    </div>   
-                                                </div>
-                                            
-                                                <button class="Rectangle Request" type="submit">Envoyer <br/>une demande</button>           
-                                            </form>
-                                          </div>  
-                                        </div-->
-
                                 </li>
                                     <?php 
                                 }

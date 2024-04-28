@@ -10,8 +10,8 @@
 <?php include "src/View/header_logged.php" ?>
 
 <body>
-<form action="index.php" method="POST">
-  <input type="hidden" name="action" value="request_covoit">
+<form id="form" action="" method="POST">
+  <input type="hidden" name="action_request_covoit" value="request_covoit">
 
   <div class="RequestPopUp">
     <div class="TitleContainer">

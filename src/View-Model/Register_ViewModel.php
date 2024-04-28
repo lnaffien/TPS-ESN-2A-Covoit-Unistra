@@ -16,10 +16,8 @@ if(isset($_POST['action_register_submit']))
     }
 }
 
-// TODO
 class Register_ViewModel
 {
-    // TODO
     public static function execute()
     {
         require_once('src/View/register_page.php');
