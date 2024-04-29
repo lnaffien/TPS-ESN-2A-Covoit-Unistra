@@ -30,6 +30,23 @@ class Carpooling_Database_manager
         return $awaitingRequests;
     }
 
+    public static function get_accepted_requests($userId)
+    {
+        require_once('src/Model/Database_manager.php');
+
+        $query = "SELECT historique.dateCovoiturage, utilisateur.nom, utilisateur.prenom, historique.aller, historique.retour, historique.idCovoiturage 
+                  FROM historique 
+                  INNER JOIN utilisateur ON historique.idUser = utilisateur.idUser 
+                  WHERE historique.idUserAmi = :userId AND historique.status = 'accepted'";
+  
+        $params = array(':userId' => $userId); // Parameters for the query
+        $result = Database_manager::execute_query($query, $params);
+        $awaitingRequests = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        return $awaitingRequests;
+    }
+    
+
     public static function update_request_status($requestId, $newStatus)
     {
         require_once('src/Model/Database_manager.php');
