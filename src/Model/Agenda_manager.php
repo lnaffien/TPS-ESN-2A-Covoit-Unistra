@@ -80,14 +80,14 @@ class Agenda_manager
             }
 			else
 			{
-                if ($startDate < $calendarArray[$date]->__get_start_time())
+                if ($startDate < $calendarArray[$date]->__get('start_time'))
 				{
-                    $calendarArray[$date]->__set_start_time($startDate);
+                    $calendarArray[$date]->__set('start_time', $startDate);
 					$calendarArray[$date]->__set('start_place', $place);
                 }
-                if ($endDate > $calendarArray[$date]->__get_end_time())
+                if ($endDate > $calendarArray[$date]->__get('end_time'))
 				{
-					$calendarArray[$date]->__set_end_time($endDate);
+					$calendarArray[$date]->__set('end_time', $endDate);
 					$calendarArray[$date]->__set('end_place', $place);
                 }
             }
@@ -169,8 +169,8 @@ class Agenda_manager
 		foreach($agenda_array as $event)
 		{
 			// TODO : handle different timezones
-			if( $event->__get_date() >= $start_date
-					&& $event->__get_date() < $end_date )
+			if( $event->__get('date') >= $start_date
+					&& $event->__get('date') < $end_date )
 			{
 				$agenda_filtered[] = $event;
 			}
