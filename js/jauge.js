@@ -1,5 +1,5 @@
 function resizeAndColor(width, left, backgroundColor) {
-  var rectangles = document.getElementsByClassName("Rectangle4");
+  var rectangles = document.getElementsByClassName("DayTimeRectangle");
   for (var i = 0; i < rectangles.length; i++)
   {
     var rectangle = rectangles[i];
