@@ -121,7 +121,7 @@ class Database_manager
 			$query = "UPDATE $table SET " .
 						Database_manager::properties_to_string_for_update($properties) .
 						" $filter";
-			echo ("$query <br/>");
+			//echo ("$query <br/>");
 			$stmt = Database_manager::get_connection()->prepare($query);
 			$stmt->execute();
 		} catch (Exception $e)

@@ -50,8 +50,6 @@ class Register_ViewModel
         }*/
 
         // TODO : check password format
-        // TODO : check telephone format
-        // TODO : nagenda format
 
         // Check if the passwords match
         if($mdp != $confirm_mdp)

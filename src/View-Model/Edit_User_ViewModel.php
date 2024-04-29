@@ -2,11 +2,12 @@
 
 if(isset($_POST['action_update_submit']))
 {
-    print_r("Hello ?");
-    if(Register_ViewModel::check_update())
+    echo "<script>console.log('Hello' );</script>";
+    $result = Edit_User_ViewModel::check_update();
+    if(Edit_User_ViewModel::check_update())
     {
         print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
-                    <input type='hidden' name='action' value='login'>
+                    <input type='hidden' name='action' value='settings'>
                 </form>
                 <script type='text/javascript'>
                     document.back_to_index_form.submit();
@@ -16,7 +17,7 @@ if(isset($_POST['action_update_submit']))
     else
     {
         print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
-                    <input type='hidden' name='action' value='settings'>
+                    <input type='hidden' name='action' value='edit'>
                 </form>
                 <script type='text/javascript'>
                     document.back_to_index_form.submit();
@@ -32,12 +33,12 @@ class Edit_User_ViewModel
     public static function execute()
     {
         require_once('src/View/edit_user_page.php');
-        Edit_User_ViewModel::check_update();
+        //Edit_User_ViewModel::check_update();
     }
 
     public static function check_update()
     {        
-        require_once('src/Model/Database_manager.php');
+        require_once('src/Model/User_database_manager.php');
 
         // Get data from the form
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -68,22 +69,32 @@ class Edit_User_ViewModel
                 echo $_SESSION['error'];
                 return false;
             }
-        }   
+        }
 
-        // TODO : check password format
-        // TODO : check telephone format
-        // TODO : nagenda format
-
-        // Check if the passwords match
-        if($mdp != $confirm_mdp)
-        {
-            $_SESSION['error'] = "Passwords don't match.";
-            return false;
+        // Updates password if needed
+        if($mdp != null && $confirm_mdp != null)
+        {   
+            // Check if the passwords match
+            if($mdp != $confirm_mdp)
+            {
+                $_SESSION['error'] = "Passwords don't match.";
+                return false;
+            }
+            else
+            {
+                User_Database_manager::update_user_password($_SESSION['user'], $mdp);
+            }
         }
         
-        // Update user        
-        $_SESSION['user']->__set_all_personal_data($nom, $prenom, $email, $telephone, $nagenda);
-        return Database_manager::update_user_all($_SESSION['user']);
+        // Update user
+        $temp_user = clone $_SESSION['user'];
+        if(User_Database_manager::update_user($temp_user))
+        {        
+            $_SESSION['user']->__set_all_personal_data($nom, $prenom, $email, $telephone, $nagenda);
+            return true;
+        }
+
+        return false;//Database_manager::update_user_all($_SESSION['user']);
     }
 }
 

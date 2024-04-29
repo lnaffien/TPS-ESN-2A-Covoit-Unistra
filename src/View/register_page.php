@@ -20,7 +20,7 @@
             <h1>Créer un Nouveau Compte</h1> 
         </div>
 
-     <form id="form" action="" method="POST">
+     <form action="" method="POST">
         <input type="hidden" name="action_register_submit" value="register_submit">
         <input type="text" name="nom" placeholder="Nom" required>        
         <input type="text" name="prenom" placeholder="Prénom" required>   

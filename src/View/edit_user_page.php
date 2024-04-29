@@ -11,43 +11,47 @@
 
 <body>
     <div class="Background">
-        <form  action='index.php' method="POST">
-            <input type="hidden" name="action" value="homepage">
-            <input type="image" class="Arrow_back" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
-        </form>
-        <h1 class="ModifTitre">Modifier mes informations personnelles</h1> 
+        <div class="TitleContainer">
+            <form  action='index.php' method="POST">
+                <input type="hidden" name="action" value="settings">
+                <input type="image" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
+            </form>
+
+            <h1>Modifier mes informations personnelles</h1> 
+        </div>
        
-        <form action="" mehtod="POST">
-            <input type="hidden" name="action_update_submit" value="update_submit">
-           
+        <form action="" method="POST">
+            <input type="hidden" name="action_update_submit" value="update_submit">           
             <input type="text" placeholder="Nom" name="nom" value="<?php echo $_SESSION['user']->__get('nom') ?>" required>        
             <input type="text" name="prenom" placeholder="Prénom" value="<?php echo $_SESSION['user']->__get('prenom') ?>" required>   
             <input  type="email" name="email" placeholder="E-mail" value="<?php echo $_SESSION['user']->__get('email') ?>" required>
             <input type="telephone" name="telephone" placeholder="Téléphone" value="<?php echo ($_SESSION['user']->__get('telephone') != null) ? $_SESSION['user']->__get('telephone') : ''; ?>">   
                               
             <div class="Text-image">
-                <input type="number" name="nagenda" placeholder="Numéro de Calendrier"  value="<?php echo $_SESSION['user']->__get('nagenda') ?>" min="1000" max="99999" required>
-                <input type='image' src="images/info.svg">
+                <input type="number" name="nagenda" placeholder="Numéro de Calendrier" value="<?php echo $_SESSION['user']->__get('nagenda') ?>" min="1000" max="99999" required>
+                <a href="src/View/Documentation_NumeroCalendrier.pdf" target="_blank">                
+                    <img src="images/info.svg" alt="calendar number help">
+                </a>
             </div>
 
             <div class="Text-image">
-                <input type="password" name="mdp" placeholder="Mot de passe" required>
+                <input type="password" name="mdp" placeholder="Mot de passe">
                 <input type='image' src="images/eye.svg">
             </div>
 
             <div class="Text-image">
-                <input type="password" name="confirm_mdp" placeholder="Confirmer le mot de passe" required>
+                <input type="password" name="confirm_mdp" placeholder="Confirmer le mot de passe">
                 <input type='image' src="images/eye.svg">
             </div>
 
-                <button  type="submit" >Valider</button>
-            </form>
+            <input type="submit" value="Valider">
+        </form>
 
-            <form action="index.php" method="POST">
-                <input type="hidden" name="action" value="homepage">
-                <button type="submit">Annuler</button>
-            </form>
+        <form action="index.php" method="POST">
+            <input type="hidden" name="action" value="settings">
+            <button type="submit">Annuler</button>
+        </form>
           
-    </div>        
+    </div>   
 </body>
 </html>
