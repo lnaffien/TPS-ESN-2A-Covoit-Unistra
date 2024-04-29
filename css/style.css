@@ -533,6 +533,16 @@ li > h1 {
   padding-right: 2%;
 }
 
+.RefreshButton{
+  height: 30%;
+  width: 30%;
+}
+
+.CalendarButton{
+  border-radius: 10px;
+  border:3px #bdbdbd solid;
+}
+
 
 /********************************************************
  *                                                      *

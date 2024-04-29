@@ -98,7 +98,7 @@
                                         <form action='index.php' method="POST" class="RequestCarpoolingIcon">
                                             <input type="hidden" name="action" value="request">
                                             <input type="hidden" name="friend_id" value="<?php echo $friend->__get('id'); ?>">
-                                            <input type="hidden" name="friend_date" value="<?php echo ($date->format('l')); ?>">
+                                            <input type="hidden" name="friend_date" value="<?php echo ($date->format('Y-m-d')); ?>">
                                             <input type="hidden" name="friend_name" value="<?php echo $friend->__get('nom') . ' ' . $friend->__get('prenom'); ?>">
                                             <input type="hidden" name="friend_email" value="<?php echo $friend->__get('email'); ?>">
                                             <input type="hidden" name="friend_tel" value="<?php echo $friend->__get('telephone'); ?>">                             

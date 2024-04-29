@@ -151,6 +151,27 @@ class Database_manager
 		return true;
 	}
 
+
+	    /**
+     * Executes a SQL query with optional parameters.
+     *
+     * @param string $query The SQL query to execute.
+     * @param array $params Optional parameters for the query.
+     * @return PDOStatement The PDOStatement object representing the result of the query.
+     */
+    public static function execute_query($query, $params = array())
+    {
+        try {
+            $stmt = self::get_connection()->prepare($query);
+            $stmt->execute($params);
+            return $stmt;
+        } catch (PDOException $e) {
+            // Handle the exception here (e.g., log it, display an error message)
+            echo "Error executing query: " . $e->getMessage();
+            return null;
+        }
+    }
+
 }
 
 ?>
