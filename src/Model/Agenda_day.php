@@ -86,36 +86,6 @@ class Agenda_day
 				throw new Exception("User : __get : Invalid Property {$property}");
 		}
 	}
-	
-
-	public function __get_date()
-	{
-		return $this->_date;
-	}
-
-	public function __get_start_time()
-	{
-		return $this->_start_time;
-	}
-
-	public function __get_end_time()
-	{
-		return $this->_end_time;
-	}
-
-	public function __set_start_time($new_start_time)
-	{
-		$this->_start_time = $new_start_time;
-	}
-
-	public function __set_end_time($new_end_time)
-	{
-		$this->_end_time = $new_end_time;
-	}
-// != 100% -> jaune
-// vert jaune orange rouge
-// 0  25  50  75  100
-//    6H  4H  2H   0H
 
 	// TODO : add some comments
 	private static function compare_time($this_time_to_compare, $time_to_compare)

@@ -38,39 +38,26 @@ class Home_ViewModel
         $_SESSION['dateSelected']['end'] = (clone $currentDate)->modify("7 days");
 
         $interval = DateInterval::createFromDateString('1 day');
-        $_SESSION['dateSelected']['period'] = new DatePeriod($currentDate, $interval, $_SESSION['dateSelected']['end']);
+        $_SESSION['dateSelected']['period'] = new DatePeriod($currentDate, $interval, $_SESSION['dateSelected']['end']);      
 
-        // Test lines : add friends
-        //$friend = clone $_SESSION['user'];
-        //$_SESSION['user']->add_friend($friend);
-
-        /*foreach($_SESSION['user']->__get('friends') as $friend)
-        {
-            if(isset($friend))
-            {
-                print_r($friend);
-                print_r("<br/>");
-            }
-            else
-            {
-                print_r("JE SUIS NULL !");
-            }
-
-        }*/        
-        
-        require_once('src/View/home_page.php');
 
         $calendarFull = Agenda_manager::get_full_agenda($_SESSION['user']->__get('nagenda'));
         $calendarWeek = Agenda_manager::filter_date($calendarFull, $currentDate, 7);
         
         foreach($calendarWeek as $day)
         {
-            print_r('Date : ' . $day->__get_date()/*->format('Y-m-d')*/ . "<br/>");
-            print_r('Heure de début : ' . $day->__get_start_time()->format('H:i:s') . "<br/>");
-            print_r('Heure de fin : ' . $day->__get_end_time()->format('H:i:s') . "<br/>");
+            $_SESSION[$day->__get('date')]['start_time'] = $day->__get('start_time')->format('H:i:s');
+            $_SESSION[$day->__get('date')]['end_time'] = $day->__get('end_time')->format('H:i:s');
 
-            print_r("<br/>");
+           /* print_r('Date : ' . $day->__get('date')/*->format('Y-m-d')*/ /*. "<br/>");
+            print_r('Heure de début : ' . $_SESSION[$day->__get('date')]['start_time'] . "<br/>");
+            print_r('Heure de fin : ' . $_SESSION[$day->__get('date')]['end_time'] . "<br/>");
+
+            print_r("<br/>");*/
         }
+
+
+        require_once('src/View/home_page.php');
     }
 }
 /*

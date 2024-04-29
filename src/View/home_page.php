@@ -9,7 +9,7 @@
     </head>
 
     <?php include "src/View/header_logged.php" ?>
-
+    
 <body>
     <div class="Align_left_center">
         <form id="form" action='src/View-Model/Home_ViewModel.php' method="POST">
@@ -22,7 +22,7 @@
             <input type="image" class="RefreshButton" src="images/refresh.svg" alt="Refresh Icon">
         </form>
 
-        <h1 class="Semaine">Semaine du <?php echo $_SESSION['dateSelected']['start']->format('d/m') ?> au <?php echo $_SESSION['dateSelected']['end']->format('d/m Y') ?></h1>
+        <h1>Semaine du <?php echo $_SESSION['dateSelected']['start']->format('d/m') ?> au <?php echo $_SESSION['dateSelected']['end']->format('d/m Y') ?></h1>
     </div>
     
     <ul>
@@ -35,29 +35,44 @@
             ?>
                 <li>
 
-                <h1 class="DayLabel"><?php print_r($date->format('l')) ?></h1>
+                <h1><?php print_r($date->format('l')) ?></h1>
 
                     <div class="DayRectangle">
 
-                        <div class = "Time">
-                            <h2>8h30</h2> 
-                            <h2>17h30</h2>
+                        <div>
+                            <div></div>
+                            <div class="Time">
+                                <h2>8h00</h2> 
+                                <h2>18h00</h2>
+                            </div>
+                            <div></div>
                         </div> 
 
                         <ul>
                             
                             <li class="UserRow"> 
                                 <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>     
-                                <!--script src="jauge.js"></script-->                  
-                                 <!--?php
-                                    //require_once 'src/Model/Agenda_manager.php';
-                                ?-->                              
+                                                          
                                                       
                                 <div class="DayTimeRectangle">
+                                    
                                 
                                    <!--h3>Start Time: <!?php echo $date->__get_start_time()->format('H:i:s'); ?><--/h3> 
                                    <h3>End Time: <!?php echo $date->__get_end_time()->format('H:i:s'); ?></h3--> 
                                 </div>
+
+                                <script src="js/jauge.js"></script>
+                                <script>
+                                    
+                                    var date = "<?php echo $date->format('Y-m-d'); ?>";
+                                    var start_time = "<?php echo $_SESSION[$date->format('Y-m-d')]['start_time']; ?>";
+                                    var end_time = "<?php echo $_SESSION[$date->format('Y-m-d')]['end_time']; ?>";
+                                    var start_compatibility = 0;
+                                    var end_compatibility = 0;
+
+                                    resizeAndColor(start_time, end_time, start_compatibility, end_compatibility);
+                                </script>
+                                <div></div>
                             </li>
 
 
@@ -69,11 +84,24 @@
                                     <h2><?php print_r($friend->__get('nom') . ' ' . $friend->__get('prenom'));?></h2>                       
                                     <div class="DayTimeRectangle"></div>
 
-                                 
-                                    <form action='' method="POST" class="RequestCarpoolingIcon">
-                                        <input type="hidden" name="" value="">
-                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon" id="requestButton" onclick="togglePopup()">
-                                    </form>
+                                    <script src="js/jauge.js"></script>
+                                    <script>
+                                        
+                                        var date = "<?php echo $date->format('Y-m-d'); ?>";
+                                        var start_time = "<?php echo $_SESSION[$date->format('Y-m-d')]['start_time']; ?>";
+                                        var end_time = "<?php echo $_SESSION[$date->format('Y-m-d')]['end_time']; ?>";
+                                        var start_compatibility = 0;
+                                        var end_compatibility = 0;
+
+                                        resizeAndColor('08:00:00', '18:00:00', start_compatibility, end_compatibility);
+                                    </script>
+
+                                    <div>
+                                        <form action='' method="POST" class="RequestCarpoolingIcon">
+                                            <input type="hidden" name="" value="">
+                                            <input type="image" src="images/request.svg" alt="Carpooling request Icon" id="requestButton" onclick="togglePopup()">
+                                        </form>
+                                    </div>
 
                                     
                                         <!-- Content of your popup>
@@ -92,7 +120,7 @@
                                             <button class="Rectangle Request" type="submit">Envoyer <br/>une demande</button>
                                         </div-->
                                     
-                                    <script src="js/popup.js"></script>
+                                    <!--<script src="js/popup.js"></script-->
 
                                 </li>
                                     <?php 
@@ -110,5 +138,6 @@
         </ul>
      
     </div>
+
 </body>
 </html>
