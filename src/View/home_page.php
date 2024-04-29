@@ -75,7 +75,6 @@
                                 <div></div>
                             </li>
 
-
                             <?php 
                                 foreach($_SESSION['user']->__get('friends') as $friend)
                                 {
@@ -121,6 +120,16 @@
                                         </div-->
                                     
                                     <!--<script src="js/popup.js"></script-->
+
+                                    <form action='index.php' method="POST">
+                                        <input type="hidden" name="action" value="request">
+                                        <input type="hidden" name="friend_id" value="<?php echo $friend->__get('id'); ?>">
+                                        <input type="hidden" name="friend_date" value="<?php echo ($date->format('l')); ?>">
+                                        <input type="hidden" name="friend_name" value="<?php echo $friend->__get('nom') . ' ' . $friend->__get('prenom'); ?>">
+                                        <input type="hidden" name="friend_email" value="<?php echo $friend->__get('email'); ?>">
+                                        <input type="hidden" name="friend_tel" value="<?php echo $friend->__get('telephone'); ?>">                             
+                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon">
+                                    </form>
 
                                 </li>
                                     <?php 
