@@ -54,8 +54,7 @@
                                 <h2><?php print_r($_SESSION['user']->__get('nom') . ' ' . $_SESSION['user']->__get('prenom'));?></h2>     
                                                           
                                                       
-                                <div class="DayTimeRectangle">
-                                    
+                                <div class="DayTimeRectangle">                                    
                                 
                                    <!--h3>Start Time: <!?php echo $date->__get_start_time()->format('H:i:s'); ?><--/h3> 
                                    <h3>End Time: <!?php echo $date->__get_end_time()->format('H:i:s'); ?></h3--> 
@@ -96,40 +95,16 @@
                                     </script>
 
                                     <div>
-                                        <form action='' method="POST" class="RequestCarpoolingIcon">
-                                            <input type="hidden" name="" value="">
-                                            <input type="image" src="images/request.svg" alt="Carpooling request Icon" id="requestButton" onclick="togglePopup()">
+                                        <form action='index.php' method="POST" class="RequestCarpoolingIcon">
+                                            <input type="hidden" name="action" value="request">
+                                            <input type="hidden" name="friend_id" value="<?php echo $friend->__get('id'); ?>">
+                                            <input type="hidden" name="friend_date" value="<?php echo ($date->format('l')); ?>">
+                                            <input type="hidden" name="friend_name" value="<?php echo $friend->__get('nom') . ' ' . $friend->__get('prenom'); ?>">
+                                            <input type="hidden" name="friend_email" value="<?php echo $friend->__get('email'); ?>">
+                                            <input type="hidden" name="friend_tel" value="<?php echo $friend->__get('telephone'); ?>">                             
+                                            <input type="image" src="images/request.svg" alt="Carpooling request Icon">
                                         </form>
                                     </div>
-
-                                    
-                                        <!-- Content of your popup>
-                                        <div class="RequestPopUp" id="RequestPopUp" style="display: none;">
-                                            <h1>Demande de covoiturage</h1>
-                                            <div class="Informations">
-                                                <h2 class="text">Covoitureur : </h2>
-                                                <h2 class="text">Date :  </h2>   
-                                                <h2 class="text">Mail :</h2>    
-                                                <h2 class="text">Téléphone :</h2>  
-                                                <div class="checkboxes">
-                                                    <label class="text"><input type="checkbox" name="aller_simple" value="aller_simple"> Aller</label>
-                                                    <label class="text"><input type="checkbox" name="aller_retour" value="aller_retour"> Retour</label>
-                                                </div>   
-                                            </div>
-                                            <button class="Rectangle Request" type="submit">Envoyer <br/>une demande</button>
-                                        </div-->
-                                    
-                                    <!--<script src="js/popup.js"></script-->
-
-                                    <form action='index.php' method="POST">
-                                        <input type="hidden" name="action" value="request">
-                                        <input type="hidden" name="friend_id" value="<?php echo $friend->__get('id'); ?>">
-                                        <input type="hidden" name="friend_date" value="<?php echo ($date->format('l')); ?>">
-                                        <input type="hidden" name="friend_name" value="<?php echo $friend->__get('nom') . ' ' . $friend->__get('prenom'); ?>">
-                                        <input type="hidden" name="friend_email" value="<?php echo $friend->__get('email'); ?>">
-                                        <input type="hidden" name="friend_tel" value="<?php echo $friend->__get('telephone'); ?>">                             
-                                        <input type="image" src="images/request.svg" alt="Carpooling request Icon">
-                                    </form>
 
                                 </li>
                                     <?php 
