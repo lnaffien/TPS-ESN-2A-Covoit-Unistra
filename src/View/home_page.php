@@ -42,7 +42,7 @@
                     $_SESSION[$date->format('Y-m-d')] = new Agenda_day($date, $default_time, $default_time, ""); 
                 }
             ?>
-                <li>
+             <li>
 
                 <h1><?php print_r($date->format('l')) ?></h1>
 
