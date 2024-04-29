@@ -9,6 +9,7 @@ if (ENVIRONMENT == 'development') {
 }
 
 require_once('src/Model/User.php');
+require_once('src/Model/Agenda_day.php');
 session_start();
 
 // On charge les contrôleurs et les modèles

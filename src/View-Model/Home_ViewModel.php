@@ -46,14 +46,7 @@ class Home_ViewModel
         
         foreach($calendarWeek as $day)
         {
-            $_SESSION[$day->__get('date')]['start_time'] = $day->__get('start_time')->format('H:i:s');
-            $_SESSION[$day->__get('date')]['end_time'] = $day->__get('end_time')->format('H:i:s');
-
-           /* print_r('Date : ' . $day->__get('date')/*->format('Y-m-d')*/ /*. "<br/>");
-            print_r('Heure de début : ' . $_SESSION[$day->__get('date')]['start_time'] . "<br/>");
-            print_r('Heure de fin : ' . $_SESSION[$day->__get('date')]['end_time'] . "<br/>");
-
-            print_r("<br/>");*/
+            $_SESSION[$day->__get('date')] = $day;
         }
 
 
