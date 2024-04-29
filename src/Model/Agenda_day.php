@@ -169,8 +169,8 @@ class Agenda_day
 			return -1;
 		}
 
-		return Agenda_day::compare_time(($this->__get_start_time())->format('H:i'),
-									($agenda_day->__get_start_time())->format('H:i'));
+		return Agenda_day::compare_time(($this->__get('start_time'))->format('H:i'),
+									($agenda_day->__get('start_time'))->format('H:i'));
 	}
 
 	public function compare_end_time_and_place($agenda_day)
@@ -180,8 +180,8 @@ class Agenda_day
 			return -1;
 		}
 
-		return Agenda_day::compare_time(($this->__get_end_time())->format('H:i'),
-									($agenda_day->__get_end_time())->format('H:i'));
+		return Agenda_day::compare_time(($this->__get('end_time'))->format('H:i'),
+									($agenda_day->__get('end_time'))->format('H:i'));
 	}
 
 }

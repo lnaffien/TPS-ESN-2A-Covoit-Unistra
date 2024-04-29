@@ -172,7 +172,7 @@ class Agenda_manager
 			if( $event->__get('date') >= $start_date
 					&& $event->__get('date') < $end_date )
 			{
-				$agenda_filtered[] = $event;
+				$agenda_filtered[$event->__get('date')] = $event;
 			}
 		}
 

@@ -445,11 +445,11 @@ ul {
   list-style-type: none; /* Remove bullets */
   padding-left: 2%;
 }
-
+/*
 li {
 
 }
-
+*/
 li > h1 {
   width: fit-content;
   padding : 1rem;
@@ -509,10 +509,10 @@ li > h1 {
 }
 
 .UserRow > h2 {
-  flex: 0.2;
+  /*flex: 0.2;*/
   text-align: left;
   margin-left: 0;
-  width: fit-content;
+  width: 20%;
   padding: 0;
 }
 
@@ -521,16 +521,11 @@ li > h1 {
 }
 
 .DayTimeRectangle {
-  flex: 0.7;
+  flex: 0.9;
   height: 100%;
   min-height: 40px;
   border-radius: 10px;
-  background: #808080; /* Fond par défaut */
-}
-
-
-.RequestCarpoolingIcon {
-  padding-right: 2%;
+  /*background: #808080; /* Fond par défaut */
 }
 
 .RefreshButton{
