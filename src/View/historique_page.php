@@ -15,28 +15,27 @@
                     <div class="TitleContainer">
                         <form action='index.php' method="POST">
                             <input type="hidden" name="action" value="homepage">
-                            <input type="image" src="images/arrow.svg" alt="GoBackArrowIcon">
+                            <input type="image" class="arrowicon" src="images/arrow.svg" alt="GoBackArrowIcon">
                         </form>
                         <h1 class="histotext">Historique</h1>
                     </div>
                     <div class="Array">    
-                        <div class="arrayheader">
-                            <div class="Date">
-                                <img class="Filter" src="images/filter.svg" />
-                                <h2 class="DateText">Date</h2>         
-                            </div>   
-                            <div class="Covoits">
+                        <div class="arrayheader">                     
+                                <h2 class="Covoitureurs">Date</h2>                                                       
                                 <h2 class="Covoitureurs">Covoitureurs</h2>
-                            </div>
                         </div> 
-
-                        <div class="Ligne1">
-                            <p class="text"> 26 Mars 2024</p>       
-                            <p class="text">Prénom NOM</p>
-                        </div>
+                        <?php
+                            foreach ($acceptedRequests as $request) {
+                                echo "<div class='Ligne1'>";
+                                echo "<p class='text'>" . $request['dateCovoiturage'] . "</p>";
+                                echo "<p class='text'>" . $request['nom'] . " " . $request['prenom'] . "</p>";
+                                echo "</div>";
+                            }
+                        ?>
                     </div>  
                 </div>
             
         </div>
     </body>
 </html>
+
