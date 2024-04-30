@@ -1,14 +1,30 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action_request_covoit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action_request_covoit']))
+{
     // Check if the "Envoyer une demande" button was clicked
-    if (isset($_POST['demande_submit'])) {
-        if (Demande_ViewModel::check_request_data()) {
-            header('Location: index.php?action=homepage');
-            exit;
-        } else {
-            header('Location: index.php?action=login');
-            exit;
+    if (isset($_POST['action_request_covoit']))
+    {
+        echo "<script>console.log('Bonjour!')</script>";
+        if(Demande_ViewModel::check_request_data())
+        {
+            print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
+                        <input type='hidden' name='action' value='homepage'>
+                    </form>
+                    <script type='text/javascript'>
+                        document.back_to_index_form.submit();
+                    </script>
+                ");
+        }
+        else
+        {
+            print("<form id='form' name='back_to_index_form' action='index.php' method='POST'>
+                        <input type='hidden' name='action' value='request'>
+                    </form>
+                    <script type='text/javascript'>
+                        document.back_to_index_form.submit();
+                    </script>
+                ");
         }
     }
 }

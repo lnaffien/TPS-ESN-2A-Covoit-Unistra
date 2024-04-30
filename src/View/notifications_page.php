@@ -27,7 +27,7 @@
                 echo "<p class='text'>" . $request['nom'] . " " . $request['prenom'] . "</p>";
                 echo "<p class='text'>" . ($request['aller'] && $request['retour'] ? "ALLER/<br/>RETOUR" : ($request['aller'] ? "ALLER SIMPLE" : "RETOUR SIMPLE")) . "</p>";
                 echo "<div class='Icons'>";
-                echo "<form  method='POST'>";
+                echo "<form action='' method='POST'>";
                     echo "<input type='hidden' name='request_id1' value='" . $request['idCovoiturage'] . "'>";
                     echo "<input type='hidden' name='action_accept_covoit' value='acceptCovoit'>";
                     echo "<input type='image' src='images/accept.svg' alt='accepticon'>";
