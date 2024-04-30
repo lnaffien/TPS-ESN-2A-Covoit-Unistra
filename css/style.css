@@ -147,7 +147,7 @@ body {
 /*.BackgroundRow > * > * > */input[type=submit],
 button {
   width: 70%;
-  max-width: 350px;
+  max-width: 250px;
 
   background: #009688;  
   border: 3px #00796B solid;

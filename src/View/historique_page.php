@@ -13,9 +13,9 @@
         <div class="AnnualHistory">             
                 <div class="Background">
                     <div class="TitleContainer">
-                        <form action='index.php' method="POST">
-                            <input type="hidden" name="action" value="homepage">
-                            <input type="image" class="arrowicon" src="images/arrow.svg" alt="GoBackArrowIcon">
+                    <form  action='index.php' method="POST">
+                            <input type="hidden" name="action" value="settings">
+                            <input type="image" src="images/arrow.svg" alt="Go back arrow Icon"></img> 
                         </form>
                         <h1 class="histotext">Historique</h1>
                     </div>
