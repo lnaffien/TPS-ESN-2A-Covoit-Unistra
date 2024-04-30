@@ -4,12 +4,9 @@ class Notifications_ViewModel
     public static function execute()
     {
         // Handle form submissions
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['action_accept_covoit'])) {
-                self::acceptRequest($_POST['request_id1']);
-            } elseif (isset($_POST['action_reject_covoit'])) {
-                self::rejectRequest($_POST['request_id2']);
-            }
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action_accept_covoit'])) {
+               // self::acceptRequest($_POST['request_id1']);
+                self::acceptRequest($_POST['request_id1']);  
         }
         $awaitingRequests = self::getAwaitingRequests($_SESSION['user']->__get('id'));
         require_once('src/View/notifications_page.php');

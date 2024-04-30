@@ -21,9 +21,6 @@
 
             <?php
 
-            // Fetch notifications for the current user
-           // $awaitingRequests = Notifications_ViewModel::getAwaitingRequests($_SESSION['user']->__get('id'));
-
             foreach ($awaitingRequests as $request) {
                 echo "<div class='Row'>";
                 echo "<p class='text'>" . $request['dateCovoiturage'] . "</p>";

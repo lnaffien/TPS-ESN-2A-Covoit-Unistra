@@ -45,23 +45,25 @@ class Carpooling_Database_manager
 
         return $awaitingRequests;
     }
-    
 
     public static function update_request_status($requestId, $newStatus)
     {
-        require_once('src/Model/Database_manager.php');
-
+        $query = "UPDATE historique SET status = :status WHERE idCovoiturage = :requestId";
+        $params = array(':status' => $newStatus, ':requestId' => $requestId);
+    
+        return Database_manager::execute_query($query, $params) !== null;
+    }
+   /* public static function update_request_status($requestId, $newStatus)
+    {
         $table = 'historique';
         $properties = array('status' => $newStatus);
         $filter = "WHERE idCovoiturage = $requestId";
         
         return Database_manager::update_data($table, $properties, $filter);
-    }
+    }*/
 
    /* public static function update_request_status($requestId, $newStatus)
     {
-        require_once('src/Model/Database_manager.php');
-
         $table = 'historique';
         $properties = array('status' => $newStatus);
         $filter = "WHERE idCovoiturage = :requestId";
