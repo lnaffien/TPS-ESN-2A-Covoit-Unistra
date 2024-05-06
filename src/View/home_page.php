@@ -11,7 +11,9 @@
     <?php include "src/View/header_logged.php";
             require_once "src/Model/Agenda_day.php";
             $id = 0;
-            
+            setlocale(LC_TIME, 'fr_FR');
+            date_default_timezone_set('Europe/Paris');   
+            $french_days = array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
     ?>
     
 <body>
@@ -44,7 +46,7 @@
             ?>
              <li>
 
-                <h1><?php print_r($date->format('l')) ?></h1>
+                <h1><?php print_r($french_days[$date->format('w')]);?></h1>
 
                     <div class="DayRectangle">
 
